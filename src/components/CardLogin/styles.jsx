@@ -10,30 +10,39 @@ export const DivPai = styled.div`
     justify-content: center;
     width: 100%;
     height: 100vh;
-    gap: 20px;
+    gap: 10px;
 `;
 
 export const StyledInput = styled(TextField)`
-    width: 380px;
-  
+    width: 300px;
+    
+    
+    border: none;
     outline-color: var(--Primary-color);
+    
 
     .MuiInputLabel-root.Mui-focused {
-        color: var(--Primary-color); 
-        border: var(--Primary-color);
-        outline-color: var(--Primary-color);
+        color: var(--Primary-color) !important; 
+        border: var(--Primary-color) !important;
+        outline-color: var(--Primary-color) !important;
+        
+    }
 
+    .MuiOutlinedInput-root .Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: var(--Primary-color) !important;
+        outline-color: var(--Primary-color) !important;
+        border: none !important;
+        
     }
-    .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-        border-color: var(--Primary-color);
-        outline-color: var(--Primary-color);
-    }
+
+    
    
 `;
 
 export const StyledButton = styled(Button)`
-    width: 380px;
+    width: 300px;
     cursor: pointer;
+    border-radius: 50px !important;
 `;
 
 export const StyledLink = styled(Link)`

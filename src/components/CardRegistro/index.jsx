@@ -60,7 +60,7 @@ const CardRegister = () => {
                 >Registrar
                 </StyledButton>
 
-                <StyledButton variant="outlined" style={{color: 'var(--Primary-color)'}} onClick={goToLogin}>Já tenho conta</StyledButton>
+                <StyledButton variant="outlined" style={{color: 'var(--Primary-color)', border: 'var(--Primary-color) 1px solid'}} onClick={goToLogin}>Já tenho conta</StyledButton>
 
             </DivPai>
         </>

@@ -5,6 +5,7 @@ import React from 'react';
 import RegisterPage from '../pages/Register';
 import ForgotPassword from '../pages/ForgotPassword';
 
+
 export default function Router(){
     const {coresRoot} = useWhitelabel();
     return(

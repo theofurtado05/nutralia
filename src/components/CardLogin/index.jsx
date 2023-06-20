@@ -26,13 +26,13 @@ const CardLogin = () => {
     return(
         <>
             <DivPai>
-                <StyledInput label="Email" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <StyledInput id="outlined-basic" label="Senha" variant="outlined" type="password" value={password}
+                <StyledInput label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <StyledInput label="Senha" variant="outlined" type="password" value={password}
                 onChange={(e) => setPassword(e.target.value)}/>
 
                 <StyledButton variant="contained" style={{background: 'var(--Primary-color)'}} onClick={handleClick}>Entrar</StyledButton>
 
-                <StyledButton variant="outlined" style={{color: 'var(--Primary-color)'}} onClick={goToRegistro}>Registre-se</StyledButton>
+                <StyledButton variant="outlined" style={{color: 'var(--Primary-color)', border: 'var(--Primary-color) 1px solid'}} onClick={goToRegistro}>Registre-se</StyledButton>
 
                 <StyledLink to={'../EsqueciMinhaSenha'}>
                     Esqueci minha senha
