@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 
+
 export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
@@ -11,28 +12,35 @@ export const DivPai = styled.div`
     width: 100%;
     height: 90vh;
     gap: 10px;
+    @media screen and (max-width: 770px){
+        max-width: 90vh;
+        overflow: hidden;
+    }
 `;
 
 export const StyledInput = styled(TextField)`
     width: 300px;
     
-    
-    border: none;
     outline-color: var(--Primary-color);
-    
+    border: none !important;
 
-    .MuiInputLabel-root.Mui-focused {
-        color: var(--Primary-color) !important; 
-        border: var(--Primary-color) !important;
-        outline-color: var(--Primary-color) !important;
-        
-    }
+    .MuiInputBase-input {
+        color: #555555 !important; 
+        //border: red;
+        outline: ${props => props.errorStatus ? 'red 2px solid !important' : 'none'};
+        //outline-color: var(--Primary-color) !important;
+        height: 10px !important;
+        align-items: center;
+        padding: 23px 10px;
+        border-radius: 10px;
 
-    .MuiOutlinedInput-root .Mui-focused .MuiOutlinedInput-notchedOutline 
-    .MuiInputBase-input-MuiOutlinedInput-input {
-        border-color: var(--Primary-color) !important;
-        outline-color: var(--Primary-color) !important;
-        border: none !important;
+        &:focus{
+            outline: red !important;
+        }
+
+        &:hover{
+            border: ${props => props.errorStatus ? 'none !important' : ''};
+        }
         
     }
 `;
@@ -48,7 +56,7 @@ export const StyledLink = styled(Link)`
     color: var(--Primary-color);
     cursor: pointer;
     text-decoration: none;
-    
+    font-weight: 600;
 `;
 
 
@@ -58,4 +66,13 @@ export const Logotipo = styled.img`
     @media screen and (max-width: 770px){
         width: 300px;
     }
+`;
+
+export const SpanError = styled.span`
+    color: red;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    width: 300px;
 `;

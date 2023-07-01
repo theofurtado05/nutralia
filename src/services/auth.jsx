@@ -16,27 +16,26 @@ const auth = getAuth(app);
 
 
 
-export const Login = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            const userId = userCredential.user.uid;
-            const email = userCredential.user.email;
+export const Login = async (email, password) => {
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        const userId = userCredential.user.uid;
+        const userEmail = userCredential.user.email;
 
-            localStorage.setItem('@UserNutralia', user)
-            localStorage.setItem('@UserIdNutralia', user.id)
-            localStorage.setItem('@EmailNutralia', email)
-            
-            window.location.href = "../Menu"
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode)
-            return errorCode
-        });
-}
+        localStorage.setItem('@UserNutralia', user);
+        localStorage.setItem('@UserIdNutralia', userId);
+        localStorage.setItem('@EmailNutralia', userEmail);
+
+        window.location.href = "../Menu";
+
+        return "Success!";
+    } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        throw errorCode;
+    }
+};
 
 export const SignOut = () => {
     signOut(auth)
@@ -59,13 +58,14 @@ export const Register = (email, password) => {
                 compras: 0,
                 kg: 0,
                 altura: 0,
-                idade: 0,
+                objetivo: "",
+                intolerancia: ""
 
             }).then(()=>{
                 console.log('Usuario registrado com sucesso!')
-                localStorage.setItem('@UserNutralia', user)
-                localStorage.setItem('@UserIdNutralia', user.id)
-                localStorage.setItem('@EmailNutralia', email)
+                localStorage.setItem('@UserNutrafity', user)
+                localStorage.setItem('@UserIdNutrafity', user.id)
+                localStorage.setItem('@EmailNutra', email)
                 
                 window.location.href = "../Menu"
             }).catch((err) => {
@@ -78,7 +78,7 @@ export const Register = (email, password) => {
             const errorCode = error.code;
             const errorMessage = error.message;
 
-            // switch(errorCode){
+           // switch(errorCode){
             //     case 'auth/invalid-email':
             //         return 'Email invalido.';
                     

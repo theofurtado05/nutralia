@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 
 function App() {
   const {setarCores} = useWhitelabel();
+  
   return (
     
         <ThemeProvider theme={theme}>
