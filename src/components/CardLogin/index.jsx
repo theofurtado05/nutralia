@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import {Login} from '../../services/auth'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import {DivPai, StyledInput, StyledButton, StyledLink} from './styles'
+import {DivPai, StyledInput, StyledButton, StyledLink, Logotipo} from './styles'
+
+import Logo from '../../assets/logo.png'
 
 import { useNavigate, Link } from "react-router-dom";
 
@@ -26,6 +28,8 @@ const CardLogin = () => {
     return(
         <>
             <DivPai>
+                <Logotipo src={Logo}/>
+
                 <StyledInput label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <StyledInput label="Senha" variant="outlined" type="password" value={password}
                 onChange={(e) => setPassword(e.target.value)}/>

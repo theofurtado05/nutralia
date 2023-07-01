@@ -9,7 +9,7 @@ export const DivPai = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     gap: 10px;
 `;
 
@@ -28,15 +28,13 @@ export const StyledInput = styled(TextField)`
         
     }
 
-    .MuiOutlinedInput-root .Mui-focused .MuiOutlinedInput-notchedOutline {
+    .MuiOutlinedInput-root .Mui-focused .MuiOutlinedInput-notchedOutline 
+    .MuiInputBase-input-MuiOutlinedInput-input {
         border-color: var(--Primary-color) !important;
         outline-color: var(--Primary-color) !important;
         border: none !important;
         
     }
-
-    
-   
 `;
 
 export const StyledButton = styled(Button)`
@@ -53,3 +51,11 @@ export const StyledLink = styled(Link)`
     
 `;
 
+
+export const Logotipo = styled.img`
+    width: 350px;
+
+    @media screen and (max-width: 770px){
+        width: 300px;
+    }
+`;

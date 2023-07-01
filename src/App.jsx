@@ -1,5 +1,6 @@
 import Router from './routes'
 import {WhitelabelProvider, useWhitelabel} from './context/Whitelabel'
+import { DietaProvider, useDieta } from './context/Dieta';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ReactDOM from 'react-dom'
 import theme from './theme'
@@ -12,9 +13,11 @@ function App() {
     
         <ThemeProvider theme={theme}>
           <WhitelabelProvider>
-            <>
-              <Router/>
-            </>
+            <DietaProvider>
+              <>
+                <Router/>
+              </>
+            </DietaProvider>
           </WhitelabelProvider>
         </ThemeProvider>
         

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {DivPai, StyledInput, StyledButton, StyledLink} from '../CardLogin/styles'
+import {DivPai, StyledInput, StyledButton, StyledLink, Logotipo} from '../CardLogin/styles'
 import { useNavigate } from "react-router-dom";
+
+import Logo from '../../assets/logo.png'
 
 import {Register} from '../../services/auth'
 
@@ -30,6 +32,8 @@ const CardRegister = () => {
     return(
         <>
             <DivPai>
+                <Logotipo src={Logo}/>
+
                 <StyledInput label="Email" 
                 variant="outlined"
                 onChange={(e) => setEmail(e.target.value)}
