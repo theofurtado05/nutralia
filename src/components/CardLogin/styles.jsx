@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
+import ReactPhoneInput from 'react-phone-input-2';
 
 
 export const DivPai = styled.div`
@@ -10,11 +11,10 @@ export const DivPai = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     gap: 10px;
     @media screen and (max-width: 770px){
-        max-width: 90vh;
-        overflow: hidden;
+        height: auto;
     }
 `;
 
@@ -27,22 +27,36 @@ export const StyledInput = styled(TextField)`
     .MuiInputBase-input {
         color: #555555 !important; 
         //border: red;
-        outline: ${props => props.errorStatus ? 'red 2px solid !important' : 'none'};
+        outline-color: ${props => props.errorStatus ? 'red !important' : 'none'};
         //outline-color: var(--Primary-color) !important;
         height: 10px !important;
         align-items: center;
         padding: 23px 10px;
         border-radius: 10px;
 
-        &:focus{
-            outline: red !important;
-        }
 
         &:hover{
             border: ${props => props.errorStatus ? 'none !important' : ''};
         }
         
     }
+`;
+
+export const StyledMaskInput = styled(ReactPhoneInput)`
+
+    
+    border: none !important;
+    outline-color: ${props => props.errorStatus ? 'red !important' : 'none'};
+    color: #555555 !important; 
+    align-items: center;
+    border-radius: 10px;
+
+    align-self: center;
+    
+    &:hover{
+            border: ${props => props.errorStatus ? 'none !important' : ''};
+    }
+
 `;
 
 export const StyledButton = styled(Button)`

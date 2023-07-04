@@ -47,54 +47,32 @@ export const SignOut = () => {
         });
 }
 
-export const Register = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            
-            const user = userCredential.user;
-            set(ref(database, 'users/' + user.uid), {
+export const Register = async (email, password, celular) => {
+    try{
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+
+        const user = userCredential.user
+        set(ref(database, 'users/' + user.uid), {
                 email: email,
+                celular: celular,
                 tickets: 0,
                 compras: 0,
                 kg: 0,
                 altura: 0,
                 objetivo: "",
                 intolerancia: ""
-
-            }).then(()=>{
-                console.log('Usuario registrado com sucesso!')
-                localStorage.setItem('@UserNutrafity', user)
-                localStorage.setItem('@UserIdNutrafity', user.id)
-                localStorage.setItem('@EmailNutra', email)
-                
-                window.location.href = "../Menu"
-            }).catch((err) => {
-                return "Erro ao salvar as informações do usuário."
-            })
-
-
         })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
 
-           // switch(errorCode){
-            //     case 'auth/invalid-email':
-            //         return 'Email invalido.';
-                    
-            //     case 'auth/email-already-in-use':
-            //         return 'Email em uso.'
-            //         break;
-            //     case 'auth/weak-password':
-            //         return 'A senha deve conter no minimo 6 caracteres.'
-            //         break;
-            //     default:
-            //         return 'Erro ao cadastrar usuário.'
-            //         break;
-            // }
-          
-            return errorCode
-        });
+        console.log('Usuario registrado com sucesso!')
+        localStorage.setItem('@UserNutrafity', user)
+        localStorage.setItem('@UserIdNutrafity', user.id)
+        localStorage.setItem('@EmailNutra', email)
+        
+        window.location.href = "../Menu"
+    }catch(error){
+        return error
+    }
+            
 }
 
 export const RecuperarSenha = (email) => {

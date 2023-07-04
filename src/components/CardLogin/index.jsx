@@ -60,8 +60,8 @@ const CardLogin = () => {
 
                 <StyledInput label="Email" value={email} onChange={(e) => setEmail(e.target.value)}
                 errorStatus={errorStatus}/>
-                
-                <StyledInput label="Senha" variant="outlined" type="password" value={password}
+
+                <StyledInput label="Senha" type="password" value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 errorStatus={errorStatus}/>
 
