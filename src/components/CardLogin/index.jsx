@@ -6,6 +6,8 @@ import {DivPai, StyledInput, StyledButton, StyledLink, Logotipo, SpanError} from
 
 import Logo from '../../assets/logo.png'
 
+import {VerifLogin} from '../../services/auth'
+
 import { useNavigate, Link } from "react-router-dom";
 
 const CardLogin = () => {
@@ -16,6 +18,9 @@ const CardLogin = () => {
     const [errorMsg, setErrorMsg] = useState('')
 
     const navigate = useNavigate();
+
+    
+ 
 
     const handleClick = async (e) => {
         e.preventDefault()

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import {DivPai, StyledInput, StyledButton, StyledLink, Logotipo, SpanError, StyledMaskInput} from '../CardLogin/styles'
 import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from "firebase/auth";
+import firebaseConfig from '../../firebaseConfig';
+import 'firebase/auth';
+import 'firebase/database';
+
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref, set } from "firebase/database";
 
 import 'react-phone-input-2/lib/style.css';
 import ReactPhoneInput from 'react-phone-input-2';
 
 import Logo from '../../assets/logo.png'
 
-import {Register} from '../../services/auth'
+import {verifLogadoAuth} from '../../services/auth'
+
 
 const CardRegister = () => {
     const [email, setEmail] = useState()
@@ -20,6 +29,13 @@ const CardRegister = () => {
 
     const navigate = useNavigate();
 
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app)
+
+    const auth = getAuth(app);
+
     const handleClick = async (e) => {
         e.preventDefault()
 
@@ -28,20 +44,34 @@ const CardRegister = () => {
             setErrorStatus(true)
 
         } else if(!celular || celular.length <= 10){
-            setErrorStatus(true)
             setErrorMsg('Número de celular incompleto.')
+            setErrorStatus(true)
 
         } else {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, senha)
+        .then(()=>{
+            const user = userCredential.user
 
-            try{
+            set(ref(database, 'users/' + user.uid), {
+                email: email,
+                celular: celular,
+                tickets: 0,
+                compras: 0,
+                kg: 0,
+                altura: 0,
+                objetivo: "",
+                intolerancia: ""
+            })
+
+            console.log('Usuario registrado com sucesso!')
+            localStorage.setItem('@UserNutrafity', user)
+            localStorage.setItem('@UserIdNutrafity', user.id)
+            localStorage.setItem('@EmailNutra', email)
             
-                const response = await Register(email, senha, celular)
-                setErrorStatus(false)
-                
+            //window.location.href = "../Menu"
+            
 
-            } catch(error){
-                console.log(error.code, ': erro!')
-                setErrorStatus(true)
+        }).catch((error) => {
                 switch(error.code){
                     case "auth/invalid-email":
                         setErrorMsg("E-mail invalido.")
@@ -59,7 +89,7 @@ const CardRegister = () => {
                         setErrorMsg("Erro ao cadastrar usuário.")
                         break;
                 }
-            }
+            })
         }
     }
 

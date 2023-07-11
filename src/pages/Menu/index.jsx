@@ -1,17 +1,16 @@
 import React, {useEffect} from "react";
-import CardLogin from "../../components/CardLogin";
+import CardMenu from '../../components/CardMenu'
 import { VerifLogin } from "../../services/auth";
-const LoginPage = () => {
 
+const Menu = () => {
     useEffect(()=>{
         VerifLogin()
-    }, [])
-
+    })
     return(
         <>
-            <CardLogin/>
+            <CardMenu/>
         </>
     )
 }
 
-export default LoginPage
+export default Menu
