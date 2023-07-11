@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
-import CardMenu from '../../components/CardMenu'
 import { VerifLogin } from "../../services/auth";
+import CardPlanos from "../../components/CardPlanos";
 
 const Planos = () => {
     useEffect(()=>{
@@ -8,7 +8,7 @@ const Planos = () => {
     })
     return(
         <>
-            <CardMenu/>
+            <CardPlanos/>
         </>
     )
 }
