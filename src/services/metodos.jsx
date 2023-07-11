@@ -1,3 +1,4 @@
+
 import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import firebaseConfig from '../firebaseConfig';
 import 'firebase/auth';
@@ -14,13 +15,18 @@ const database = getDatabase(app)
 const auth = getAuth(app);
 
 
-export const GetTickets = async (userId) => {
+
+
+export const GetUserInfo = (userId) => {
+    
     const ticketsRef = ref(database, `users/${userId}`)
     onValue(ticketsRef, (snapshot) => {
         const data = snapshot.val()
-        console.log(data)
+        //console.log(data.tickets)
+        
     })
 
+    
 }
 
 // const starCountRef = ref(db, 'posts/' + postId + '/starCount');

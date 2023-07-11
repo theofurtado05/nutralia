@@ -1,5 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { GetTickets } from "../services/metodos";
+import firebaseConfig from '../firebaseConfig';
+import 'firebase/auth';
+import 'firebase/database';
+import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from "firebase/app";
+import { get, getDatabase, onValue, ref, set, child } from "firebase/database";
+import { GetUserInfo } from "../services/metodos";
 
 const DietaContext = createContext({})
 DietaContext.displayName = 'DietaContext'
@@ -8,9 +15,20 @@ const DietaProvider = ({ children }) => {
     const [plano, setPlano] = useState()
     const [numTickets, setNumTickets] = useState()
 
-    const GetNumTickets = async () => {
-        const response = await GetTickets('RgMTwUIMM1UiMNO9sicoA0gYHHz2')
-        return response
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app)
+
+    const auth = getAuth(app);
+
+    const GetNumTickets = () => {
+        const ticketsRef = ref(database, `users/${localStorage.getItem('@UserId:Nutrafity')}`)
+        onValue(ticketsRef, (snapshot) => {
+            const data = snapshot.val()
+            setNumTickets(data.tickets)
+        })
+
+        return numTickets
     }
 
 

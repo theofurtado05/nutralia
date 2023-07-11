@@ -26,25 +26,17 @@ import { useDieta } from '../../context/Dieta';
 
 
 export default function Drawer() {
-  const {GetNumTickets} = useDieta()
-  const [numTickets, setNumTickets] = useState()
-
-
+  const {GetNumTickets, numTickets} = useDieta()
+  
   const [state, setState] = React.useState({
     left: false, 
   });
 
   const [userId, setUserId] = useState();
 
+  
   useEffect(()=>{
-    const fetchData = async () => {
-      const response = await GetNumTickets()
-      setNumTickets(response)
-    }
-
-    fetchData()
-
-   
+    GetNumTickets()
   }, [])
 
 
@@ -60,7 +52,7 @@ export default function Drawer() {
   };
 
   const faleConosco = () => {
-    window.open('https://api.whatsapp.com/send?phone=5524981207959&text=Ol%C3%A1,%20preciso%20de%20ajuda%20no%20Brilhamente', '_blank')
+    window.open('https://api.whatsapp.com/send?phone=5524981207959&text=Ol%C3%A1,%20preciso%20de%20ajuda%20no%20Nutrifity', '_blank')
   }
 
   
@@ -150,7 +142,7 @@ export default function Drawer() {
         </DivButtons>
      
             <Usuario>
-              Usuario:  {localStorage.getItem('@EmailNutralia')}
+              Usuario:  {localStorage.getItem('@Email:Nutrafity')}
             </Usuario>
       
     </Box>
