@@ -31,8 +31,6 @@ export const VerifLogin = () => {
       });
 }
 
-  
-
 
 export const verifLogadoAuth = () => {
     if(localStorage.getItem('@UserIdNutrafity') && localStorage.getItem('@UserIdNutrafity') != '' && localStorage.getItem('@UserIdNutrafity') != null && localStorage.getItem('@UserIdNutrafity') != undefined){
@@ -51,13 +49,14 @@ export const verifLogadoInside = () => {
 export const Login = async (email, password) => {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    
         const user = userCredential.user;
         const userId = userCredential.user.uid;
         const userEmail = userCredential.user.email;
 
-        localStorage.setItem('@UserNutralia', user);
-        localStorage.setItem('@UserIdNutralia', userId);
-        localStorage.setItem('@EmailNutralia', userEmail);
+        localStorage.setItem('@User:Nutrafity', user);
+        localStorage.setItem('@UserId:Nutrafity', userId);
+        localStorage.setItem('@Email:Nutrafity', userEmail);
 
         window.location.href = "../Menu";
 
@@ -73,7 +72,12 @@ export const SignOut = () => {
     signOut(auth)
         .then(() => {
             // Sign-out successful.
-
+            localStorage.removeItem('@Email:Nutrafity')
+            localStorage.removeItem('@User:Nutrafity')
+            localStorage.removeItem('@UserId:Nutrafity')
+            localStorage.deleteItem('@Email:Nutrafity')
+            localStorage.deleteItem('@User:Nutrafity')
+            localStorage.deleteItem('@UserId:Nutrafity')
             window.location.href = '../'
 
 

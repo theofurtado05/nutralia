@@ -22,9 +22,14 @@ import { Logout } from '@mui/icons-material';
 import { useEffect } from 'react';
 import LogoDefault from '../../assets/logo.png'
 import { SignOut } from '../../services/auth';
+import { useDieta } from '../../context/Dieta';
 
 
-export default function Drawer({numTickets}) {
+export default function Drawer() {
+  const {GetNumTickets} = useDieta()
+  const [numTickets, setNumTickets] = useState()
+
+
   const [state, setState] = React.useState({
     left: false, 
   });
@@ -32,11 +37,14 @@ export default function Drawer({numTickets}) {
   const [userId, setUserId] = useState();
 
   useEffect(()=>{
-    if(localStorage.getItem('userIdResumoAutomatico') == null){
-      
-  } else {
-    setUserId(localStorage.getItem('userIdResumoAutomatico'))
-  }
+    const fetchData = async () => {
+      const response = await GetNumTickets()
+      setNumTickets(response)
+    }
+
+    fetchData()
+
+   
   }, [])
 
 
@@ -55,11 +63,7 @@ export default function Drawer({numTickets}) {
     window.open('https://api.whatsapp.com/send?phone=5524981207959&text=Ol%C3%A1,%20preciso%20de%20ajuda%20no%20Brilhamente', '_blank')
   }
 
-  const logOut = () => {
-    localStorage.removeItem('userIdResumoAutomatico')
-    localStorage.removeItem('emailResumoAutomatico')
-    navigate('/')
-  }
+  
   
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -146,7 +150,7 @@ export default function Drawer({numTickets}) {
         </DivButtons>
      
             <Usuario>
-              Usuario:  {localStorage.getItem('emailResumoAutomatico')}
+              Usuario:  {localStorage.getItem('@EmailNutralia')}
             </Usuario>
       
     </Box>

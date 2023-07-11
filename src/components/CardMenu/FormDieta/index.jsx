@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton} from './styles'
 import Autocomplete from '@mui/material/Autocomplete';
+import { GerarDietaAPI } from "../../../services/api";
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -24,7 +25,7 @@ const FormDieta = () => {
         setObjetivo(newValue);
       };
 
-    const gerarDieta = () => {
+    const gerarDieta = async () => {
         if(altura != '' && peso != '' && objetivo != null){
             setErrorStatus(false)
             //... executa o metodo da API
@@ -36,6 +37,9 @@ const FormDieta = () => {
             }
 
             console.log(usuario)
+
+            const response = await GerarDietaAPI(usuario);
+            console.log(response)
             
 
         } else {

@@ -36,23 +36,29 @@ const CardRegister = () => {
 
     const auth = getAuth(app);
 
-    const handleClick = async (e) => {
-        e.preventDefault()
-
-        if(senha != confirmarSenha){
-            setErrorMsg('As senhas devem ser iguais.')
+    const handleClick = (e) => {
+        //e.preventDefault();
+        
+        if (senha !== confirmarSenha) {
+          setErrorMsg('As senhas devem ser iguais.');
+          setErrorStatus(true);
+          return;
+        } else if(senha.length < 6){
+            setErrorMsg('A senha deve ter 6 ou mais caracteres.')
             setErrorStatus(true)
-
-        } else if(!celular || celular.length <= 10){
-            setErrorMsg('Número de celular incompleto.')
-            setErrorStatus(true)
-
-        } else {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, senha)
-        .then(()=>{
-            const user = userCredential.user
-
-            set(ref(database, 'users/' + user.uid), {
+            return;
+        }else if (!celular || celular.length <= 10) {
+          setErrorMsg('Número de celular incompleto.');
+          setErrorStatus(true);
+          return;
+        }
+          
+        createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential)=>{
+            const user = userCredential.user;
+            console.log(user.uid)
+        
+            set(ref(database, `users/${user.uid}`), {
                 email: email,
                 celular: celular,
                 tickets: 0,
@@ -60,38 +66,42 @@ const CardRegister = () => {
                 kg: 0,
                 altura: 0,
                 objetivo: "",
-                intolerancia: ""
-            })
+                intolerancia: "",
+            });
 
-            console.log('Usuario registrado com sucesso!')
-            localStorage.setItem('@UserNutrafity', user)
-            localStorage.setItem('@UserIdNutrafity', user.id)
-            localStorage.setItem('@EmailNutra', email)
-            
-            //window.location.href = "../Menu"
+            console.log('Usuário registrado com sucesso!');
+            localStorage.setItem('@User:Nutrafity', user);
+            localStorage.setItem('@UserId:Nutrafity', user.uid);
+            localStorage.setItem('@Email:Nutrafity', email);
             
 
-        }).catch((error) => {
-                switch(error.code){
-                    case "auth/invalid-email":
-                        setErrorMsg("E-mail invalido.")
-                        break;
+        }).catch((error)=>{
 
-                    case "auth/email-already-in-use":
-                        setErrorMsg("Email em uso.")
-                        break;
+            switch (error.code) {
+                case "auth/invalid-email":
+                  setErrorMsg("E-mail inválido.");
+                  break;
+        
+                case "auth/email-already-in-use":
+                  setErrorMsg("E-mail em uso.");
+                  break;
+        
+                case "auth/weak-password":
+                  setErrorMsg("A senha deve conter no mínimo 6 caracteres.");
+                  break;
+        
+                default:
+                  setErrorMsg("Erro ao cadastrar usuário.");
+                  break;
+              
+              }
 
-                    case "auth/weak-password":
-                        setErrorMsg("A senha deve conter no minimo 6 caracteres.")
-                        break;
-
-                    default:
-                        setErrorMsg("Erro ao cadastrar usuário.")
-                        break;
-                }
-            })
-        }
+        })
+            
+            
     }
+      
+      
 
     const goToLogin = () => {
         navigate('../')
