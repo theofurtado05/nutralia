@@ -67,6 +67,7 @@ const CardRegister = () => {
                 altura: 0,
                 objetivo: "",
                 intolerancia: "",
+                plano: "Gratuito"
             });
 
             console.log('Usuário registrado com sucesso!');
