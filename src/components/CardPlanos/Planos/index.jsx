@@ -59,11 +59,11 @@ const Planos = () => {
                     <DivForm>
                         
 
-                        <CardPlano tituloPlano={'Iniciante'}  frequencia={'mês'} valorPlano={'19,90'} numDietas={'5'} link={'https://pay.kiwify.com.br/dUITY6p'}/>
+                        <CardPlano tituloPlano={'Iniciante'}  frequencia={'mês'} valorPlano={'19,90'} numDietas={'5'} link={`https://pay.kiwify.com.br/dUITY6p?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
 
-                        <CardPlano tituloPlano={'Lançamento'} frequencia={'mês'}valorPlano={'29,90'} numDietas={'30'} link={'https://pay.kiwify.com.br/tbBxriR'}/>
+                        <CardPlano tituloPlano={'Lançamento'} frequencia={'mês'}valorPlano={'29,90'} numDietas={'30'} link={`https://pay.kiwify.com.br/tbBxriR?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
 
-                        <CardPlano tituloPlano={'Anual'} frequencia={'ano'} valorPlano={'190,00'} numDietas={'240'} link={'https://pay.kiwify.com.br/2fpFyDE'}/>
+                        <CardPlano tituloPlano={'Anual'} frequencia={'ano'} valorPlano={'190,00'} numDietas={'240'} link={`https://pay.kiwify.com.br/2fpFyDE?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
 
                         
 
