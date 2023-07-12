@@ -14,6 +14,7 @@ DietaContext.displayName = 'DietaContext'
 const DietaProvider = ({ children }) => {
     const [plano, setPlano] = useState()
     const [numTickets, setNumTickets] = useState()
+    const [planoAtual, setPlanoAtual] = useState()
 
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
@@ -28,6 +29,7 @@ const DietaProvider = ({ children }) => {
         onValue(ticketsRef, (snapshot) => {
             const data = snapshot.val()
             setNumTickets(data.tickets)
+            setPlanoAtual(data.plano)
         })
 
         return numTickets
@@ -51,7 +53,8 @@ const DietaProvider = ({ children }) => {
         <DietaContext.Provider value={{ 
             numTickets,
             GetNumTickets,
-            ReduzirTicket         
+            ReduzirTicket,
+            planoAtual        
         }}>
             {children}
         </DietaContext.Provider>

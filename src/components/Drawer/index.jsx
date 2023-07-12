@@ -26,7 +26,7 @@ import { useDieta } from '../../context/Dieta';
 
 
 export default function Drawer() {
-  const {GetNumTickets, numTickets} = useDieta()
+  const {GetNumTickets, numTickets, planoAtual} = useDieta()
   
   const [state, setState] = React.useState({
     left: false, 
@@ -126,6 +126,16 @@ export default function Drawer() {
               fontSize: '32px',
 
             }}/> {numTickets}
+          </NumeroResumoRestantes>
+
+      </ResumosRestantes>
+      <Divider />
+      <ResumosRestantes style={{backgroundColor: 'var(--Secondary-color)'}}>
+          <TituloResumoRestante>
+              Plano Atual
+          </TituloResumoRestante>
+          <NumeroResumoRestantes>
+            {planoAtual}
           </NumeroResumoRestantes>
 
       </ResumosRestantes>

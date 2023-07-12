@@ -15,7 +15,6 @@ export const TituloResumoRestante = styled.h2`
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    margin-left: -5px;
 `;
 
 export const NumeroResumoRestantes = styled.div`
