@@ -15,8 +15,11 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia}) => {
                     <div class="title">{tituloPlano}</div>
                     <div class="price">R${valorPlano}<span id="mes">/{frequencia}</span></div>
                     <div class="description">
-                        <br/>- {numDietas} Dietas por mês;
-                        <br/>- Acompanhamento de evolução (em breve)</div>
+                       - {numDietas} Dietas por mês;
+                        <br/>- Dietas Acumulativas
+                        <br/>- Acompanhamento de evolução (em breve)
+                        
+                    </div>
             </div>
             
                 <button onClick={handleClick}>
