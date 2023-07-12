@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton} from './styles'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GerarDietaAPI } from "../../../services/api";
+import CardPlano from "./CardsPlanos";
 
 const Planos = () => {
     const [altura, setAltura] = useState();
@@ -58,9 +59,13 @@ const Planos = () => {
 
                     <h1>Planos</h1>
                     <DivForm>
-                        <div style={{width: '350px', height: '350px', background: 'var(--Primary-color)'}}>
+                        
 
-                        </div>
+                        <CardPlano tituloPlano={'Iniciante'}  frequencia={'mês'} valorPlano={'19,90'} numDietas={'5'} link={'https://pay.kiwify.com.br/dUITY6p'}/>
+
+                        <CardPlano tituloPlano={'Lançamento'} frequencia={'mês'}valorPlano={'29,90'} numDietas={'30'} link={'https://pay.kiwify.com.br/tbBxriR'}/>
+
+                        <CardPlano tituloPlano={'Anual'} frequencia={'ano'} valorPlano={'190,00'} numDietas={'240'} link={'https://pay.kiwify.com.br/2fpFyDE'}/>
 
                         
 

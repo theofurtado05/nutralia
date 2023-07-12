@@ -10,7 +10,8 @@ const WhitelabelProvider = ({ children }) => {
     const setarCores = () => {
         setCoresRoot(`
         :root {
-            --Primary-color: #1C9E22;
+            --Primary-color: #0a730f;
+            --Secondary-color: #1C9E22;
         }
     `)
     }

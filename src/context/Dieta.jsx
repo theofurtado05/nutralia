@@ -5,7 +5,7 @@ import 'firebase/database';
 import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-import { get, getDatabase, onValue, ref, set, child } from "firebase/database";
+import { get, getDatabase, onValue, ref, set, child, update } from "firebase/database";
 import { GetUserInfo } from "../services/metodos";
 
 const DietaContext = createContext({})
@@ -21,8 +21,10 @@ const DietaProvider = ({ children }) => {
 
     const auth = getAuth(app);
 
+    const userId = localStorage.getItem('@UserId:Nutrafity')
+
     const GetNumTickets = () => {
-        const ticketsRef = ref(database, `users/${localStorage.getItem('@UserId:Nutrafity')}`)
+        const ticketsRef = ref(database, `users/${userId}`)
         onValue(ticketsRef, (snapshot) => {
             const data = snapshot.val()
             setNumTickets(data.tickets)
@@ -32,11 +34,24 @@ const DietaProvider = ({ children }) => {
     }
 
 
+    const ReduzirTicket = async () => {
+        const ticketsRef = ref(database, `users/${userId}`)
+        try{
+            await update(ticketsRef, {tickets: numTickets - 1})
+            console.log(`Tickets atualizados para ${numTickets - 1}`);
+        } catch(error) {
+            console.log(`Failed to update tickets for user ${userId}`, error)
+        }
+        
+    }
+ 
+
 
     return (
         <DietaContext.Provider value={{ 
             numTickets,
-            GetNumTickets          
+            GetNumTickets,
+            ReduzirTicket         
         }}>
             {children}
         </DietaContext.Provider>

@@ -27,6 +27,7 @@ export const DivFormPai = styled.div`
 
 export const DivForm = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     
 

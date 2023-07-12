@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton} from './styles'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GerarDietaAPI } from "../../../services/api";
+import { useDieta } from "../../../context/Dieta";
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -12,6 +13,7 @@ const FormDieta = () => {
     const [errorMsg, setErrorMsg] = useState()
     const [errorStatus, setErrorStatus] = useState(false)
     
+    const {numTickets, ReduzirTicket} = useDieta()
 
     const objetivos = [
         { label: 'Emagrecimento', value: 'Emagrecimento' },
@@ -26,26 +28,34 @@ const FormDieta = () => {
       };
 
     const gerarDieta = async () => {
-        if(altura != '' && peso != '' && objetivo != null){
-            setErrorStatus(false)
-            //... executa o metodo da API
-            const usuario = {
-                altura: altura,
-                peso: peso,
-                objetivo: objetivo.value,
-                intolerancia: intolerancia
+        if(numTickets > 0){
+            if(altura != '' && peso != '' && objetivo != null){
+                setErrorStatus(false)
+                //... executa o metodo da API
+                const usuario = {
+                    altura: altura,
+                    peso: peso,
+                    objetivo: objetivo.value,
+                    intolerancia: intolerancia
+                }
+    
+                console.log(usuario)
+    
+                const response = await GerarDietaAPI(usuario);
+                console.log(response)
+
+                ReduzirTicket()
+                
+    
+            } else {
+                setErrorStatus(true)
+                setErrorMsg('Preencha todos os campos')
             }
-
-            console.log(usuario)
-
-            const response = await GerarDietaAPI(usuario);
-            console.log(response)
-            
-
         } else {
             setErrorStatus(true)
-            setErrorMsg('Preencha todos os campos')
+            setErrorMsg('Você não possui tickets. Adquira para continuar.')
         }
+        
     }
    
 
