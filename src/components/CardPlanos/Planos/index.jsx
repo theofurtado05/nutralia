@@ -55,8 +55,6 @@ const Planos = () => {
             <DivPai>
                 {/*Altura, Peso, objetivo, intolerancia*/}
                 <DivFormPai>
-                    <div style={{width: '100%', height: '80px', background: 'var(--Primary-color)', marginBottom: '20px'}}></div>
-
                     <h1>Planos</h1>
                     <DivForm>
                         

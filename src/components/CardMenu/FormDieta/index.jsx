@@ -1,9 +1,11 @@
 import { TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import {DivPai, DivForm, DivFormPai, StyledButton} from './styles'
+import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled} from './styles'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GerarDietaAPI } from "../../../services/api";
 import { useDieta } from "../../../context/Dieta";
+import BannerMenu from '../../../assets/BannerMenu.png'
+import { useNavigate } from "react-router-dom";
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -12,6 +14,8 @@ const FormDieta = () => {
     const [intolerancia, setIntolerancia] = useState('Não tenho intolerância');
     const [errorMsg, setErrorMsg] = useState()
     const [errorStatus, setErrorStatus] = useState(false)
+
+    const navigate = useNavigate()
     
     const {numTickets, ReduzirTicket} = useDieta()
 
@@ -64,8 +68,10 @@ const FormDieta = () => {
             <DivPai>
                 {/*Altura, Peso, objetivo, intolerancia*/}
                 <DivFormPai>
-                    <div style={{width: '100%', height: '80px', background: 'var(--Primary-color)', marginBottom: '20px'}}></div>
-
+                    <BannerStyled src={BannerMenu} onClick={() => {
+                        navigate('/Planos')
+                    }}/>
+                    
                     <h1>Gerar Dieta</h1>
 
                     <DivForm>

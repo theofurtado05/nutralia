@@ -46,3 +46,14 @@ export const StyledButton = styled(Button)`
     background: var(--Primary-color);
 
 `;
+
+export const BannerStyled = styled.img`
+    width: 600px;
+
+    @media screen and (max-width: 770px){
+        width: 90vw;
+    }
+
+    cursor: pointer;
+
+`;
