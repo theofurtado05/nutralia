@@ -1,12 +1,13 @@
 import { TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled} from './styles'
+import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} from './styles'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GerarDietaAPI } from "../../../services/api";
 import { GerarDietaDocx } from "../../../services/metodos";
 import { useDieta } from "../../../context/Dieta";
 import BannerMenu from '../../../assets/BannerMenu.png'
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -15,6 +16,8 @@ const FormDieta = () => {
     const [intolerancia, setIntolerancia] = useState('Não tenho intolerância');
     const [errorMsg, setErrorMsg] = useState()
     const [errorStatus, setErrorStatus] = useState(false)
+
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
     
@@ -34,6 +37,7 @@ const FormDieta = () => {
 
     const gerarDieta = async () => {
         if(numTickets > 0){
+            setLoading(true)
             if(altura != '' && peso != '' && objetivo != null){
                 setErrorStatus(false)
                 //... executa o metodo da API
@@ -48,7 +52,10 @@ const FormDieta = () => {
     
                 //const dieta = await GerarDietaAPI(usuario);
                 
-                await GerarDietaDocx(usuario)
+                await GerarDietaDocx(usuario).then(()=>{
+                    ReduzirTicket()
+                    setLoading(false)
+                })
                 ReduzirTicket()
 
 
@@ -105,6 +112,8 @@ const FormDieta = () => {
                    
                 </DivFormPai>
             </DivPai>
+
+            {loading && <DivLoading><CircularProgress color="success" /></DivLoading>}
         </>
     )
 }

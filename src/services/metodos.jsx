@@ -131,7 +131,7 @@ export const GerarDietaDocx = async (infoUsuario) => {
             var zip = new PizZip(content)
             var doc = new Docxtemplater(zip, {
                 paragraphLoop: false,
-                linebreaks: true,
+                linebreaks: false,
             })
 
             doc.setData(objInfoUsuario)
