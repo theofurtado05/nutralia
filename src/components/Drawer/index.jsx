@@ -52,7 +52,7 @@ export default function Drawer() {
   };
 
   const faleConosco = () => {
-    window.open('https://api.whatsapp.com/send?phone=5524981207959&text=Ol%C3%A1,%20preciso%20de%20ajuda%20no%20Nutrifity', '_blank')
+    window.open('https://api.whatsapp.com/send?phone=5524981207959&text=Ol%C3%A1,%20preciso%20de%20ajuda%20no%20Nutrafity', '_blank')
   }
 
   
