@@ -36,7 +36,7 @@ const CardRegister = () => {
 
     const auth = getAuth(app);
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         //e.preventDefault();
         
         if (senha !== confirmarSenha) {
@@ -75,7 +75,7 @@ const CardRegister = () => {
             localStorage.setItem('@UserId:Nutrafity', user.uid);
             localStorage.setItem('@Email:Nutrafity', email);
             
-
+            window.location.href = '../Menu'
         }).catch((error)=>{
 
             switch (error.code) {

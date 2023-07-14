@@ -13,8 +13,8 @@ const database = getDatabase(app)
 
 const auth = getAuth(app);
 
-export const VerifLogin = () => {
-    onAuthStateChanged(auth, (user) => {
+export const VerifLogin = async () => {
+    await onAuthStateChanged(auth, (user) => {
         if (user) {
           
           const uid = user.uid;
@@ -75,9 +75,7 @@ export const SignOut = () => {
             localStorage.removeItem('@Email:Nutrafity')
             localStorage.removeItem('@User:Nutrafity')
             localStorage.removeItem('@UserId:Nutrafity')
-            localStorage.deleteItem('@Email:Nutrafity')
-            localStorage.deleteItem('@User:Nutrafity')
-            localStorage.deleteItem('@UserId:Nutrafity')
+            
             window.location.href = '../'
 
 
