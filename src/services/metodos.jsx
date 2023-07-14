@@ -29,6 +29,9 @@ export const GetUserInfo = (userId) => {
     
 }
 
+
+
+
 // const starCountRef = ref(db, 'posts/' + postId + '/starCount');
 // onValue(starCountRef, (snapshot) => {
 //   const data = snapshot.val();

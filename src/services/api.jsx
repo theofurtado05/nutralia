@@ -1,22 +1,11 @@
 import axios from 'axios'
-
-
 axios.defaults.headers.get['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
-export const Teste = async () => {
-    let url = 'https://api-nutralia.vercel.app/teste'
-    try{
-        const response = await axios.get(url)
-        return response
-    }catch(error){
-        console.log(error)
-    }
-    
-}
+
 
 export const GerarDietaAPI = async (usuario) => {
-    let url = 'https://api-nutralia.vercel.app/dieta'
+    let url = 'https://localhost:9002/gerarDieta'
     try{
         const response = await axios.post(url, usuario, {
             headers: {

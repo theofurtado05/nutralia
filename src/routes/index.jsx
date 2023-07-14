@@ -5,14 +5,12 @@ import React, {useEffect} from 'react';
 import RegisterPage from '../pages/Register';
 import ForgotPassword from '../pages/ForgotPassword';
 import Menu from '../pages/Menu';
-import { VerifLogin } from '../services/auth';
+
 import Planos from '../pages/Planos';
 
 
 export default function Router(){
     const {coresRoot} = useWhitelabel();
-
-    
 
     return(
         <>

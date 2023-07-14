@@ -45,8 +45,9 @@ const FormDieta = () => {
     
                 console.log(usuario)
     
-                const response = await GerarDietaAPI(usuario);
-                console.log(response)
+                const dieta = await GerarDietaAPI(usuario);
+                
+                
 
                 ReduzirTicket()
                 

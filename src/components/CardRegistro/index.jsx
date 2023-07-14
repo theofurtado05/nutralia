@@ -27,6 +27,8 @@ const CardRegister = () => {
     const [errorStatus, setErrorStatus] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
 
+    const [userId, setUserId] = useState()
+
     const navigate = useNavigate();
 
 
@@ -43,6 +45,11 @@ const CardRegister = () => {
           setErrorMsg('As senhas devem ser iguais.');
           setErrorStatus(true);
           return;
+
+        } else if(!senha) {
+            setErrorMsg('A senha não deve estar vazia.')
+            setErrorStatus(true)
+            return;
         } else if(senha.length < 6){
             setErrorMsg('A senha deve ter 6 ou mais caracteres.')
             setErrorStatus(true)
@@ -52,31 +59,36 @@ const CardRegister = () => {
           setErrorStatus(true);
           return;
         }
-          
-        createUserWithEmailAndPassword(auth, email, senha)
-        .then((userCredential)=>{
-            const user = userCredential.user;
-            console.log(user.uid)
-        
-            set(ref(database, `users/${user.uid}`), {
-                email: email,
-                celular: celular,
-                tickets: 0,
-                compras: 0,
-                kg: 0,
-                altura: 0,
-                objetivo: "",
-                intolerancia: "",
-                plano: "Gratuito"
-            });
 
-            console.log('Usuário registrado com sucesso!');
-            localStorage.setItem('@User:Nutrafity', user);
+        try{
+            const userCredential = await createUserWithEmailAndPassword(auth, email, senha)
+            const user = userCredential.user;
+
+            console.log("ate aqui")
+            try {
+                await set(ref(database, `users/${user.uid}`), {
+                  email: email,
+                  celular: celular,
+                  tickets: 0,
+                  compras: 0,
+                  kg: 0,
+                  altura: 0,
+                  objetivo: "",
+                  intolerancia: "",
+                  plano: "Gratuito"
+                });
+              } catch (error) {
+                // Trate o erro ao definir as informações no banco de dados
+                console.log("Erro ao definir as informações no banco de dados:", error);
+                throw error; // Rejeite a promise para interromper a execução
+              }
+        
             localStorage.setItem('@UserId:Nutrafity', user.uid);
             localStorage.setItem('@Email:Nutrafity', email);
-            
+
+            console.log('Usuário registrado com sucesso!');
             window.location.href = '../Menu'
-        }).catch((error)=>{
+        } catch (error) {
 
             switch (error.code) {
                 case "auth/invalid-email":
@@ -95,11 +107,8 @@ const CardRegister = () => {
                   setErrorMsg("Erro ao cadastrar usuário.");
                   break;
               
-              }
-
-        })
-            
-            
+            }
+        }
     }
       
       

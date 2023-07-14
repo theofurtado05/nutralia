@@ -14,21 +14,25 @@ const database = getDatabase(app)
 const auth = getAuth(app);
 
 export const VerifLogin = async () => {
-    await onAuthStateChanged(auth, (user) => {
-        if (user) {
-          
-          const uid = user.uid;
-
-          if(window.location.pathname == '/' || window.location.pathname == '/Registro'){
-            window.location.href = './Menu'
-          }
-          
-        } else {
-            if(window.location.pathname != '/' ){
-                window.location.href = '../'
+    if(window.location.pathname != '/Registro'){
+        await onAuthStateChanged(auth, (user) => {
+            if (user) {
+              
+              const uid = user.uid;
+    
+              if(window.location.pathname == '/' || window.location.pathname == '/Registro'){
+                window.location.href = './Menu'
+              }
+              
+            } else {
+                if(window.location.pathname != '/' ){
+                    window.location.href = '../'
+                }
             }
-        }
-      });
+          });
+
+    }
+    
 }
 
 
