@@ -69,29 +69,26 @@ const CardRegister = () => {
             const user = userCredential.user;
 
             console.log("ate aqui")
-            try {
-                await set(ref(database, `users/${user.uid}`), {
-                  email: email,
-                  celular: celular,
-                  tickets: 0,
-                  compras: 0,
-                  kg: 0,
-                  altura: 0,
-                  objetivo: "",
-                  intolerancia: "",
-                  plano: "Gratuito"
-                });
-              } catch (error) {
-                // Trate o erro ao definir as informações no banco de dados
-                console.log("Erro ao definir as informações no banco de dados:", error);
-                throw error; // Rejeite a promise para interromper a execução
-              }
-        
-            localStorage.setItem('@UserId:Nutrafity', user.uid);
-            localStorage.setItem('@Email:Nutrafity', email);
+            
+            set(ref(database, `users/${user.uid}`), {
+              email: email,
+              celular: celular,
+              tickets: 0,
+              compras: 0,
+              kg: 0,
+              altura: 0,
+              objetivo: "",
+              intolerancia: "",
+              plano: "Gratuito"
+            }).then(()=>{
 
-            console.log('Usuário registrado com sucesso!');
-            window.location.href = '../Menu'
+              localStorage.setItem('@UserId:Nutrafity', user.uid);
+              localStorage.setItem('@Email:Nutrafity', email);
+              window.location.href = '../Menu'
+              console.log('Usuário registrado com sucesso!');
+              
+            });
+
         } catch (error) {
 
             switch (error.code) {

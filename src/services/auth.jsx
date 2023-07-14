@@ -20,7 +20,7 @@ export const VerifLogin = async () => {
               
               const uid = user.uid;
     
-              if(window.location.pathname == '/' || window.location.pathname == '/Registro'){
+              if(window.location.pathname == '/'){
                 window.location.href = './Menu'
               }
               
