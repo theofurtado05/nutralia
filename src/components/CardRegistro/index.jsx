@@ -38,6 +38,10 @@ const CardRegister = () => {
 
     const auth = getAuth(app);
 
+    useEffect(()=>{
+        verifLogadoAuth()
+    }, [])
+
     const handleClick = async (e) => {
         //e.preventDefault();
         

@@ -37,13 +37,13 @@ export const VerifLogin = async () => {
 
 
 export const verifLogadoAuth = () => {
-    if(localStorage.getItem('@UserIdNutrafity') && localStorage.getItem('@UserIdNutrafity') != '' && localStorage.getItem('@UserIdNutrafity') != null && localStorage.getItem('@UserIdNutrafity') != undefined){
+    if(localStorage.getItem('@UserId:Nutrafity') && localStorage.getItem('@UserId:Nutrafity') != '' && localStorage.getItem('@UserId:Nutrafity') != null && localStorage.getItem('@UserId:Nutrafity') != undefined){
         window.location.href = './menu'
     }
 }
 
 export const verifLogadoInside = () => {
-    if(!localStorage.getItem('@UserIdNutrafity') || localStorage.getItem('@UserIdNutrafity') == ''){
+    if(!localStorage.getItem('@UserId:Nutrafity') || localStorage.getItem('@UserId:Nutrafity') == ''){
         window.location.href = '../'
     }
 }
