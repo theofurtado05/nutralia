@@ -5,7 +5,7 @@ axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 
 export const GerarDietaAPI = async (usuario) => {
-    let url = 'https://localhost:9002/gerarDieta'
+    let url = 'https://api-nutralia.vercel.app/Dieta'
     try{
         const response = await axios.post(url, usuario, {
             headers: {
