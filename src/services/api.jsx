@@ -19,32 +19,3 @@ export const GerarDietaAPI = async (usuario) => {
     
 }
 
-// export const UpdatePopup = async (clientId: any, email: any) => {
-//     let url = `https://a4.lineragames.com.br/api/Otg/UpdatePopup?ClientId=${clientId}&Email=${email}`;
-  
-//     try {
-//       const response = await axios.post(url,
-//         {
-//           headers: {
-//             'Content-Type': 'application/json'
-//           }
-//         });
-  
-//       return response.data;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-  
-  
-//   export const GetPopupStatus = async (clientId: any, email: string) => {
-//     let url = `https://a4.lineragames.com.br/GetPopupStatus?ClientId=${clientId}&Email=${email}`;
-  
-//     try {
-//       const response = await axios.get(url)
-//       return response;
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
-  

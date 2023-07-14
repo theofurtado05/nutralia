@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled} from './styles'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GerarDietaAPI } from "../../../services/api";
+import { GerarDietaDocx } from "../../../services/metodos";
 import { useDieta } from "../../../context/Dieta";
 import BannerMenu from '../../../assets/BannerMenu.png'
 import { useNavigate } from "react-router-dom";
@@ -45,11 +46,12 @@ const FormDieta = () => {
     
                 console.log(usuario)
     
-                const dieta = await GerarDietaAPI(usuario);
+                //const dieta = await GerarDietaAPI(usuario);
                 
-                
-
+                await GerarDietaDocx(usuario)
                 ReduzirTicket()
+
+
                 
     
             } else {
