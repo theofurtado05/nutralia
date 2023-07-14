@@ -62,7 +62,7 @@ export const GerarDietaDocx = async (infoUsuario) => {
                             //     - ½ Sanduiche de atuma na torrada integral com azeite: R$5,25
                             //     - ½ Xícara de chá preto: R$1,00
                             //     Total: R$14,05
-                            // `
+                            // `..
 
 
     if(dietaCompleta) {
