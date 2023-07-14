@@ -7,7 +7,7 @@ import { GerarDietaDocx } from "../../../services/metodos";
 import { useDieta } from "../../../context/Dieta";
 import BannerMenu from '../../../assets/BannerMenu.png'
 import { useNavigate } from "react-router-dom";
-import CircularProgress from '@mui/material/CircularProgress';
+import Loading from "../../Loading";
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -113,7 +113,7 @@ const FormDieta = () => {
                 </DivFormPai>
             </DivPai>
 
-            {loading && <DivLoading><CircularProgress color="success" /></DivLoading>}
+            {loading && <DivLoading><Loading /></DivLoading>}
         </>
     )
 }
