@@ -166,7 +166,7 @@ export const GerarDietaDocx = async (infoUsuario) => {
                 mimeType:
                     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 }); //Output the document using Data-URI
-                saveAs(out, 'PlanoAlimentarPersonalizado.docx');
+                saveAs(out, 'Nutrafity.docx');
             
         }
     )

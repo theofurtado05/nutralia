@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} from './styles'
 import Autocomplete from '@mui/material/Autocomplete';
 import { GerarDietaAPI } from "../../../services/api";
-import { GerarDietaDocx } from "../../../services/metodos";
+import { GerarDietaDocx, GetUserInfo } from "../../../services/metodos";
 import { useDieta } from "../../../context/Dieta";
 import BannerMenu from '../../../assets/BannerMenu.png'
 import { useNavigate } from "react-router-dom";
@@ -16,12 +16,15 @@ const FormDieta = () => {
     const [intolerancia, setIntolerancia] = useState('Não tenho intolerância');
     const [errorMsg, setErrorMsg] = useState()
     const [errorStatus, setErrorStatus] = useState(false)
+    
 
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
     
     const {numTickets, ReduzirTicket} = useDieta()
+
+    
 
     const objetivos = [
         { label: 'Emagrecimento', value: 'Emagrecimento' },
@@ -56,9 +59,6 @@ const FormDieta = () => {
                     ReduzirTicket()
                     setLoading(false)
                 })
-                ReduzirTicket()
-
-
                 
     
             } else {
