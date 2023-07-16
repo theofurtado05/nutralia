@@ -18,7 +18,7 @@ export const GerarDietaPrompt = async (infoUsuario) => {
         - Com o objetivo de ${infoUsuario.objetivo};
         - Com intolerancia a: ${infoUsuario.intolerancia}.
         - Gastando até R$500,00 por semana;
-        Mostre o valor aproximado de cada refeicao. Deve ter 3 variedades em cada horario. (Me de listados e cada item iniciando com um hifen (-) e com nomes 100% em portugues. Separe por "MANHA", "MEIO DIA", "TARDE" e "NOITE". Tambem coloque o valor total por periodo e no final)`,
+        Mostre o valor aproximado de cada refeicao e sua quantidade(unidade ou peso). Deve ter 3 variedades em cada horario. (Me de listados e cada item iniciando com um hifen (-) e com nomes 100% em portugues. Separe por "MANHA", "MEIO DIA", "TARDE" e "NOITE". Tambem coloque o valor total por periodo e no final)`,
         temperature: 1,
         max_tokens: 550,
         top_p: 1,
