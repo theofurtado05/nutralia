@@ -20,6 +20,7 @@ export default function Router(){
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LoginPage/>}/>
+                    <Route path="/Registro/:afid" element={<RegisterPage/>}/>
                     <Route path="/Registro" element={<RegisterPage/>}/>
                     <Route path="/EsqueciMinhaSenha" element={<ForgotPassword/>}/>
                     <Route path="/Menu" element={<Menu/>}/>

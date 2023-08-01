@@ -4,6 +4,7 @@ import CardRegister from "../../components/CardRegistro";
 
 const RegisterPage = () => {
     
+    
     return(
         <>
             <CardRegister/>

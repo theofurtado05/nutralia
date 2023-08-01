@@ -61,6 +61,7 @@ export const Login = async (email, password) => {
         localStorage.setItem('@User:Nutrafity', user);
         localStorage.setItem('@UserId:Nutrafity', userId);
         localStorage.setItem('@Email:Nutrafity', userEmail);
+        localStorage.setItem('@AfiliadoId:Nutrafity', user.afiliadoId)
 
         window.location.href = "../Menu";
 

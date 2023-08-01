@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {DivPai, StyledInput, StyledButton, StyledLink, Logotipo, SpanError, StyledMaskInput} from '../CardLogin/styles'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from "firebase/auth";
 import firebaseConfig from '../../firebaseConfig';
 import 'firebase/auth';
@@ -31,6 +31,10 @@ const CardRegister = () => {
 
     const navigate = useNavigate();
 
+    const {afid} = useParams()
+
+    const [afiliadoId, setAfiliadoId] = useState('')
+
 
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
@@ -40,6 +44,12 @@ const CardRegister = () => {
 
     useEffect(()=>{
         verifLogadoAuth()
+    }, [])
+
+    useEffect(()=>{
+        if(afid){
+            setAfiliadoId(afid)
+        }
     }, [])
 
     const handleClick = async (e) => {
@@ -79,11 +89,13 @@ const CardRegister = () => {
               altura: 0,
               objetivo: "",
               intolerancia: "",
-              plano: "Gratuito"
+              plano: "Gratuito",
+              afiliadoId: afiliadoId
             }).then(()=>{
 
               localStorage.setItem('@UserId:Nutrafity', user.uid);
               localStorage.setItem('@Email:Nutrafity', email);
+              localStorage.setItem('@AfiliadoId:Nutrafity', afiliadoId)
               window.location.href = '../Menu'
               console.log('Usuário registrado com sucesso!');
               

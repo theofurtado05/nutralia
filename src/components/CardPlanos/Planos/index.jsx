@@ -58,11 +58,11 @@ const Planos = () => {
                     <h1>Planos</h1>
                     <DivForm>
                         
-                        <CardPlano tituloPlano={'Iniciante'}  frequencia={'mês'} valorPlano={'19,90'} numDietas={'5'} link={`https://pay.kiwify.com.br/ZvKLGjP?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
+                        <CardPlano tituloPlano={'Iniciante'}  frequencia={'mês'} valorPlano={'19,90'} numDietas={'5'} link={`https://pay.kiwify.com.br/ZvKLGjP?afid=${localStorage.getItem('@AfiliadoId:Nutrafity')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
 
-                        <CardPlano tituloPlano={'Lançamento'} frequencia={'mês'}valorPlano={'29,90'} numDietas={'30'} link={`https://pay.kiwify.com.br/gaDE0rc?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
+                        <CardPlano tituloPlano={'Lançamento'} frequencia={'mês'}valorPlano={'29,90'} numDietas={'30'} link={`https://pay.kiwify.com.br/gaDE0rc?afid=${localStorage.getItem('@AfiliadoId:Nutrafity')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
 
-                        <CardPlano tituloPlano={'Anual'} frequencia={'ano'} valorPlano={'190,00'} numDietas={'240'} link={`https://pay.kiwify.com.br/DsgBrI5?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
+                        <CardPlano tituloPlano={'Anual'} frequencia={'ano'} valorPlano={'190,00'} numDietas={'240'} link={`https://pay.kiwify.com.br/DsgBrI5?afid=${localStorage.getItem('@AfiliadoId:Nutrafity')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
 
                     </DivForm>
                 </DivFormPai>
