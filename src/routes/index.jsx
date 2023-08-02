@@ -7,6 +7,7 @@ import ForgotPassword from '../pages/ForgotPassword';
 import Menu from '../pages/Menu';
 
 import Planos from '../pages/Planos';
+import LandingPage from '../pages/LandingPage';
 
 
 export default function Router(){
@@ -25,6 +26,7 @@ export default function Router(){
                     <Route path="/EsqueciMinhaSenha" element={<ForgotPassword/>}/>
                     <Route path="/Menu" element={<Menu/>}/>
                     <Route path="/Planos" element={<Planos/>}/>
+                    <Route path="/LP" element={<LandingPage/>}/>
                 </Routes>
             </BrowserRouter>
             
