@@ -6,28 +6,15 @@ import {
     StyledButton,
     SecondSection
 } from './styles'
+import HeaderLp from './HeaderLp/'
 
-import LogoHorizontal from '../../assets/logoHorizontal.png'
 
 import MockupMacbook from '../../assets/MockupMacbook.png'
 
 const LandingPage = () => {
     return(
         <Container>
-            <Header>
-                <div style={{display: 'flex', alignItems: 'center', gap: '30px'}}>
-                    <img src={LogoHorizontal} style={{width: '200px'}}/>
-                    <a href="">Home</a>
-                    <a href="">Sobre nós</a>
-                    <a href="">Preços</a>
-                </div>
-                
-                <div style={{display: 'flex', gap: '20px', alignItems: 'center'}}>
-                    <a href="/login">Entrar</a>
-                    <button>Registrar</button>
-                    
-                </div>
-            </Header>
+            <HeaderLp/>
 
             <FirstSection>
                 <h1>Pare de perder dinheiro com nutricionista</h1>
