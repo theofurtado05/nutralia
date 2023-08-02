@@ -3,7 +3,8 @@ import {
     Header,
     FirstSection,
     Container,
-    StyledButton
+    StyledButton,
+    SecondSection
 } from './styles'
 
 import LogoHorizontal from '../../assets/logoHorizontal.png'
@@ -53,6 +54,15 @@ const LandingPage = () => {
                 </div>
 
             </FirstSection>
+
+            <SecondSection>
+                <h3>Features</h3>
+                <h1>Analytics that feels like its from the future</h1>
+                <span>
+                    Powerful, self-serve product and growth analytics to help you convert, engage, and retain more users. Trusted by over 4,000 startups.
+                </span>
+            </SecondSection>
+
         </Container>
     )
 }

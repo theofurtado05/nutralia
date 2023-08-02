@@ -70,6 +70,7 @@ export const FirstSection = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-bottom: 30px;
 
     h1{
         color: #000;
@@ -116,4 +117,38 @@ export const FirstSection = styled.section`
         }
         
     }
+`;
+
+
+export const SecondSection = styled.section`
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background: #F9FAFB;
+
+    
+    h3{
+        color: var(--Primary-color);
+        font-size: 14px;
+        text-align: center;
+    }
+
+    h1{
+        text-align: center;
+        width: 98vw;
+    }
+
+    span{
+        color: grey;
+        font-weight: 500;
+        font-family: var(--Primary-font);
+        font-size: 14px;
+        
+        width: 96vw;
+        text-align: center;
+    }
+
 `;
