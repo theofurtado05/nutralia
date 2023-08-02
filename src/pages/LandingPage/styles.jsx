@@ -94,6 +94,14 @@ export const FirstSection = styled.section`
         align-self: center;
     }
 
+    span{
+        color: grey;
+        font-weight: 500;
+        font-family: var(--Primary-font);
+        font-size: 14px;
+        padding-top: 30px;
+    }
+
     @media screen and (max-width: 770px){
         img{
             width: 580px;    

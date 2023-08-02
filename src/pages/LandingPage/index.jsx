@@ -44,8 +44,12 @@ const LandingPage = () => {
 
                 </div>
                 <br/>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
                     <img src={MockupMacbook} />
+
+                    <span>
+                        Junte-se aos nossos 400 membros.
+                    </span>
                 </div>
 
             </FirstSection>
