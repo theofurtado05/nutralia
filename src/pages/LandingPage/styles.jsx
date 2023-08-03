@@ -10,6 +10,15 @@ export const Container = styled.body`
     button:hover{
         opacity: 0.8;
     }
+
+    @media screen and (max-width: 770px){
+        .btActions{
+            display: flex;
+            flex-direction: column-reverse;
+            
+            width: 100%;
+        }
+    }
 `;
 
 export const StyledButton = styled.button`
@@ -23,6 +32,10 @@ export const StyledButton = styled.button`
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+
+    @media screen and (max-width: 770px){
+        width: 80%;
+    }
 
     
 `;
@@ -138,7 +151,9 @@ export const SecondSection = styled.section`
 
     h1{
         text-align: center;
-        width: 98vw;
+        
+        font-family: var(--Primary-font);
+        
     }
 
     span{
@@ -147,8 +162,29 @@ export const SecondSection = styled.section`
         font-family: var(--Primary-font);
         font-size: 14px;
         
-        width: 96vw;
+        width: 96%;
         text-align: center;
     }
 
+    div:first-child{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .column1{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    
+
+
+    @media screen and (max-width: 770px){
+        div:first-child{
+            flex-direction: column;
+        }
+    }
 `;

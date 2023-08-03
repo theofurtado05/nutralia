@@ -11,7 +11,7 @@ export const Header = styled.header`
 
     @media screen and (max-width: 770px){
         justify-content: space-between;
-        padding: 10px 100px;
+        padding: 10px 80px;
     }
 
     img{

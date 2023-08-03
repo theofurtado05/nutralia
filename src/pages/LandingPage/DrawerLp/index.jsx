@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -31,6 +32,7 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      
       <List>
         {['Entrar', 'Registrar'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -63,7 +65,12 @@ export default function TemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+           <Button onClick={toggleDrawer(anchor, true)}>
+            <MenuIcon style={{
+                fontSize: '42px',
+            }}/>
+          </Button>
+          
           <Drawer
             anchor={anchor}
             open={state[anchor]}
