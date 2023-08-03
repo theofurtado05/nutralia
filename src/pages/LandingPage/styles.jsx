@@ -166,25 +166,5 @@ export const SecondSection = styled.section`
         text-align: center;
     }
 
-    div:first-child{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .column1{
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-    }
-
     
-
-
-    @media screen and (max-width: 770px){
-        div:first-child{
-            flex-direction: column;
-        }
-    }
 `;
