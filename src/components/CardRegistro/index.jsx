@@ -90,7 +90,8 @@ const CardRegister = () => {
               objetivo: "",
               intolerancia: "",
               plano: "Gratuito",
-              afiliadoId: afiliadoId
+              afiliadoId: afiliadoId,
+              
             }).then(()=>{
 
               localStorage.setItem('@UserId:Nutrafity', user.uid);
