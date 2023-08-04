@@ -112,7 +112,8 @@ export default function Drawer() {
             <span className='tickets'>{numTickets}</span>
             <h3>Dietas Restantes</h3>
 
-            <p>Precisa de mais dietas?</p>
+            <p>Quer aumentar seus resultados? <br/>
+              Precisa de mais dietas?</p>
             
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '-10px'}}>
                 <a href="/planos">Evoluir plano</a>
@@ -122,6 +123,8 @@ export default function Drawer() {
         
         
         <div className='footer'>
+          <button className='btSuporte' onClick={faleConosco}>Fale conosco</button>
+
           <hr/>
 
           <div>
@@ -138,6 +141,13 @@ export default function Drawer() {
 
         <style>
           {`
+            .btSuporte{
+              background: var(--Primary-color);
+              color: #FFF;
+              font-weight: 700;
+              padding: 10px;
+              width: 90%;
+            }
             button{
               background: rgba(0,0,0,0);
               border: none;
@@ -146,6 +156,10 @@ export default function Drawer() {
             button:hover{
               cursor: pointer;
               background: #d0d0d0;
+            }
+            .btSuporte:hover{
+              cursor: pointer;
+              background: var(--Secondary-color);
             }
             .infoUser{
               display: flex;

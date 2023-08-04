@@ -4,10 +4,17 @@ import {
     FirstSection,
     Container,
     StyledButton,
-    SecondSection
+    SecondSection,
+    ThirdSection,
+    FourthSection
 } from './styles'
 import HeaderLp from './HeaderLp/'
 import ControlPointDuplicateIcon from '@mui/icons-material/ControlPointDuplicate';
+import CheckIcon from '@mui/icons-material/Check';
+
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+
+import MockupDieta from '../../assets/MockupDieta.png'
 
 
 import MockupMacbook from '../../assets/MockupMacbook.png'
@@ -28,7 +35,9 @@ const LandingPage = () => {
                     </StyledButton>
 
                     <StyledButton>
-                        Registrar
+                        <a href="/registro" style={{textDecoration: 'none', color: '#FFF'}}>
+                            Registrar
+                        </a>
                     </StyledButton>
 
                 </div>
@@ -51,6 +60,126 @@ const LandingPage = () => {
                 </span>
 
             </SecondSection>
+
+            <ThirdSection>
+                <div className="paiThird">
+
+                
+                <div className="divTexto">
+                    <span className="spanIcon">
+                        <MenuBookIcon/>
+                    </span>
+
+                    <h3>
+                        Gere suas Dietas
+                    </h3>
+
+                    <p>
+                        Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.
+                    </p>
+
+                    <div className="lista">
+                        <span className="itemLista">
+                            <span className="spanIcon spanIconMenor">
+                                <CheckIcon/>
+                            </span>
+                            <p>
+                                Dieta gerada em 30 segundos
+                            </p>
+                        </span>
+
+                        <span className="itemLista">
+                            <span className="spanIcon spanIconMenor">
+                                <CheckIcon/>
+                            </span>
+                            <p>
+                                Dieta gerada em 30 segundos
+                            </p>
+                        </span>
+
+                        <span className="itemLista">
+                            <span className="spanIcon spanIconMenor">
+                                <CheckIcon/>
+                            </span>
+                            <p>
+                                Dieta gerada em 30 segundos
+                            </p>
+                        </span>
+                    
+                    </div>
+
+                    <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
+                        <a href="/registro" style={{textDecoration: 'none', color: '#FFF'}}>
+                            Registrar
+                        </a>
+                    </StyledButton>
+                    
+                </div>
+
+                <img src={MockupDieta}/>{/*Adicionar print da receita no cell */}
+
+                </div>
+            </ThirdSection>
+
+            <FourthSection>
+                <div className="paiThird">
+
+                
+                <div className="divTexto">
+                    <span className="spanIcon">
+                        <MenuBookIcon/>
+                    </span>
+
+                    <h3>
+                        Gere suas Dietas
+                    </h3>
+
+                    <p>
+                        Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.
+                    </p>
+
+                    <div className="lista">
+                        <span className="itemLista">
+                            <span className="spanIcon spanIconMenor">
+                                <CheckIcon/>
+                            </span>
+                            <p>
+                                Dieta gerada em 30 segundos
+                            </p>
+                        </span>
+
+                        <span className="itemLista">
+                            <span className="spanIcon spanIconMenor">
+                                <CheckIcon/>
+                            </span>
+                            <p>
+                                Dieta gerada em 30 segundos
+                            </p>
+                        </span>
+
+                        <span className="itemLista">
+                            <span className="spanIcon spanIconMenor">
+                                <CheckIcon/>
+                            </span>
+                            <p>
+                                Dieta gerada em 30 segundos
+                            </p>
+                        </span>
+                    
+                    </div>
+
+                    <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
+                        <a href="/registro" style={{textDecoration: 'none', color: '#FFF'}}>
+                            Registrar
+                        </a>
+                    </StyledButton>
+                    
+                </div>
+
+                <img src={MockupDieta}/>{/*Adicionar print da receita no cell */}
+
+                </div>
+            </FourthSection>
 
         </Container>
     )

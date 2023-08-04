@@ -6,6 +6,7 @@ export const Container = styled.body`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 
     button:hover{
         opacity: 0.8;
@@ -167,4 +168,179 @@ export const SecondSection = styled.section`
     }
 
     
+`;
+
+export const ThirdSection = styled.section`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    background: #F9FAFB;
+    padding: 40px 0;
+
+    .paiThird{
+        display: flex;
+        width: 70%;
+        align-self: center;
+    }
+
+    img{
+        align-self: center;
+        width: 100%;
+        max-width: 300px;
+        object-fit: contain;
+    }
+
+
+    .spanIcon{
+        background: var(--Icon-Background);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        color: var(--Secondary-color);
+    }
+
+    .spanIconMenor{ 
+        width: 10px;
+        height: 10px;
+    }
+
+    .divTexto{
+        padding: 0px 20px;
+        width: 80%;
+        align-self: center;
+    }
+
+
+    .divTexto h3{
+        font-size: 23px;
+    }
+
+    .divTexto p{
+        opacity: 0.5;
+    }
+
+    .lista{
+        width: 100%;
+    }
+
+    .itemLista{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    @media screen and (max-width: 1024px){
+        flex-direction: column;
+        width: 100%;
+
+        .paiThird{
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        button{
+            width: 100%;
+        }
+    }
+`;
+
+export const FourthSection = styled.section`
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    background: #F9FAFB;
+    padding: 40px 0;
+
+    .paiThird{
+        display: flex;
+        flex-direction: row-reverse;
+        width: 70%;
+        align-self: center;
+    }
+
+    img{
+        align-self: center;
+        width: 100%;
+        max-width: 300px;
+        object-fit: contain;
+    }
+
+
+    .spanIcon{
+        background: var(--Icon-Background);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        color: var(--Secondary-color);
+    }
+
+    .spanIconMenor{ 
+        width: 10px;
+        height: 10px;
+    }
+
+    .divTexto{
+        padding: 0px 20px;
+        width: 80%;
+        align-self: center;
+    }
+
+
+    .divTexto h3{
+        font-size: 23px;
+    }
+
+    .divTexto p{
+        opacity: 0.5;
+    }
+
+    .lista{
+        width: 100%;
+    }
+
+    .itemLista{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    @media screen and (max-width: 1024px){
+        flex-direction: column;
+        width: 100%;
+
+        .paiThird{
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        button{
+            width: 100%;
+        }
+    }
 `;
