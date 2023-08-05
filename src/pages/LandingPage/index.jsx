@@ -6,9 +6,12 @@ import {
     StyledButton,
     SecondSection,
     ThirdSection,
-    FourthSection
+    FourthSection,
+    PrincingSection,
+    FaqSection
 } from './styles'
 import HeaderLp from './HeaderLp/'
+import FooterLp from "./FooterLp";
 import ControlPointDuplicateIcon from '@mui/icons-material/ControlPointDuplicate';
 import CheckIcon from '@mui/icons-material/Check';
 
@@ -16,8 +19,13 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 import MockupDieta from '../../assets/MockupDieta.png'
 
+import MockupGerarDieta from '../../assets/MockupGerarDieta.png'
 
 import MockupMacbook from '../../assets/MockupMacbook.png'
+
+import CardPlano from '../../components/CardPlanos/Planos/CardsPlanos'
+
+import FaqCard from "./Faq";
 
 const LandingPage = () => {
     return(
@@ -25,8 +33,8 @@ const LandingPage = () => {
             <HeaderLp/>
 
             <FirstSection>
-                <h1>Pare de perder dinheiro com nutricionista</h1>
-                <h3>A Poderosa inteligência artificial da Nutrafity chegou para ecônomizar seu tempo e dinheiro com suas dietas.</h3>
+                <h1>Dieta personalizada para resultados incríveis!</h1>
+                <h3>Alcance seus objetivos de treino de forma eficiente e deliciosa com dietas feitas sob medida, suporte contínuo e gráficos de progresso intuitivos.</h3>
 
                 <div className="btActions" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '20px'}}>
                 
@@ -35,9 +43,9 @@ const LandingPage = () => {
                     </StyledButton>
 
                     <StyledButton>
-                        <a href="/registro" style={{textDecoration: 'none', color: '#FFF'}}>
+                        
                             Registrar
-                        </a>
+                        
                     </StyledButton>
 
                 </div>
@@ -53,10 +61,10 @@ const LandingPage = () => {
             </FirstSection>
 
             <SecondSection>
-                <h3>Features</h3>
-                <h1>Analytics that feels like its from the future</h1>
+                <h3>Funcionalidades</h3>
+                <h1>Funcionalidades que Impulsionam Seu Sucesso</h1>
                 <span>
-                    Powerful, self-serve product and growth analytics to help you convert, engage, and retain more users. Trusted by over 4,000 startups.
+                Transforme sua jornada de treino e nutrição com as funcionalidades avançadas do Nutrafity, projetadas para maximizar seus resultados e mantê-lo no caminho certo para o sucesso.
                 </span>
 
             </SecondSection>
@@ -71,11 +79,12 @@ const LandingPage = () => {
                     </span>
 
                     <h3>
-                        Gere suas Dietas
+                        Gerador de Dietas
                     </h3>
 
                     <p>
-                        Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.
+                        Obtenha planos alimentares totalmente adaptados às suas metas específicas e preferências pessoais. 
+                        
                     </p>
 
                     <div className="lista">
@@ -84,7 +93,7 @@ const LandingPage = () => {
                                 <CheckIcon/>
                             </span>
                             <p>
-                                Dieta gerada em 30 segundos
+                            Planos alimentares sob medida para suas metas e preferências.
                             </p>
                         </span>
 
@@ -93,7 +102,7 @@ const LandingPage = () => {
                                 <CheckIcon/>
                             </span>
                             <p>
-                                Dieta gerada em 30 segundos
+                            Adaptação contínua às suas necessidades em evolução.
                             </p>
                         </span>
 
@@ -102,21 +111,21 @@ const LandingPage = () => {
                                 <CheckIcon/>
                             </span>
                             <p>
-                                Dieta gerada em 30 segundos
+                            Variedade de opções para uma alimentação saborosa e saudável.
                             </p>
                         </span>
                     
                     </div>
 
                     <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
-                        <a href="/registro" style={{textDecoration: 'none', color: '#FFF'}}>
-                            Registrar
-                        </a>
+                       
+                            OBTER ACESSO
+                
                     </StyledButton>
                     
                 </div>
 
-                <img src={MockupDieta}/>{/*Adicionar print da receita no cell */}
+                <img src={MockupGerarDieta}/>{/*Adicionar print da receita no cell */}
 
                 </div>
             </ThirdSection>
@@ -131,11 +140,13 @@ const LandingPage = () => {
                     </span>
 
                     <h3>
-                        Gere suas Dietas
+                        Acompanhamento de Evolução Detalhado
                     </h3>
 
                     <p>
-                        Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.
+                     Mantenha-se no topo do seu progresso com nosso sistema de acompanhamento abrangente. 
+                    {/*
+                    Registre suas conquistas, visualize seu crescimento e faça ajustes informados para otimizar seu caminho para o sucesso. */}
                     </p>
 
                     <div className="lista">
@@ -144,7 +155,7 @@ const LandingPage = () => {
                                 <CheckIcon/>
                             </span>
                             <p>
-                                Dieta gerada em 30 segundos
+                                Gráficos visuais que refletem seu progresso ao longo do tempo.
                             </p>
                         </span>
 
@@ -153,7 +164,7 @@ const LandingPage = () => {
                                 <CheckIcon/>
                             </span>
                             <p>
-                                Dieta gerada em 30 segundos
+                                Registro de dados de peso, medidas e desempenho nos treinos.
                             </p>
                         </span>
 
@@ -162,16 +173,14 @@ const LandingPage = () => {
                                 <CheckIcon/>
                             </span>
                             <p>
-                                Dieta gerada em 30 segundos
+                                Ajustes inteligentes com base nos resultados alcançados.
                             </p>
                         </span>
                     
                     </div>
 
                     <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
-                        <a href="/registro" style={{textDecoration: 'none', color: '#FFF'}}>
-                            Registrar
-                        </a>
+                            OBTER ACESSO
                     </StyledButton>
                     
                 </div>
@@ -181,6 +190,37 @@ const LandingPage = () => {
                 </div>
             </FourthSection>
 
+            <PrincingSection>
+
+                <h3>Planos</h3>
+                <h1>Para todos os tamanhos</h1>
+                <span className="simples">
+                    Preços simples e transparentes que evoluem com você.
+                </span>
+
+                <div className="divPlanos">
+                    <CardPlano tituloPlano={"Mensal"} valorPlano={"39,90"}
+                    numDietas={15} link={'https://nutrafity.com/registro'} frequencia={'mês'}/>
+
+                    <CardPlano tituloPlano={"Semestral"} valorPlano={"34,90"}
+                    numDietas={30} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado semestralmente'}/>
+
+                    <CardPlano tituloPlano={"Anual"} valorPlano={"19,90"}
+                    numDietas={45} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado anualmente'}/>
+
+                </div>
+
+            </PrincingSection>
+
+            <FaqSection>
+                <h3>FAQ</h3>
+                <h1>Perguntas frequentes</h1>
+                <div className="faqDiv">
+                    <FaqCard/>
+                </div>
+            </FaqSection>
+
+            <FooterLp/>
         </Container>
     )
 }

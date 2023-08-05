@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 
-const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia}) => {
+const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional}) => {
     
     const handleClick = () => {
         window.open(link, 'blank')
@@ -17,8 +17,8 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia}) => {
                     <div class="description">
                        - {numDietas} Dietas por mês;
                         <br/>- Dietas Acumulativas
-                        <br/>- Acompanhamento de evolução (em breve)
-                        
+                        <br/>- Acompanhamento de evolução 
+                        {adicional && <><br/> - {adicional}</>}
                     </div>
             </div>
             
