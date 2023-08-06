@@ -3,9 +3,16 @@ import {Header} from './styles'
 import LogoHorizontal from '../../../assets/logoHorizontal.png'
 import { useEffect } from "react";
 import TemporaryDrawer from '../DrawerLp'
+import { useNavigate } from "react-router-dom";
 
 const HeaderLp = () => {
     const [isMobile, setIsMobile] = useState()
+
+    const navigate = useNavigate()
+
+    const handleRegistrar = () => {
+        navigate('#precos')
+    }
 
     useEffect(()=>{
         setIsMobile(window.innerWidth <= 769)
@@ -40,7 +47,9 @@ const HeaderLp = () => {
             
             <div style={{display: 'flex', gap: '20px', alignItems: 'center'}}>
                 <a href="/login">Entrar</a>
-                <button>Registrar</button>
+                <button><a href="#precos" style={{textDecoration: 'none', color: '#FFF'}}>
+                    Registrar
+                </a></button>
                 
             </div>
         </Header>

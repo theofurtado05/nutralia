@@ -26,8 +26,16 @@ import MockupMacbook from '../../assets/MockupMacbook.png'
 import CardPlano from '../../components/CardPlanos/Planos/CardsPlanos'
 
 import FaqCard from "./FaqCard";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+
+    const navigate = useNavigate()
+
+    const handleEntrar = () => {
+        navigate('/login')
+    }
+
     return(
         <Container>
             <HeaderLp/>
@@ -38,13 +46,15 @@ const LandingPage = () => {
 
                 <div className="btActions" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '20px'}}>
                 
-                    <StyledButton style={{background: 'var(--Secondary-color'}}>
+                    <StyledButton style={{background: 'var(--Secondary-color'}} onClick={handleEntrar}>
                         Entrar
                     </StyledButton>
 
                     <StyledButton>
                         
-                            Registrar
+                        <a href="#precos">
+                            OBTER ACESSO
+                        </a>
                         
                     </StyledButton>
 
@@ -118,8 +128,10 @@ const LandingPage = () => {
                     </div>
 
                     <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
-                       
+                        <a href="#precos">
                             OBTER ACESSO
+                        </a>
+                            
                 
                     </StyledButton>
                     
@@ -180,7 +192,9 @@ const LandingPage = () => {
                     </div>
 
                     <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
+                    <a href="#precos">
                             OBTER ACESSO
+                        </a>
                     </StyledButton>
                     
                 </div>

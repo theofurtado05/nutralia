@@ -27,7 +27,7 @@ export const StyledButton = styled.button`
     color: #FFF;
     font-weight: bold;
     font-family: var(--Primary-font);
-    width: 122px;
+    width: 200px;
     height: 40px;
     border: none;
     border-radius: 8px;
@@ -37,6 +37,11 @@ export const StyledButton = styled.button`
     display: flex;
     align-items: center; 
     justify-content: center;
+
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
 
     @media screen and (max-width: 770px){
         width: 80%;
