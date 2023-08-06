@@ -84,11 +84,32 @@ const CardRegister = () => {
               email: email,
               celular: celular,
               tickets: 0,
+              ticketsUsados: 0,
               compras: 0,
-              kg: 0,
-              altura: 0,
-              objetivo: "",
-              intolerancia: "",
+              acompanhamento: {
+                infoAtual: {
+                    kg: 0,
+                    altura: 0,
+                    objetivo: "",
+                    intolerancia: ""
+                },
+                infos: [{}],
+                
+                insight: "",
+
+                metaAtual: {
+                    titulo: "",
+                    descricao: "",
+                    objetivo: 0,
+                    progresso: 0,
+                    status: ""
+                },
+                metas: [{}]
+              },
+
+              dietas: {
+                receitasSalvasId: []
+              },
               plano: "Gratuito",
               afiliadoId: afiliadoId,
               

@@ -13,6 +13,7 @@ const WhitelabelProvider = ({ children }) => {
             --Primary-color: #1C9E22;
             --Secondary-color: #0a730f;
             --Icon-Background: #8ee892b0;
+            --Card-PrimaryBackground: #8ee892b0;
         }
     `)
     }
