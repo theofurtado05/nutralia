@@ -16,7 +16,9 @@ const HeaderLp = () => {
         ? 
             <Header>
                 <div style={{display: 'flex', alignItems: 'center', gap: '30px'}}>
+                    <a href="/">
                     <img src={LogoHorizontal} style={{width: '200px'}}/>
+                    </a>
                 
                 </div>
             
@@ -28,10 +30,12 @@ const HeaderLp = () => {
         : 
         <Header>
             <div style={{display: 'flex', alignItems: 'center', gap: '30px'}}>
+                <a href="/">
                 <img src={LogoHorizontal} style={{width: '200px'}}/>
-                <a href="">Home</a>
-                <a href="">Sobre nós</a>
-                <a href="">Preços</a>
+                </a>
+                <a href="/">Home</a>
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#precos">Preços</a>
             </div>
             
             <div style={{display: 'flex', gap: '20px', alignItems: 'center'}}>

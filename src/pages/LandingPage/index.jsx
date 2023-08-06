@@ -32,7 +32,7 @@ const LandingPage = () => {
         <Container>
             <HeaderLp/>
 
-            <FirstSection>
+            <FirstSection id="0">
                 <h1>Dieta personalizada para resultados incríveis!</h1>
                 <h3>Alcance seus objetivos de treino de forma eficiente e deliciosa com dietas feitas sob medida, suporte contínuo e gráficos de progresso intuitivos.</h3>
 
@@ -60,9 +60,9 @@ const LandingPage = () => {
 
             </FirstSection>
 
-            <SecondSection>
+            <SecondSection id="funcionalidades">
                 <h3>Funcionalidades</h3>
-                <h1>Funcionalidades que Impulsionam Seu Sucesso</h1>
+                <h1>Funcionalidades que impulsionam seu resultado</h1>
                 <span>
                 Transforme sua jornada de treino e nutrição com as funcionalidades avançadas do Nutrafity, projetadas para maximizar seus resultados e mantê-lo no caminho certo para o sucesso.
                 </span>
@@ -190,7 +190,7 @@ const LandingPage = () => {
                 </div>
             </FourthSection>
 
-            <PrincingSection>
+            <PrincingSection id="precos">
 
                 <h3>Planos</h3>
                 <h1>Para todos os tamanhos</h1>
