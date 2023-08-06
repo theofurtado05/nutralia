@@ -3,6 +3,7 @@ import Header from "../Header";
 import {verifLogadoInside} from '../../services/auth'
 import {Container} from './styles'
 import CardInfo from "./CardInfo";
+import Grafico from "./Grafico";
 
 
 const CardPerfil = () => {
@@ -30,6 +31,7 @@ const CardPerfil = () => {
                     <CardInfo cor=""  titulo="Idade" valor="21" medida=""/>
                 </div>
                 {insightStatus && <span>{insight}</span>}
+                <Grafico/>
 
 
             </div>
