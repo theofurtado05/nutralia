@@ -25,7 +25,7 @@ import MockupMacbook from '../../assets/MockupMacbook.png'
 
 import CardPlano from '../../components/CardPlanos/Planos/CardsPlanos'
 
-import FaqCard from "./Faq";
+import FaqCard from "./FaqCard";
 
 const LandingPage = () => {
     return(

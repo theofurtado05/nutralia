@@ -97,6 +97,22 @@ export default function FaqCard() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Typography>Como acessar o suporte?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          Basta logar, abrir o menu lateral e clicar no botão "Fale conosco".
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <br/><br/>
     </div>
   );
 }

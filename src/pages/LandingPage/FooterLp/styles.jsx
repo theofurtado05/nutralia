@@ -5,15 +5,17 @@ export const Footer = styled.footer`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 20px 80px;
+    padding: 20px 0px;
     background: #F9FAFB;
     width: 100vw;
     margin-top: 40px;
 
     .divPai{
-        width: 80%;
+        
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        width: 100%;
+
     }
 
     .company{
