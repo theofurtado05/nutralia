@@ -26,11 +26,12 @@ import { Logout } from '@mui/icons-material';
 import { useEffect } from 'react';
 import LogoDefault from '../../assets/logo.png'
 import { SignOut } from '../../services/auth';
-import { useDieta } from '../../context/Dieta';
+import { useAssinatura } from '../../context/Assinatura.context';
+
 
 
 export default function Drawer() {
-  const {GetNumTickets, numTickets, planoAtual} = useDieta()
+  const {GetNumTickets, numTickets, planoAtual} = useAssinatura()
 
   const [ticketsUsados, setTicketsUsados] = useState()
 

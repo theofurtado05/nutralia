@@ -16,26 +16,23 @@ const auth = getAuth(app);
 export const VerifLogin = async () => {
     if(window.location.pathname != '/Registro'){
         await onAuthStateChanged(auth, (user) => {
-            if (user ) {
+            if (user) {
               
               const uid = user.uid;
-    
-            if(window.location.pathname != '/login'){
-                if(window.location.pathname == '/'){
-                    window.location.href = './'
-                  }
-                  
-                } else {
-                    if(window.location.pathname != '/' ){
-                        window.location.href = '../'
-                    }
-                }
-            }
-              
-          });
 
-    }
+            if(
+                window.location.pathname == '/login' ||
+                window.location.pathname == '/registro' ||
+                window.location.pathname == '/registro/:afid' ||
+                window.location.pathname == '/EsqueciMinhaSenha' ||
+                window.location.pathname == '/')
+                {
+                    window.location.href = './menu'
+                }
     
+            }
+        })
+    }
 }
 
 

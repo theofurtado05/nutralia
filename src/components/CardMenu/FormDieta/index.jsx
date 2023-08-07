@@ -4,10 +4,11 @@ import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} fro
 import Autocomplete from '@mui/material/Autocomplete';
 import { GerarDietaAPI } from "../../../services/api";
 import { GerarDietaDocx, GetUserInfo } from "../../../services/metodos";
-import { useDieta } from "../../../context/Dieta";
+
 import BannerMenu from '../../../assets/BannerMenu.png'
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Loading";
+import { useAssinatura } from "../../../context/Assinatura.context";
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -22,7 +23,7 @@ const FormDieta = () => {
 
     const navigate = useNavigate()
     
-    const {numTickets, ReduzirTicket} = useDieta()
+    const {numTickets, ReduzirTicket} = useAssinatura()
 
     
 

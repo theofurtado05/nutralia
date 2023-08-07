@@ -4,18 +4,36 @@ import {verifLogadoInside} from '../../services/auth'
 import {Container} from './styles'
 import CardInfo from "./CardInfo";
 import Grafico from "./Grafico";
+import { usePerfil } from "../../context/Perfil.context";
 
 
 const CardPerfil = () => {
     const [insightStatus, setInsightStatus] = useState()
     const [insight, setInsight] = useState()
+    const {infoUser, meta, acompanhamento, infoAtual} = usePerfil()
+
+    const [peso, setPeso] = useState()
+    const [altura, setAltura] = useState()
+    const [idade, setIdade] = useState()
+    const [IMC, setIMC] = useState()
+    const [textoIMC, setTextoIMC] = useState('')
 
    useEffect(()=>{
-    verifLogadoInside()
-
-    setInsightStatus(true)
-    setInsight("Precisando ganhar massa")
+    verifLogadoInside()    
    }, [])
+
+
+
+   useEffect(()=>{
+
+    if(infoAtual){
+        setPeso(infoAtual.kg)
+        setAltura(infoAtual.altura)
+        setIdade(infoAtual.idade)
+        setIMC(infoAtual.kg / (infoAtual.altura * infoAtual.altura))
+    }
+
+   }, [infoAtual])
 
     return(
         <Container>
@@ -25,10 +43,10 @@ const CardPerfil = () => {
             <div className="perfil">
                 <h1 className="tituloPagina">Meu Perfil</h1>
                 <div className="divInfos">
-                    <CardInfo cor="" titulo="Peso" valor="82" medida="/kg"/>
-                    <CardInfo cor="" titulo="Altura" valor="176" medida="/cm"/>
-                    <CardInfo cor=""  titulo="IMC" valor="Sobrepeso" medida=""/>
-                    <CardInfo cor=""  titulo="Idade" valor="21" medida=""/>
+                    <CardInfo cor="" titulo="Peso" valor={`${peso}`} medida="/kg"/>
+                    <CardInfo cor="" titulo="Altura" valor={`${altura}`} medida="/cm"/>
+                    <CardInfo cor=""  titulo="IMC" valor={`${IMC}`} medida=""/>
+                    <CardInfo cor=""  titulo="Idade" valor={`${idade}`} medida=""/>
                 </div>
                 {insightStatus && <span>{insight}</span>}
                 <Grafico/>

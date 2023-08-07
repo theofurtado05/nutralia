@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Header,
     FirstSection,
@@ -28,7 +28,13 @@ import CardPlano from '../../components/CardPlanos/Planos/CardsPlanos'
 import FaqCard from "./FaqCard";
 import { useNavigate } from "react-router-dom";
 
+import { VerifLogin } from "../../services/auth";
+
 const LandingPage = () => {
+
+    useEffect(()=>{
+        VerifLogin()
+    }, [])
 
     const navigate = useNavigate()
 

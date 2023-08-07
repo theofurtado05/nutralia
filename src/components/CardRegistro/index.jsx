@@ -91,7 +91,11 @@ const CardRegister = () => {
                     kg: 0,
                     altura: 0,
                     objetivo: "",
-                    intolerancia: ""
+                    intolerancia: "",
+                    idade: "",
+                    genero: "",
+                    IMC: 0,
+                    dataAtualizacao: ""
                 },
                 infos: [{}],
                 

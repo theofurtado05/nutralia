@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.body`
     width: 100vw;
+    max-width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +30,8 @@ export const Container = styled.body`
     }
 
     @media screen and (max-width: 770px){
+        max-width: 100vw;
+        overflow-x: hidden;
         .perfil{
             width: 90%;
         }

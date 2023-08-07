@@ -6,6 +6,10 @@ export const StyledDiv = styled.div`
     height: 100px;
     border-radius: 8px;
     background: var(--Card-PrimaryBackground);
+
+    @media screen and (max-width: 770px){
+        width: 150px;
+    }
     
 `;
 
