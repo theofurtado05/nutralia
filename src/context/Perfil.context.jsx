@@ -17,6 +17,9 @@ const PerfilProvider = ({ children }) => {
     const [meta, setMeta] = useState()
     const [infoAtual, setInfoAtual] = useState()
     const [imc, setImc] = useState()
+
+
+    const [infoModalState, setInfoModalState] = useState(false)
   
     //banco de dados - NAO MEXER
     const app = initializeApp(firebaseConfig);
@@ -65,7 +68,9 @@ const PerfilProvider = ({ children }) => {
             infoUser,
             meta,
             acompanhamento,
-            infoAtual
+            infoAtual,
+            setInfoModalState,
+            infoModalState
         }}>
             {children}
         </PerfilContext.Provider>
