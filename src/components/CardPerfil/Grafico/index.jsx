@@ -6,8 +6,15 @@ const Grafico = ({periodo}) => {
     //periodo = 30 dias => ultimos 30 dias contando hoje
     const state = {
       options: {
+        stroke: {
+          curve: 'smooth',
+        },
         chart: {
           id: "basic-bar",
+          zoom: {
+            enabled: true,
+            
+          }
           
         },
         xaxis: {
@@ -17,17 +24,22 @@ const Grafico = ({periodo}) => {
       series: [
         {
           name: "Peso (kg)",
-          data: [30, 40, 45, 50, 49, 90, 132]
+          data: [30, 40, 45, 50, 49, 90, 132],
+          type: "line"
         },
         {
           name: "Altura (cm)",
-          data: [33, 44, 94, 53, 42]
+          data: [33, 44, 94, 53, 42],
+          type: "line"
         },
         {
             name: "IMC",
-            data: [33, 44, 94, 53, 42]
+            data: [33, 44, 94, 53, 42],
+            type: 'column'
         }
-      ]
+      ],
+
+      
     };
   
 
@@ -39,7 +51,6 @@ const Grafico = ({periodo}) => {
             <Chart
                 options={state.options}
                 series={state.series}
-                type="line"
                 width="500"
             />
             </div>

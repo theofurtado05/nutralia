@@ -85,6 +85,13 @@ export const Container = styled.body`
         }
     }
 
+    @media screen and (max-width: 1024px){
+        .divObjetivo, .insight{
+            width: 98%;
+        }
+
+    }
+
     @media screen and (max-width: 770px){
         max-width: 100vw;
         overflow-x: hidden;
@@ -95,6 +102,12 @@ export const Container = styled.body`
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
+        .divObjetivo{
+            width: 100%;
+        }
+        .insight{
+            width: 100%;
+        }
     }
 `;
 
@@ -103,7 +116,7 @@ export const StyledButton = styled.button`
     color: #FFF;
     font-weight: bold;
     font-family: var(--Primary-font);
-    width: 100%;
+    width: 35%;
     height: 40px;
     border: none;
     border-radius: 8px;
