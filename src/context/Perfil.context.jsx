@@ -18,6 +18,12 @@ const PerfilProvider = ({ children }) => {
     const [infoAtual, setInfoAtual] = useState()
     const [imc, setImc] = useState()
 
+    const [graficoArray, setGraficoArray] = useState()
+    const [listaPesoState, setListaPesoState] = useState()
+    const [listaAlturaState, setListaAlturaState] = useState()
+    const [listaImcState, setListaImcState] = useState()
+    const [listaDataAtualizacaoState, setDataAtualizacaoState] = useState()
+
 
     const [infoModalState, setInfoModalState] = useState(false)
   
@@ -33,10 +39,12 @@ const PerfilProvider = ({ children }) => {
 
     useEffect(()=>{
         GetInfoUser()
+        GetGraficoInfos()
     }, [])
 
     useEffect(()=>{
         //CalcIMC(infoAtual.altura, infoAtual.kg)
+        
     }, [infoAtual])
 
 
@@ -58,6 +66,32 @@ const PerfilProvider = ({ children }) => {
         setImc(imc)
     }
 
+    const GetGraficoInfos = () => {
+        let listaAuxiliar = []
+        let listaCategoria = []
+        let listaPeso = []
+        let listaAltura = []
+        let listaIMC = []
+
+        const userRef = ref(database, `users/${userId}`)
+        onValue(userRef, (snapshot) => {
+            const data = snapshot.val()
+            if(data.acompanhamento.infos){
+                for(let i = 0; i < data.acompanhamento.infos.length; i++){
+                    listaAuxiliar.push(data.acompanhamento.infos[i])
+                    listaCategoria.push(data.acompanhamento.infos[i].dataAtualizacao)
+                    listaPeso.push(data.acompanhamento.infos[i].kg)
+                    listaAltura.push(data.acompanhamento.infos[i].altura)
+                    listaIMC.push(data.acompanhamento.infos[i].IMC)
+                }
+            }
+        })
+        setGraficoArray(listaAuxiliar) 
+        setDataAtualizacaoState(listaCategoria)
+        setListaAlturaState(listaAltura)
+        setListaPesoState(listaPeso)
+        setListaImcState(listaIMC)
+    }
 
     
  
@@ -70,7 +104,12 @@ const PerfilProvider = ({ children }) => {
             acompanhamento,
             infoAtual,
             setInfoModalState,
-            infoModalState
+            infoModalState,
+            graficoArray,
+            listaPesoState,
+            listaAlturaState,
+            listaDataAtualizacaoState,
+            listaImcState
         }}>
             {children}
         </PerfilContext.Provider>

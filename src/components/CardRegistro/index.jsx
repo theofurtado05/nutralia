@@ -95,12 +95,10 @@ const CardRegister = () => {
                     idade: "",
                     genero: "",
                     IMC: 0,
-                    dataAtualizacao: ""
+                    dataAtualizacao: "",
+                    insight: "",
                 },
                 infos: [{}],
-                
-                insight: "",
-
                 metaAtual: {
                     titulo: "",
                     descricao: "",

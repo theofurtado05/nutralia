@@ -11,7 +11,11 @@ import InfoModal from "../../components/Modais/InfoModal";
 const CardPerfil = () => {
     const [insightStatus, setInsightStatus] = useState()
     const [insight, setInsight] = useState()
-    const {infoUser, meta, acompanhamento, infoAtual, infoModalState} = usePerfil()
+    const {infoUser, meta, acompanhamento, infoAtual, infoModalState, graficoArray, 
+        listaPesoState,
+        listaAlturaState,
+        listaDataAtualizacaoState,
+        listaImcState} = usePerfil()
 
     const [peso, setPeso] = useState(0)
     const [altura, setAltura] = useState(0)
@@ -75,7 +79,11 @@ const CardPerfil = () => {
                 }
 
                 <div className="graficos">
-                    <Grafico/>
+                    <Grafico categoria={listaDataAtualizacaoState} 
+                    titulo1={"Peso (kg)"} lista1={listaPesoState} 
+                    titulo2={"Altura (m)"} lista2={listaAlturaState} 
+                    titulo3={"IMC"} lista3={listaImcState}
+                />
 
                 </div>
                 

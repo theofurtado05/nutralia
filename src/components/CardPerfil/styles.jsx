@@ -7,6 +7,7 @@ export const Container = styled.body`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 
     .perfil{
         display: flex;
@@ -83,6 +84,15 @@ export const Container = styled.body`
             width: 100%;
 
         }
+    }
+
+    .graficos{
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     @media screen and (max-width: 1024px){

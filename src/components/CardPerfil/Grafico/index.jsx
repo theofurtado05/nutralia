@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
+import { usePerfil } from "../../../context/Perfil.context";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const Grafico = ({periodo}) => {
-    //periodo = 7 dias => ultimos 7 dias contando hoje
-    //periodo = 30 dias => ultimos 30 dias contando hoje
-    const state = {
+const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3}) => {
+
+    let state = {
       options: {
         stroke: {
           curve: 'smooth',
@@ -12,34 +14,31 @@ const Grafico = ({periodo}) => {
         chart: {
           id: "basic-bar",
           zoom: {
-            enabled: true,
+            enabled: false,
             
-          }
-          
+          },
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+          categories: categoria
         }
       },
       series: [
         {
-          name: "Peso (kg)",
-          data: [30, 40, 45, 50, 49, 90, 132],
+          name: titulo1,
+          data: lista1,
           type: "line"
         },
         {
-          name: "Altura (cm)",
-          data: [33, 44, 94, 53, 42],
+          name: titulo2,
+          data: lista2,
           type: "line"
         },
         {
-            name: "IMC",
-            data: [33, 44, 94, 53, 42],
+            name: titulo3,
+            data: lista3,
             type: 'column'
         }
       ],
-
-      
     };
   
 
@@ -47,13 +46,13 @@ const Grafico = ({periodo}) => {
     return (
         <div className="app">
         <div className="row">
-            <div className="mixed-chart">
-            <Chart
-                options={state.options}
-                series={state.series}
-                width="500"
-            />
-            </div>
+              <div className="mixed-chart">
+                  <Chart
+                      options={state.options}
+                      series={state.series}
+                      width="500"
+                  />
+              </div>
         </div>
         </div>
     );
