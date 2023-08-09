@@ -49,18 +49,25 @@ const PerfilProvider = ({ children }) => {
 
 
     useEffect(()=>{
-        GetInfoUser()
+        if(localStorage.getItem('@UserId:Nutrafity')){
+            GetInfoUser()
+        }
+        
         
     }, [])
 
     useEffect(()=>{
         //CalcIMC(infoAtual.altura, infoAtual.kg)
-        GetGraficoInfos()
+        if(localStorage.getItem('@UserId:Nutrafity')){
+            GetGraficoInfos()
+        }
+        
     }, [infoUser])
 
 
     //Consultas
     const GetInfoUser = () => {
+        
         const userRef = ref(database, `users/${userId}`)
         onValue(userRef, (snapshot) => {
             const data = snapshot.val()
