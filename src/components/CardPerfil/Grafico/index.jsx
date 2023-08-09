@@ -12,7 +12,7 @@ const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3})
           curve: 'straight',
         },
         chart: {
-          id: "basic-bar",
+          id: "Nutrafity",
           zoom: {
             enabled: true,
             
