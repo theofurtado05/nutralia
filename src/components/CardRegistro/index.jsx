@@ -132,7 +132,7 @@ const CardRegister = () => {
             });
 
         } catch (error) {
-
+            setErrorStatus(true)
             switch (error.code) {
                 case "auth/invalid-email":
                   setErrorMsg("E-mail inválido.");

@@ -58,7 +58,7 @@ export default function AtualizaDadosModal() {
         kg: peso,
         objetivo: newObjetivo.value,
         intolerancia: intolerancia,
-        IMC: peso * (altura * altura),
+        IMC: (peso / ((altura)**2)).toFixed(2),
         idade: idade
     }
     UpdateInfo(newData)

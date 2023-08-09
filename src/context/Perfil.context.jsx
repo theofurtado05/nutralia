@@ -85,7 +85,7 @@ const PerfilProvider = ({ children }) => {
 
     const CalcIMC = (altura, peso) => {
         //imc = peso / (altura * altura)
-        const imc = peso / (altura * altura)
+        const imc = (peso / ((altura)**2)).toFixed(2)
         setImc(imc)
     }
 
