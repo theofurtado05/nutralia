@@ -98,23 +98,27 @@ const PerfilProvider = ({ children }) => {
 
         const userRef = ref(database, `users/${userId}`)
         onValue(userRef, (snapshot) => {
-            const data = snapshot.val()
-            if(data.acompanhamento.infos){
-                setStatusGrafico(true)
-                for(const key in data.acompanhamento.infos){
-                    const value = data.acompanhamento.infos[key]
-                    console.log(value);
-                    listaAuxiliar.push(value)
-                    listaCategoria.push(value.dataAtualizacao)
-                    listaPeso.push(value.kg)
-                    listaAltura.push(value.altura)
-                    listaIMC.push(value.IMC)
-
-                }
+            const data = snapshot.val();
+            if (data.acompanhamento.infos) {
+              setStatusGrafico(true);
+          
+              const sortedInfos = Object.values(data.acompanhamento.infos).sort((a, b) => {
+                return new Date(a.dataAtualizacao) - new Date(b.dataAtualizacao);
+              });
+          
+              sortedInfos.forEach((value) => {
+                console.log(value);
+                listaAuxiliar.push(value);
+                listaCategoria.push(value.dataAtualizacao);
+                listaPeso.push(value.kg);
+                listaAltura.push(value.altura);
+                listaIMC.push(value.IMC);
+              });
             } else {
-                setStatusGrafico(false)
+              setStatusGrafico(false);
             }
-        })
+          });
+          
         setGraficoArray(listaAuxiliar) 
         setDataAtualizacaoState(listaCategoria)
         setListaAlturaState(listaAltura)

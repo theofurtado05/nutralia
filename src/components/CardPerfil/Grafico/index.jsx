@@ -9,7 +9,7 @@ const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3})
     let state = {
       options: {
         stroke: {
-          curve: 'smooth',
+          curve: 'straight',
         },
         chart: {
           id: "basic-bar",
@@ -20,7 +20,17 @@ const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3})
         },
         xaxis: {
           categories: categoria ? categoria : [1,2,3]
-        }
+        },
+        yaxis: {
+          show: false, // Esta linha oculta os números no eixo y
+        },
+        markers: {
+          size: 5,
+          hover: {
+            size: undefined,
+            sizeOffset: 3
+          },
+        },
       },
       series: [
         {
@@ -36,7 +46,7 @@ const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3})
         {
           name: titulo3,
           data: lista3 ? lista3 : [1,2,3],
-          type: 'column'
+          type: 'line'
         }
       ],
     };
