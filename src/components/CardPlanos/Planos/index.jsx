@@ -19,9 +19,9 @@ const Planos = () => {
                         
                         <CardPlano tituloPlano={'Mensal'}  frequencia={'mês'} valorPlano={'29,90'} numDietas={'5'} link={`https://pay.kiwify.com.br/ghzechi?afid=${afiliadoId}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&utm_source=Mensal`} />
 
-                        <CardPlano tituloPlano={'Semestral'} frequencia={'mês'}valorPlano={'24,90'} numDietas={'7'} link={`https://pay.kiwify.com.br/CaksDAQ?afid=${afiliadoId}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&utm_source=Semestral`} adicional={'Cobrado Semestralmente'}/>
+                        <CardPlano tituloPlano={'Semestral'} frequencia={'mês'}valorPlano={'25,65'} numDietas={'7'} link={`https://pay.kiwify.com.br/JGL7BAf?afid=${afiliadoId}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&utm_source=Semestral`} adicional={'Cobrado Semestralmente'}/>
 
-                        <CardPlano tituloPlano={'Anual'} frequencia={'mês'} valorPlano={'19,90'} numDietas={'9'} link={`https://pay.kiwify.com.br/8o1uSpD?afid=${afiliadoId}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&utm_source=Mensal`} adicional={'Cobrado Anualmente'}/>
+                        <CardPlano tituloPlano={'Anual'} frequencia={'mês'} valorPlano={'19,98'} numDietas={'9'} link={`https://pay.kiwify.com.br/niFzj6R?afid=${afiliadoId}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&utm_source=Mensal`} adicional={'Cobrado Anualmente'}/>
 
                     </DivForm>
                 </DivFormPai>

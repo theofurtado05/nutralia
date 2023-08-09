@@ -81,6 +81,7 @@ const CardRegister = () => {
             console.log("ate aqui")
             
             set(ref(database, `users/${user.uid}`), {
+              nome: "",
               email: email,
               celular: celular,
               primeiroAcesso: true,

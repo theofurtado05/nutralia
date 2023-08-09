@@ -221,10 +221,10 @@ const LandingPage = () => {
                     <CardPlano tituloPlano={"Mensal"} valorPlano={"29,90"}
                     numDietas={5} link={`./registro/${afid}`} frequencia={'mês'}/>
 
-                    <CardPlano tituloPlano={"Semestral"} valorPlano={"24,90"}
+                    <CardPlano tituloPlano={"Semestral"} valorPlano={"25,65"}
                     numDietas={7} link={`./registro/${afid}`} frequencia={'mês'} adicional={'Cobrado semestralmente'}/>
 
-                    <CardPlano tituloPlano={"Anual"} valorPlano={"19,90"}
+                    <CardPlano tituloPlano={"Anual"} valorPlano={"19,98"}
                     numDietas={9} link={`./registro/${afid}`} frequencia={'mês'} adicional={'Cobrado anualmente'}/>
 
                 </div>
