@@ -20,6 +20,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import MockupDieta from '../../assets/MockupDieta.png'
 
 import MockupGerarDieta from '../../assets/MockupGerarDieta.png'
+import MockupMonitoramento from '../../assets/mockupMonitoramento.png'
 
 import MockupMacbook from '../../assets/MockupMacbook.png'
 
@@ -206,7 +207,7 @@ const LandingPage = () => {
                     
                 </div>
 
-                <img src={MockupDieta}/>{/*Adicionar print da receita no cell */}
+                <img src={MockupMonitoramento}/>
 
                 </div>
             </FourthSection>
