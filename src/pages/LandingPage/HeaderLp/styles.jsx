@@ -36,6 +36,7 @@ export const Header = styled.header`
         cursor: pointer;
     }
     @media screen and (max-width: 770px){
+        width: 90%;
         button{
             background: none;
             color: grey;

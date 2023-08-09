@@ -1,11 +1,12 @@
 import Router from './routes'
 import {WhitelabelProvider, useWhitelabel} from './context/Whitelabel'
-import { DietaProvider, useDieta } from './context/Dieta';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ReactDOM from 'react-dom'
 import theme from './theme'
 
 import { useEffect } from 'react';
+import { AssinaturaProvider } from './context/Assinatura.context';
+import { PerfilProvider } from './context/Perfil.context';
 
 function App() {
   const {setarCores} = useWhitelabel();
@@ -14,11 +15,13 @@ function App() {
     
         <ThemeProvider theme={theme}>
           <WhitelabelProvider>
-            <DietaProvider>
-              <>
-                <Router/>
-              </>
-            </DietaProvider>
+            <AssinaturaProvider>
+              <PerfilProvider>
+                <>
+                  <Router/>
+                </>
+              </PerfilProvider>
+            </AssinaturaProvider>
           </WhitelabelProvider>
         </ThemeProvider>
         

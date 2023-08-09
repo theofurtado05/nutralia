@@ -84,19 +84,48 @@ const CardRegister = () => {
               email: email,
               celular: celular,
               tickets: 0,
+              ticketsUsados: 0,
               compras: 0,
-              kg: 0,
-              altura: 0,
-              objetivo: "",
-              intolerancia: "",
+              acompanhamento: {
+                infoAtual: {
+                    kg: 0,
+                    altura: 0,
+                    objetivo: "",
+                    intolerancia: "",
+                    idade: "",
+                    genero: "",
+                    IMC: 0,
+                    dataAtualizacao: "",
+                    insight: "",
+                },
+                infos: [{}],
+                metaAtual: {
+                    titulo: "",
+                    descricao: "",
+                    objetivo: 0,
+                    progresso: 0,
+                    status: ""
+                },
+                metas: [{}]
+              },
+
+              dietas: {
+                receitasSalvasId: []
+              },
               plano: "Gratuito",
-              afiliadoId: afiliadoId
+              afiliadoId: afiliadoId,
+              
             }).then(()=>{
 
               localStorage.setItem('@UserId:Nutrafity', user.uid);
               localStorage.setItem('@Email:Nutrafity', email);
               localStorage.setItem('@AfiliadoId:Nutrafity', afiliadoId)
-              window.location.href = '../Menu'
+              if(localStorage.getItem('@PlanoEscolhido:Nutrafity')){
+                window.location.href = '../Planos'
+              } else {
+                window.location.href = '../Menu'
+              }
+              
               console.log('Usuário registrado com sucesso!');
               
             });

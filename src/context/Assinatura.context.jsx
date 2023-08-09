@@ -8,10 +8,10 @@ import { initializeApp } from "firebase/app";
 import { get, getDatabase, onValue, ref, set, child, update } from "firebase/database";
 import { GetUserInfo } from "../services/metodos";
 
-const DietaContext = createContext({})
-DietaContext.displayName = 'DietaContext'
+const AssinaturaContext = createContext({})
+AssinaturaContext.displayName = 'AssinaturaContext'
 
-const DietaProvider = ({ children }) => {
+const AssinaturaProvider = ({ children }) => {
     const [plano, setPlano] = useState()
     const [numTickets, setNumTickets] = useState()
     const [planoAtual, setPlanoAtual] = useState()
@@ -50,20 +50,20 @@ const DietaProvider = ({ children }) => {
 
 
     return (
-        <DietaContext.Provider value={{ 
+        <AssinaturaContext.Provider value={{ 
             numTickets,
             GetNumTickets,
             ReduzirTicket,
             planoAtual        
         }}>
             {children}
-        </DietaContext.Provider>
+        </AssinaturaContext.Provider>
     )
 }
 
 
-export const useDieta = () => {
-    const context = useContext(DietaContext)
+export const useAssinatura = () => {
+    const context = useContext(AssinaturaContext)
 
     if(!context) {
         throw new Error("Erro ao usar o useDieta")
@@ -72,5 +72,5 @@ export const useDieta = () => {
     return context;
 }
 
-export {DietaContext, DietaProvider}
+export {AssinaturaContext, AssinaturaProvider}
 

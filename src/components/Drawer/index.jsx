@@ -9,6 +9,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
@@ -22,12 +26,15 @@ import { Logout } from '@mui/icons-material';
 import { useEffect } from 'react';
 import LogoDefault from '../../assets/logo.png'
 import { SignOut } from '../../services/auth';
-import { useDieta } from '../../context/Dieta';
+import { useAssinatura } from '../../context/Assinatura.context';
+
 
 
 export default function Drawer() {
-  const {GetNumTickets, numTickets, planoAtual} = useDieta()
-  
+  const {GetNumTickets, numTickets, planoAtual} = useAssinatura()
+
+  const [ticketsUsados, setTicketsUsados] = useState()
+
   const [state, setState] = React.useState({
     left: false, 
   });
@@ -88,73 +95,189 @@ export default function Drawer() {
         width: '150px',
         alignSelf: 'center',
        }} />
-      <List style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '10px',
-        
-      }}>
-        {['Gerar Dieta', 'Planos','Sair'].map((text, index) => (
-          <Link to={`/${index == 0 ? "Menu" : index == 1 ? "Planos" : ""}`}
-          style={{
-            textDecoration: 'none',
-            color: 'inherit',
-            width: '100%'
-          }}>
-          <ListItem key={text} disablePadding onClick={text === 'Sair' && SignOut}>
-            <ListItemButton>
-              <ListItemIcon>
-                {index === 0 ? <AssignmentIcon /> : 
-                index === 1 ? <Diversity3Icon/> : <LogoutIcon/>}
-              </ListItemIcon>
-              <ListItemText primary={text}/>
-            </ListItemButton>
-          </ListItem>
-          </Link>
-        ))}
-      </List>
-      <Divider />
-      <ResumosRestantes>
-          <TituloResumoRestante>
-              Dietas Restantes
-          </TituloResumoRestante>
-          <NumeroResumoRestantes>
-            <DescriptionIcon 
-            style={{
-              fontSize: '32px',
-
-            }}/> {numTickets}
-          </NumeroResumoRestantes>
-
-      </ResumosRestantes>
-      <Divider />
-      <ResumosRestantes style={{backgroundColor: 'var(--Secondary-color)'}}>
-          <TituloResumoRestante>
-              Plano Atual
-          </TituloResumoRestante>
-          <NumeroResumoRestantes>
-            {planoAtual}
-          </NumeroResumoRestantes>
-
-      </ResumosRestantes>
-      <Divider />
-      <DivButtons>
-            <Button variant="contained"
-            style={{
-              width: '100%',
-              background: '#017b01',
-              fontWeight: 'bold'
-
-            }} onClick={faleConosco}>
-              Fale conosco</Button>
-        </DivButtons>
-     
-            <Usuario>
-              Usuario:  {localStorage.getItem('@Email:Nutrafity')}
-            </Usuario>
       
+        <div className='divMenu'>
+            <a href="/perfil">
+              <AccountBoxIcon/> Perfil 
+            </a>
+            <a href="/menu">
+              <RestaurantMenuIcon/> Gerar Receita 
+            </a>
+            {/* <a href="/menu">
+              <MenuBookIcon/> Receita Semanal 
+            </a> */}
+
+        </div>
+
+        <div className='infos'>
+            <span className='tickets'>{numTickets}</span>
+            <h3>Dietas Restantes</h3>
+
+            <p>Quer aumentar seus resultados? <br/>
+              Precisa de mais dietas?</p>
+            
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '-10px'}}>
+                <a href="/planos">Evoluir plano</a>
+            </div>
+        </div>
+
+        
+        
+        <div className='footer'>
+          <button className='btSuporte' onClick={faleConosco}>Fale conosco</button>
+
+          <hr/>
+
+          <div>
+            <div className='infoUser'>
+              <span className='email'>{localStorage.getItem('@Email:Nutrafity')}</span>
+              <span className='plano'>Plano: {planoAtual}</span>
+            </div>
+            <button onClick={SignOut}>
+              <LogoutIcon/>
+            </button>
+            
+          </div>
+        </div>
+
+        <style>
+          {`
+            .btSuporte{
+              background: var(--Primary-color);
+              color: #FFF;
+              font-weight: 700;
+              padding: 10px;
+              width: 90%;
+            }
+            button{
+              background: rgba(0,0,0,0);
+              border: none;
+              border-radius: 8px;
+            }
+            button:hover{
+              cursor: pointer;
+              background: #d0d0d0;
+            }
+            .btSuporte:hover{
+              cursor: pointer;
+              background: var(--Secondary-color);
+            }
+            .infoUser{
+              display: flex;
+              flex-direction: column;
+              align-items: left;
+              justify-content: flex-start;
+              width: 80%;
+            }
+
+            .infoUser .plano{
+              font-weight: bold;
+              font-size: 12px;
+            }
+
+            .infoUser span{
+              text-align: left;
+            }
+
+            .infoUser email{
+              font-weight: 500;
+            }
+
+            .footer{
+              width: 100%;
+              position: absolute;
+              bottom: 15px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+
+            }
+
+            .footer div{
+              display: flex;
+              
+              justify-content: space-between;
+              width: 95%;
+            }
+
+            hr{
+              color: grey;
+              width: 90%;
+            }
+
+            .infos{
+              width: 90%;
+              background: #8ecc9b;
+              border-radius: 8px;
+              padding: 10px;
+
+              display: flex;
+              flex-direction: column;
+              align-items: left;
+              
+            }
+
+            .infos .tickets{
+              border: 10px var(--Secondary-color) solid;
+              border-radius: 55%;
+              padding: 10px;
+              
+              width: 10%;
+              display: flex;
+              align-items: center;
+              self-align: center;
+              text-align: center;
+              justify-content: center;
+            }
+
+            .infos h3{
+              font-size: 14px;
+              
+            }
+
+            .infos p{
+              font-size: 14px;
+              font-weight: 500;
+            }
+
+            .infos div a{
+              font-weight: 600;
+              text-decoration: underline;
+              color: #000;
+            }
+
+
+            .divMenu{
+              padding-top: 20px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              gap: 5px;
+              width: 100%;
+              padding-bottom: 50px;
+            }
+            .divMenu a{
+              text-align: left;
+              padding: 10px;
+              border-radius: 8px;
+              font-weight: 600;
+              text-decoration: none;
+              color: #000;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              
+            }
+            .divMenu a:hover{
+              background: #d0d0d0;
+              cursor: pointer;
+            }
+
+          `}
+
+        </style>
+
     </Box>
   );
 

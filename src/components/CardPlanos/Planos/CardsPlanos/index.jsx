@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 
 
-const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia}) => {
+const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional}) => {
     
     const handleClick = () => {
+        localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
         window.open(link, 'blank')
     }
 
@@ -17,12 +18,12 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia}) => {
                     <div class="description">
                        - {numDietas} Dietas por mês;
                         <br/>- Dietas Acumulativas
-                        <br/>- Acompanhamento de evolução (em breve)
-                        
+                        <br/>- Acompanhamento de evolução 
+                        {adicional && <><br/> - {adicional}</>}
                     </div>
             </div>
             
-                <button onClick={handleClick}>
+                <button onClick={handleClick} className="btPlanos">
                     Assinar agora
                 </button>
           
@@ -76,7 +77,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia}) => {
             letter-spacing: 1px;
             }
 
-            button {
+            .btPlanos {
                 -webkit-user-select: none;
                 -moz-user-select: none;
                 user-select: none;
@@ -93,7 +94,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia}) => {
                 text-shadow: 0px 4px 18px var(--Secondary-color);
                 background: white;
             }
-            button:hover{
+            .btPlanos:hover{
                 cursor: pointer;
                 background: #eeeded;
             }
