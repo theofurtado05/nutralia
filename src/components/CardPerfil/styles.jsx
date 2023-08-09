@@ -89,17 +89,22 @@ export const Container = styled.body`
     .graficos{
         width: 100%;
         height: auto;
-        padding: 10px;
+        padding: 10px 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        
     }
 
     @media screen and (max-width: 1024px){
-        .divObjetivo, .insight{
+        .divObjetivo, .insight, .graficos{
             width: 98%;
         }
 
+        .graficos{
+            overflow-x: scroll;
+        }
+        
     }
 
     @media screen and (max-width: 770px){
@@ -148,6 +153,7 @@ export const StyledButton = styled.button`
 
     @media screen and (max-width: 770px){
         width: 60%;
+        font-size: 14px;
     }
 
     

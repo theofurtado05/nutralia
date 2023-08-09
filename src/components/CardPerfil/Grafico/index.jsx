@@ -14,7 +14,7 @@ const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3})
         chart: {
           id: "basic-bar",
           zoom: {
-            enabled: false,
+            enabled: true,
             
           },
         },
