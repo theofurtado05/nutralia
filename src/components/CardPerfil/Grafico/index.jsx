@@ -38,11 +38,11 @@ const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3})
           data: lista1 ? lista1 : [1,2,3],
           type: "line"
         },
-        {
-          name: titulo2,
-          data: lista2 ? lista2 : [1,2,3],
-          type: "line"
-        },
+        // {
+        //   name: titulo2,
+        //   data: lista2 ? lista2 : [1,2,3],
+        //   type: "line"
+        // },
         {
           name: titulo3,
           data: lista3 ? lista3 : [1,2,3],
