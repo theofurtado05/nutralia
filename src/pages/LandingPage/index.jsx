@@ -44,6 +44,13 @@ const LandingPage = () => {
         navigate('/login')
     }
 
+    const goToPreco = () => {
+        const pricesSection = document.getElementById('precos');
+        if (pricesSection) {
+        pricesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     return(
         <Container>
             <HeaderLp/>
@@ -58,12 +65,8 @@ const LandingPage = () => {
                         Entrar
                     </StyledButton>
 
-                    <StyledButton>
-                        
-                        <a href="#precos">
+                    <StyledButton onClick={goToPreco}>
                             OBTER ACESSO
-                        </a>
-                        
                     </StyledButton>
 
                 </div>
@@ -135,12 +138,8 @@ const LandingPage = () => {
                     
                     </div>
 
-                    <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
-                        <a href="#precos">
+                    <StyledButton style={{marginTop: '20px', alignSelf: 'center'}} onClick={goToPreco}>
                             OBTER ACESSO
-                        </a>
-                            
-                
                     </StyledButton>
                     
                 </div>
@@ -199,10 +198,8 @@ const LandingPage = () => {
                     
                     </div>
 
-                    <StyledButton style={{marginTop: '20px', alignSelf: 'center'}}>
-                    <a href="#precos">
+                    <StyledButton style={{marginTop: '20px', alignSelf: 'center'}} onClick={goToPreco}>
                             OBTER ACESSO
-                        </a>
                     </StyledButton>
                     
                 </div>
