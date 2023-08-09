@@ -19,24 +19,24 @@ const Grafico = ({categoria, titulo1, lista1, titulo2, lista2, titulo3, lista3})
           },
         },
         xaxis: {
-          categories: categoria
+          categories: categoria ? categoria : [1,2,3]
         }
       },
       series: [
         {
           name: titulo1,
-          data: lista1,
+          data: lista1 ? lista1 : [1,2,3],
           type: "line"
         },
         {
           name: titulo2,
-          data: lista2,
+          data: lista2 ? lista2 : [1,2,3],
           type: "line"
         },
         {
-            name: titulo3,
-            data: lista3,
-            type: 'column'
+          name: titulo3,
+          data: lista3 ? lista3 : [1,2,3],
+          type: 'column'
         }
       ],
     };

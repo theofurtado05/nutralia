@@ -1,7 +1,8 @@
 import { TextField } from "@mui/material";
+import Autocomplete from '@mui/material/Autocomplete';
 import React, { useEffect, useState } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} from './styles'
-import Autocomplete from '@mui/material/Autocomplete';
+
 import { GerarDietaAPI } from "../../../services/api";
 import { GerarDietaDocx, GetUserInfo } from "../../../services/metodos";
 

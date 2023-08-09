@@ -137,6 +137,10 @@ export const StyledButton = styled.button`
     align-items: center; 
     justify-content: center;
 
+    &:hover{
+        opacity: 0.7;
+    }
+
     a{
         text-decoration: none;
         color: #fff;

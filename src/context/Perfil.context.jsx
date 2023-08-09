@@ -5,7 +5,7 @@ import 'firebase/database';
 import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-import { get, getDatabase, onValue, ref, set, child, update } from "firebase/database";
+import { get, getDatabase, onValue, ref, set, child, update, push } from "firebase/database";
 import { GetUserInfo } from "../services/metodos";
 
 const PerfilContext = createContext({})
@@ -22,10 +22,15 @@ const PerfilProvider = ({ children }) => {
     const [listaPesoState, setListaPesoState] = useState()
     const [listaAlturaState, setListaAlturaState] = useState()
     const [listaImcState, setListaImcState] = useState()
-    const [listaDataAtualizacaoState, setDataAtualizacaoState] = useState()
+    const [listaDataAtualizacaoState, setDataAtualizacaoState] = useState() 
+    const [objetivo, setObjetivo] = useState()
+
+    const [afiliadoId, setAfiliadoId] = useState()
 
 
     const [infoModalState, setInfoModalState] = useState(false)
+    const [atualizaDadosModalState, setAtualizaDadosModalState] = useState(false)
+    const [statusGrafico, setStatusGrafico] = useState(false)
   
     //banco de dados - NAO MEXER
     const app = initializeApp(firebaseConfig);
@@ -39,13 +44,13 @@ const PerfilProvider = ({ children }) => {
 
     useEffect(()=>{
         GetInfoUser()
-        GetGraficoInfos()
+        
     }, [])
 
     useEffect(()=>{
         //CalcIMC(infoAtual.altura, infoAtual.kg)
-        
-    }, [infoAtual])
+        GetGraficoInfos()
+    }, [infoUser])
 
 
     //Consultas
@@ -57,6 +62,8 @@ const PerfilProvider = ({ children }) => {
             setAcompanhamento(data.acompanhamento)
             setMeta(data.acompanhamento.meta)
             setInfoAtual(data.acompanhamento.infoAtual)
+            setAfiliadoId(data.afiliadoId)
+            setObjetivo(data.acompanhamento.infoAtual.objetivo)
         })
     }
 
@@ -77,13 +84,19 @@ const PerfilProvider = ({ children }) => {
         onValue(userRef, (snapshot) => {
             const data = snapshot.val()
             if(data.acompanhamento.infos){
-                for(let i = 0; i < data.acompanhamento.infos.length; i++){
-                    listaAuxiliar.push(data.acompanhamento.infos[i])
-                    listaCategoria.push(data.acompanhamento.infos[i].dataAtualizacao)
-                    listaPeso.push(data.acompanhamento.infos[i].kg)
-                    listaAltura.push(data.acompanhamento.infos[i].altura)
-                    listaIMC.push(data.acompanhamento.infos[i].IMC)
+                setStatusGrafico(true)
+                for(const key in data.acompanhamento.infos){
+                    const value = data.acompanhamento.infos[key]
+                    console.log(value);
+                    listaAuxiliar.push(value)
+                    listaCategoria.push(value.dataAtualizacao)
+                    listaPeso.push(value.kg)
+                    listaAltura.push(value.altura)
+                    listaIMC.push(value.IMC)
+
                 }
+            } else {
+                setStatusGrafico(false)
             }
         })
         setGraficoArray(listaAuxiliar) 
@@ -92,6 +105,59 @@ const PerfilProvider = ({ children }) => {
         setListaPesoState(listaPeso)
         setListaImcState(listaIMC)
     }
+
+
+    //update de dados
+        //- set novos dados no info atual
+        //- push novos dados no infos
+
+    const UpdateInfo = (infos) => {
+        const today = new Date();
+        const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+        const infoAtualRef = ref(database, `users/${userId}/acompanhamento/infoAtual`)
+        const infosRef = ref(database, `users/${userId}/acompanhamento/infos`)
+
+
+        const newInfoAtual = {
+            IMC: infos.IMC,
+            altura: infos.altura,
+            dataAtualizacao: formattedDate,
+            idade: infos.idade,
+            intolerancia: infos.intolerancia,
+            kg: infos.kg,
+            objetivo: infos.objetivo
+
+        }
+
+        const newInfos = {
+            IMC: infos.IMC,
+            altura: infos.altura,
+            dataAtualizacao: formattedDate,
+            kg: infos.kg
+        }
+
+        
+        //atualiza os dados atuais
+        update(infoAtualRef, newInfoAtual)
+        .then(()=>{
+            console.log('Dados atualizados com sucesso.')
+        }).catch((err) => {
+            console.log('Erro ao atualizar os dados: ', err)
+        })
+
+
+        //adiciona os dados atuais na lista de infos
+        push(infosRef, newInfos)
+        .then(()=>{
+            console.log('Dados adicionados as informaçoes')
+        }).catch((err)=>{
+            console.log('Erro ao adicionar os dados: ', err)
+        })
+    
+    }
+
+
+    
 
     
  
@@ -109,7 +175,14 @@ const PerfilProvider = ({ children }) => {
             listaPesoState,
             listaAlturaState,
             listaDataAtualizacaoState,
-            listaImcState
+            listaImcState,
+            afiliadoId,
+            UpdateInfo,
+            setAtualizaDadosModalState,
+            atualizaDadosModalState,
+            UpdateInfo,
+            objetivo,
+            statusGrafico
         }}>
             {children}
         </PerfilContext.Provider>

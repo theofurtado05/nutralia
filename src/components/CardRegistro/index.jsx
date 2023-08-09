@@ -120,7 +120,12 @@ const CardRegister = () => {
               localStorage.setItem('@UserId:Nutrafity', user.uid);
               localStorage.setItem('@Email:Nutrafity', email);
               localStorage.setItem('@AfiliadoId:Nutrafity', afiliadoId)
-              window.location.href = '../Menu'
+              if(localStorage.getItem('@PlanoEscolhido:Nutrafity')){
+                window.location.href = '../Planos'
+              } else {
+                window.location.href = '../Menu'
+              }
+              
               console.log('Usuário registrado com sucesso!');
               
             });

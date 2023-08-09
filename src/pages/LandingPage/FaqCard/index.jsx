@@ -11,6 +11,22 @@ export default function FaqCard() {
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Typography>O que é a Nutrafity?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          É uma plataforma de acompanhamento nutricional que utiliza inteligência artificial para
+          melhorar seus resultados e te mostrar a solução.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >

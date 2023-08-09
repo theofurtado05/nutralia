@@ -48,7 +48,7 @@ const LandingPage = () => {
 
             <FirstSection id="0">
                 <h1>Dieta personalizada para resultados incríveis!</h1>
-                <h3>Alcance seus objetivos de treino de forma eficiente e deliciosa com dietas feitas sob medida, suporte contínuo e gráficos de progresso intuitivos.</h3>
+                <h3>Alcance seus objetivos de forma eficiente e deliciosa com dietas feitas sob medida, suporte contínuo e gráficos de progresso intuitivos.</h3>
 
                 <div className="btActions" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '20px'}}>
                 
@@ -219,14 +219,14 @@ const LandingPage = () => {
                 </span>
 
                 <div className="divPlanos">
-                    <CardPlano tituloPlano={"Mensal"} valorPlano={"39,90"}
-                    numDietas={15} link={'https://nutrafity.com/registro'} frequencia={'mês'}/>
+                    <CardPlano tituloPlano={"Mensal"} valorPlano={"29,90"}
+                    numDietas={5} link={'https://nutrafity.com/registro'} frequencia={'mês'}/>
 
-                    <CardPlano tituloPlano={"Semestral"} valorPlano={"34,90"}
-                    numDietas={30} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado semestralmente'}/>
+                    <CardPlano tituloPlano={"Semestral"} valorPlano={"24,90"}
+                    numDietas={7} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado semestralmente'}/>
 
                     <CardPlano tituloPlano={"Anual"} valorPlano={"19,90"}
-                    numDietas={45} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado anualmente'}/>
+                    numDietas={9} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado anualmente'}/>
 
                 </div>
 

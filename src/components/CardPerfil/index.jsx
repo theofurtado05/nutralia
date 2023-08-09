@@ -6,6 +6,7 @@ import CardInfo from "./CardInfo";
 import Grafico from "./Grafico";
 import { usePerfil } from "../../context/Perfil.context";
 import InfoModal from "../../components/Modais/InfoModal";
+import AtualizaDadosModal from "../Modais/AtualizaDadosModal";
 
 
 const CardPerfil = () => {
@@ -15,7 +16,10 @@ const CardPerfil = () => {
         listaPesoState,
         listaAlturaState,
         listaDataAtualizacaoState,
-        listaImcState} = usePerfil()
+        listaImcState,
+        atualizaDadosModalState,
+        setAtualizaDadosModalState,
+        statusGrafico} = usePerfil()
 
     const [peso, setPeso] = useState(0)
     const [altura, setAltura] = useState(0)
@@ -56,7 +60,9 @@ const CardPerfil = () => {
                 <div style={{display: 'flex', width: '100%', alignItems: 'center'}}>
                     <h1 className="tituloPagina">Meu Perfil</h1>
                
-                    <StyledButton>Atualizar dados</StyledButton>
+                    <StyledButton onClick={()=>{
+                        setAtualizaDadosModalState(true)
+                    }}>Atualizar dados</StyledButton>
                
                     
                 </div>
@@ -92,6 +98,9 @@ const CardPerfil = () => {
             </div>
             
             {infoModalState && <InfoModal titulo="O que é IMC?" texto={`IMC é o índice de massa corporal, que determina a obesidade. É calculado da seguinte forma: peso (kg) x (altura (m) x altura (m))`}/>}
+
+            {atualizaDadosModalState && statusGrafico && 
+            <AtualizaDadosModal/>}
         </Container>
     )
 }
