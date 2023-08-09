@@ -24,7 +24,8 @@ const CardPerfil = () => {
         atualizarDados,
         setAtualizarDados,
         volteAmanha, 
-        setVolteAmanha} = usePerfil()
+        setVolteAmanha,
+        primeiroAcesso} = usePerfil()
 
     const [peso, setPeso] = useState(0)
     const [altura, setAltura] = useState(0)
@@ -121,7 +122,7 @@ const CardPerfil = () => {
 
             
 
-            {atualizaDadosModalState && statusGrafico && atualizarDados ? 
+            {atualizaDadosModalState && statusGrafico && atualizarDados || primeiroAcesso ? 
             <AtualizaDadosModal/> : 
             volteAmanha && 
             <InfoModal titulo="Volte amanha!" texto={`Seus dados já foram atualizados hoje! Volte amanha para continuar o progresso :)`}/>}

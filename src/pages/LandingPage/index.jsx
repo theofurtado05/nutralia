@@ -220,13 +220,13 @@ const LandingPage = () => {
 
                 <div className="divPlanos">
                     <CardPlano tituloPlano={"Mensal"} valorPlano={"29,90"}
-                    numDietas={5} link={'https://nutrafity.com/registro'} frequencia={'mês'}/>
+                    numDietas={5} link={'./registro'} frequencia={'mês'}/>
 
                     <CardPlano tituloPlano={"Semestral"} valorPlano={"24,90"}
-                    numDietas={7} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado semestralmente'}/>
+                    numDietas={7} link={'./registro'} frequencia={'mês'} adicional={'Cobrado semestralmente'}/>
 
                     <CardPlano tituloPlano={"Anual"} valorPlano={"19,90"}
-                    numDietas={9} link={'https://nutrafity.com/registro'} frequencia={'mês'} adicional={'Cobrado anualmente'}/>
+                    numDietas={9} link={'./registro'} frequencia={'mês'} adicional={'Cobrado anualmente'}/>
 
                 </div>
 

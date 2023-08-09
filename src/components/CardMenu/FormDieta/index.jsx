@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import Autocomplete from '@mui/material/Autocomplete';
 import React, { useEffect, useState } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} from './styles'
+import InputMask from 'react-input-mask';
 
 import { GerarDietaAPI } from "../../../services/api";
 import { GerarDietaDocx, GetUserInfo } from "../../../services/metodos";
@@ -26,7 +27,9 @@ const FormDieta = () => {
     
     const {numTickets, ReduzirTicket} = useAssinatura()
 
-    
+    const handleChangeAltura = (e) => {
+        setAltura(e.target.value);
+      };
 
     const objetivos = [
         { label: 'Emagrecimento', value: 'Emagrecimento' },
@@ -87,7 +90,20 @@ const FormDieta = () => {
                     <h1>Gerar Dieta</h1>
 
                     <DivForm>
-                        <TextField label="Altura (m)" value={altura} onChange={(e) => setAltura(e.target.value)}/>
+                    <InputMask
+                        mask="9.99"
+                        value={altura}
+                        onChange={handleChangeAltura}
+                        // maskChar="_" // Optional: You can use any character you want to indicate a placeholder
+                        >
+                        {() => (
+                            <TextField
+                            label="Altura (m)"
+                            value={altura}
+                            
+                            />
+                        )}
+                        </InputMask>
                         <TextField label="Peso (kg)" value={peso} onChange={(e) => setPeso(e.target.value)}/>
                         <Autocomplete
                             disablePortal

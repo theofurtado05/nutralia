@@ -27,6 +27,8 @@ const PerfilProvider = ({ children }) => {
 
     const [afiliadoId, setAfiliadoId] = useState()
 
+    const [primeiroAcesso, setPrimeiroAcesso] = useState()
+
 
     const [infoModalState, setInfoModalState] = useState(false)
     const [atualizaDadosModalState, setAtualizaDadosModalState] = useState(false)
@@ -77,6 +79,7 @@ const PerfilProvider = ({ children }) => {
             setInfoAtual(data.acompanhamento.infoAtual)
             setAfiliadoId(data.afiliadoId)
             setObjetivo(data.acompanhamento.infoAtual.objetivo)
+            setPrimeiroAcesso(data.primeiroAcesso)
         })
     }
 
@@ -128,7 +131,7 @@ const PerfilProvider = ({ children }) => {
         
         const infoAtualRef = ref(database, `users/${userId}/acompanhamento/infoAtual`)
         const infosRef = ref(database, `users/${userId}/acompanhamento/infos`)
-
+        const primeiroAcessoRef = ref(database, `users/${userId}`)
 
         const newInfoAtual = {
             IMC: infos.IMC,
@@ -155,6 +158,13 @@ const PerfilProvider = ({ children }) => {
             console.log('Dados atualizados com sucesso.')
         }).catch((err) => {
             console.log('Erro ao atualizar os dados: ', err)
+        })
+
+        update(primeiroAcessoRef, {primeiroAcesso: false})
+        .then(()=>{
+            console.log('Primeiro acesso com dados preenchidos.')
+        }).catch((err)=>{
+            console.log(err)
         })
 
 
@@ -199,7 +209,8 @@ const PerfilProvider = ({ children }) => {
             setAtualizarDados,
             atualizarDados,
             volteAmanha, 
-            setVolteAmanha
+            setVolteAmanha,
+            primeiroAcesso
         }}>
             {children}
         </PerfilContext.Provider>

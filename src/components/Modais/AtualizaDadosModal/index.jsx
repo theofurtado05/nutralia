@@ -8,6 +8,7 @@ import { TextField } from "@mui/material";
 import Autocomplete from '@mui/material/Autocomplete';
 import { useState } from 'react';
 import { StyledButton } from '../../CardPerfil/styles';
+import InputMask from 'react-input-mask';
 
 const style = {
   position: 'absolute',
@@ -35,7 +36,7 @@ export default function AtualizaDadosModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setAtualizaDadosModalState(true);
   const handleClose = () => setAtualizaDadosModalState(false);
-  const {setAtualizaDadosModalState, atualizaDadosModalState, infoAtual, UpdateInfo, objetivo} = usePerfil()
+  const {setAtualizaDadosModalState, atualizaDadosModalState, infoAtual, UpdateInfo, objetivo, primeiroAcesso} = usePerfil()
 
   //Dados
   const [altura, setAltura] = useState(infoAtual.altura);
@@ -43,6 +44,7 @@ export default function AtualizaDadosModal() {
   const [newObjetivo, setObjetivo] = useState(objetivos[0])
   const [intolerancia, setIntolerancia] = useState(infoAtual.intolerancia)
   const [imc, setImc] = useState(infoAtual.IMC)
+  const [idade, setIdade] = useState(infoAtual.idade)
 
   
 
@@ -57,7 +59,7 @@ export default function AtualizaDadosModal() {
         objetivo: newObjetivo.value,
         intolerancia: intolerancia,
         IMC: peso * (altura * altura),
-        idade: infoAtual.idade
+        idade: idade
     }
     UpdateInfo(newData)
   }
@@ -65,7 +67,7 @@ export default function AtualizaDadosModal() {
   return (
     <div>
       <Modal
-        open={atualizaDadosModalState}
+        open={atualizaDadosModalState || primeiroAcesso}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -76,10 +78,27 @@ export default function AtualizaDadosModal() {
           </Typography>
 
           <div style={{display: 'flex', flexWrap: 'wrap', width: '100%', gap: '10px', paddingTop: '20px', paddingBottom: '20px'}}>
-            <TextField label="Altura (m)" value={altura} 
-          onChange={(e) => setAltura(e.target.value)}/>
+            <InputMask
+              mask="9.99"
+              value={altura}
+              onChange={(e) => setAltura(e.target.value)}
+              // maskChar="_" // Optional: You can use any character you want to indicate a placeholder
+              >
+              {() => (
+                  <TextField
+                  label="Altura (m)"
+                  value={altura}
+                 
+                  />
+              )}
+            </InputMask>
+            
             <TextField label="Peso (kg)" value={peso} 
             onChange={(e) => setPeso(e.target.value)}/>
+
+            <TextField label="Idade" value={idade} 
+            onChange={(e) => setIdade(e.target.value)}/>
+            
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"

@@ -83,6 +83,7 @@ const CardRegister = () => {
             set(ref(database, `users/${user.uid}`), {
               email: email,
               celular: celular,
+              primeiroAcesso: true,
               tickets: 0,
               ticketsUsados: 0,
               compras: 0,
@@ -95,7 +96,7 @@ const CardRegister = () => {
                     idade: "",
                     genero: "",
                     IMC: 0,
-                    dataAtualizacao: "",
+                    dataAtualizacao: null,
                     insight: "",
                 },
                 infos: [{}],
