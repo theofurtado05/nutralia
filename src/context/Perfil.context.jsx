@@ -31,6 +31,12 @@ const PerfilProvider = ({ children }) => {
     const [infoModalState, setInfoModalState] = useState(false)
     const [atualizaDadosModalState, setAtualizaDadosModalState] = useState(false)
     const [statusGrafico, setStatusGrafico] = useState(false)
+
+    const today = new Date();
+    const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+    //para verificar a data e validar que pode atualizar hoje
+    const [atualizarDados, setAtualizarDados] = useState(true)
+    const [volteAmanha, setVolteAmanha] = useState()
   
     //banco de dados - NAO MEXER
     const app = initializeApp(firebaseConfig);
@@ -112,8 +118,7 @@ const PerfilProvider = ({ children }) => {
         //- push novos dados no infos
 
     const UpdateInfo = (infos) => {
-        const today = new Date();
-        const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+        
         const infoAtualRef = ref(database, `users/${userId}/acompanhamento/infoAtual`)
         const infosRef = ref(database, `users/${userId}/acompanhamento/infos`)
 
@@ -182,7 +187,12 @@ const PerfilProvider = ({ children }) => {
             atualizaDadosModalState,
             UpdateInfo,
             objetivo,
-            statusGrafico
+            statusGrafico,
+            formattedDate,
+            setAtualizarDados,
+            atualizarDados,
+            volteAmanha, 
+            setVolteAmanha
         }}>
             {children}
         </PerfilContext.Provider>

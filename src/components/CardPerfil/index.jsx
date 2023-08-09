@@ -19,7 +19,12 @@ const CardPerfil = () => {
         listaImcState,
         atualizaDadosModalState,
         setAtualizaDadosModalState,
-        statusGrafico} = usePerfil()
+        statusGrafico, 
+        formattedDate,
+        atualizarDados,
+        setAtualizarDados,
+        volteAmanha, 
+        setVolteAmanha} = usePerfil()
 
     const [peso, setPeso] = useState(0)
     const [altura, setAltura] = useState(0)
@@ -27,7 +32,6 @@ const CardPerfil = () => {
     const [IMC, setIMC] = useState(0)
     const [objetivo, setObjetivo] = useState('')
     const [textoIMC, setTextoIMC] = useState('')
-
 
    useEffect(()=>{
     verifLogadoInside()    
@@ -47,7 +51,14 @@ const CardPerfil = () => {
         if(infoAtual.insight && infoAtual.insight != null && infoAtual.insight != undefined){
             setInsightStatus(true)
         }
+        if(infoAtual.dataAtualizacao == formattedDate){
+            setAtualizarDados(false)
+        } else {
+            setAtualizarDados(true)
+        }
     }
+
+    
 
    }, [infoAtual])
 
@@ -61,7 +72,16 @@ const CardPerfil = () => {
                     <h1 className="tituloPagina">Meu Perfil</h1>
                
                     <StyledButton onClick={()=>{
-                        setAtualizaDadosModalState(true)
+                        //se tem que atualizar
+                        if(atualizarDados){
+                            setAtualizaDadosModalState(true)
+                        } else {
+                            setVolteAmanha(true)
+                        }
+                        
+                        
+                        // se nao
+                        
                     }}>Atualizar dados</StyledButton>
                
                     
@@ -99,8 +119,12 @@ const CardPerfil = () => {
             
             {infoModalState && <InfoModal titulo="O que é IMC?" texto={`IMC é o índice de massa corporal, que determina a obesidade. É calculado da seguinte forma: peso (kg) x (altura (m) x altura (m))`}/>}
 
-            {atualizaDadosModalState && statusGrafico && 
-            <AtualizaDadosModal/>}
+            
+
+            {atualizaDadosModalState && statusGrafico && atualizarDados ? 
+            <AtualizaDadosModal/> : 
+            volteAmanha && 
+            <InfoModal titulo="Volte amanha!" texto={`Seus dados já foram atualizados hoje! Volte amanha para continuar o progresso :)`}/>}
         </Container>
     )
 }

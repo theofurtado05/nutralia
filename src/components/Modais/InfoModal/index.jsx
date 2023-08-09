@@ -23,16 +23,24 @@ const style = {
 export default function InfoModal({titulo, texto}) {
   const [open, setOpen] = React.useState(false);
 
-  const {infoModalState, setInfoModalState} = usePerfil()
+  const {infoModalState, setInfoModalState, 
+    setAtualizarDados,
+    atualizarDados, volteAmanha, setVolteAmanha} = usePerfil()
 
-  const handleOpen = () => setInfoModalState(true);
-  const handleClose = () => setInfoModalState(false);
+  const handleOpen1 = () => setInfoModalState(true);
+  const handleClose1 = () => {
+    setInfoModalState(false)
+    setVolteAmanha(false)
+  };
+
+  const handleOpen2 = () => setVolteAmanha(true)
+  
 
   return (
     <div>
       <Modal
-        open={handleOpen}
-        onClose={handleClose}
+        open={handleOpen1 || handleOpen2}
+        onClose={handleClose1}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
