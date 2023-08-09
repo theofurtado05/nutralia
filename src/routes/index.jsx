@@ -35,6 +35,7 @@ export default function Router(){
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LandingPage/>}/>
+                    <Route path="/:afid" element={<LandingPage/>}/>
                     <Route path="/Login" element={<LoginPage/>}/>
                     <Route path="/Registro/:afid" element={<RegisterPage/>}/>
                     <Route path="/Registro" element={<RegisterPage/>}/>
