@@ -85,7 +85,7 @@ const CardRegister = () => {
               email: email,
               celular: celular,
               primeiroAcesso: true,
-              tickets: 0,
+              tickets: 1,
               ticketsUsados: 0,
               compras: 0,
               acompanhamento: {
