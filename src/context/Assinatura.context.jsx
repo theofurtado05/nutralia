@@ -14,6 +14,7 @@ AssinaturaContext.displayName = 'AssinaturaContext'
 const AssinaturaProvider = ({ children }) => {
     const [plano, setPlano] = useState()
     const [numTickets, setNumTickets] = useState()
+    const [numTicketsUsados, setTicketsUsados] = useState()
     const [planoAtual, setPlanoAtual] = useState()
 
     const app = initializeApp(firebaseConfig);
@@ -30,6 +31,7 @@ const AssinaturaProvider = ({ children }) => {
             const data = snapshot.val()
             setNumTickets(data.tickets)
             setPlanoAtual(data.plano)
+            setTicketsUsados(data.ticketsUsados)
         })
 
         return numTickets
@@ -39,7 +41,7 @@ const AssinaturaProvider = ({ children }) => {
     const ReduzirTicket = async () => {
         const ticketsRef = ref(database, `users/${userId}`)
         try{
-            await update(ticketsRef, {tickets: numTickets - 1})
+            await update(ticketsRef, {tickets: numTickets - 1, ticketsUsados: numTicketsUsados + 1})
             console.log(`Tickets atualizados para ${numTickets - 1}`);
         } catch(error) {
             console.log(`Failed to update tickets for user ${userId}`, error)
