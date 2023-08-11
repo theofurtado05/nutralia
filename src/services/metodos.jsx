@@ -101,67 +101,80 @@ export const GerarDietaDocx = async (infoUsuario) => {
     //hora de passar para o docx
     const objInfoUsuario = {
         //dieta
-        segundaManha1: dietaPartes[0].manha[1],
-        segundaManha2: dietaPartes[0].manha[2],
-        segundaManha3: dietaPartes[0].manha[3],
-        segundaManhaValor: dietaPartes[0].manha[4],
+        manha1: dietaPartes[0].manha[1],
+        manha2: dietaPartes[0].manha[2],
+        manha3: dietaPartes[0].manha[3],
+        valorManha: dietaPartes[0].manha[4],
 
-        segundaMeioDia1: dietaPartes[1].meioDia[1],
-        segundaMeioDia2: dietaPartes[1].meioDia[2],
-        segundaMeioDia3: dietaPartes[1].meioDia[3],
-        segundaMeioDiaValor: dietaPartes[1].meioDia[4],
+        meiodia1: dietaPartes[1].meioDia[1],
+        meiodia2: dietaPartes[1].meioDia[2],
+        meiodia3: dietaPartes[1].meioDia[3],
+        valorMeioDia: dietaPartes[1].meioDia[4],
 
-        segundaTarde1: dietaPartes[2].tarde[1],
-        segundaTarde2: dietaPartes[2].tarde[2],
-        segundaTarde3: dietaPartes[2].tarde[3],
-        segundaTardeValor: dietaPartes[2].tarde[4],
+        tarde1: dietaPartes[2].tarde[1],
+        tarde2: dietaPartes[2].tarde[2],
+        tarde3: dietaPartes[2].tarde[3],
+        valorTarde: dietaPartes[2].tarde[4],
 
-        segundaNoite1: dietaPartes[3].noite[1],
-        segundaNoite2: dietaPartes[3].noite[2],
-        segundaNoite3: dietaPartes[3].noite[3],
-        segundaNoiteValor: dietaPartes[3].noite[4],
+        noite1: dietaPartes[3].noite[1],
+        noite2: dietaPartes[3].noite[2],
+        noite3: dietaPartes[3].noite[3],
+        valorNoite: dietaPartes[3].noite[4],
 
         objetivo: infoUsuario.objetivo,
-        kg: infoUsuario.peso,
+        peso: infoUsuario.peso,
         altura: infoUsuario.altura,
         intolerancia: infoUsuario.intolerancia,
     }
 
-    function generateHTML(obj) {
-        const template = Template// Seu template HTML aqui
-      
-        const keysToReplace = Object.keys(obj);
-        let resultHTML = template;
-      
-        keysToReplace.forEach((key) => {
-          const value = obj[key];
-          const regex = new RegExp(`{${key}}`, 'g');
-          resultHTML = resultHTML.replace(regex, value);
-        });
-      
-        return resultHTML;
-      }
-      
-      function downloadHTMLFile(content) {
-        const blob = new Blob([content], { type: 'text/html' });
-        saveAs(blob, 'Nutrafity.html');
-      }
+    loadFile(
+        DietaModelo, (error, content) => {
+        if(error){
+            throw error;
+        }
+        var zip = new PizZip(content)
+        var doc = new Docxtemplater(zip, {
+            paragraphLoop: false,
+            linebreaks: false,
+        })
+        doc.setData(objInfoUsuario)
 
-      const options = {
-        margin: [10, 10], // Margins in millimeters
-        filename: 'converted-file.pdf',
-        image: { type: 'jpeg', quality: 0.98 }, // Quality and format of images
-        html2canvas: { scale: 2 }, // Scale factor for better resolution
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }, // PDF format and orientation
-      };
+        try{
+            doc.render()
+        } catch (error) {
+            function replaceErrors(key, value) {
+                if(value instanceof Error) {
+                    return Object.getOwnPropertyNames(value)
+                    .reduce(function (error, key){
+                        error[key] = value[key]
+                        return error
+                    }, {})
+                }
+                return value
+            }
+            console.log(JSON.stringify({error: error}, replaceErrors))
 
-      
+            if(error.properties && error.properties.errors instanceof Array){
+                const errorMessages = error.properties.errors
+                .map(function (error) {
+                    return error.properties.explanation;
+                })
+                .join('\n');
+                console.log('errorMessages', errorMessages);
+            }
+            throw error;
+        }
+        var out = doc.getZip().generate({
+            type: 'blob',
+            mimeType:
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            }); //Output the document using Data-URI
+            saveAs(out, 'Nutrafity.docx');
 
-      
     
-      const htmlContent = generateHTML(objInfoUsuario)
-      downloadHTMLFile(htmlContent)
-        //pdf.html(htmlContent, options)
+
+        })
+        
 }
 
 
