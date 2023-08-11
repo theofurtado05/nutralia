@@ -7,7 +7,7 @@ const CardEsqueciSenha = () => {
     const [email, setEmail] = useState()
 
     const handleClick = () => {
-        console.log('enviando...')
+        //console.log('enviando...')
     }
 
     return(

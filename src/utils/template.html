@@ -1,172 +1,3 @@
-
-import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import firebaseConfig from '../firebaseConfig';
-import 'firebase/auth';
-import 'firebase/database';
-
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { get, getDatabase, onValue, ref, set, child } from "firebase/database";
-
-import Docxtemplater from 'docxtemplater';
-import PizZip from 'pizzip';
-import PizZipUtils from 'pizzip/utils/index.js';
-import { saveAs } from 'file-saver';
-import jsPDF from 'jspdf';
-import html2pdf from 'html2pdf.js';
-import {getFontEmbedCSS, toBlob, toCanvas, toJpeg, toPixelData, toPng, toSvg} from 'html-to-image';
-
-
-import DietaModelo from '../utils/DietaModelo.docx'
-
-import {GerarDietaPrompt} from "./openai";
-
-
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const database = getDatabase(app)
-
-const auth = getAuth(app);
-
-
-
-
-export const GetUserInfo = (userId) => {
-    
-    const ticketsRef = ref(database, `users/${userId}`)
-    onValue(ticketsRef, (snapshot) => {
-        const data = snapshot.val()
-        //console.log(data.tickets)
-        
-    })
-
-    
-}
-
-
-function loadFile(url, callback) {
-    PizZipUtils.getBinaryContent(url, callback);
-  }
-
-
-export const GerarDietaDocx = async (infoUsuario) => {
-    const dietaPartes = [
-        { manha: [] }, 
-        { meioDia: [] },
-        { tarde: [] },
-        { noite: [] },
-        { valorTotal: [] }
-    ]
-
-
-    const dietaCompleta = await GerarDietaPrompt(infoUsuario)
-    //const dietaCompleta = `MANHA
-                            //     - 2 Ovos cozidos com cebola e azeite de oliva: R$7,80
-                            //     - ½ Sanduiche de atuma na torrada integral com azeite: R$5,25
-                            //     - ½ Xícara de chá preto: R$1,00
-                            //     Total: R$14,05
-                            // `..
-
-
-    if(dietaCompleta) {
-        const periodos = dietaCompleta.split(`\n\n`)
-        let contador = -1
-
-        periodos.forEach((periodo, index) => {
-            const refeicoes = periodo.split('\n')
-            
-            refeicoes.forEach((refeicao, i) => {
-
-                if(i == 0){
-                    contador += 1
-                }
-
-                if(contador == 0){
-                    dietaPartes[0].manha.push(refeicao)
-                } else if (contador == 1){
-                    dietaPartes[1].meioDia.push(refeicao)
-                } else if (contador == 2){
-                    dietaPartes[2].tarde.push(refeicao)
-                } else if (contador == 3){
-                    dietaPartes[3].noite.push(refeicao)
-                } else {
-                    dietaPartes[4].valorTotal.push(refeicao)
-                }
-
-            })
-        })
-    }
-        
-    //hora de passar para o docx
-    const objInfoUsuario = {
-        //dieta
-        segundaManha1: dietaPartes[0].manha[1],
-        segundaManha2: dietaPartes[0].manha[2],
-        segundaManha3: dietaPartes[0].manha[3],
-        segundaManhaValor: dietaPartes[0].manha[4],
-
-        segundaMeioDia1: dietaPartes[1].meioDia[1],
-        segundaMeioDia2: dietaPartes[1].meioDia[2],
-        segundaMeioDia3: dietaPartes[1].meioDia[3],
-        segundaMeioDiaValor: dietaPartes[1].meioDia[4],
-
-        segundaTarde1: dietaPartes[2].tarde[1],
-        segundaTarde2: dietaPartes[2].tarde[2],
-        segundaTarde3: dietaPartes[2].tarde[3],
-        segundaTardeValor: dietaPartes[2].tarde[4],
-
-        segundaNoite1: dietaPartes[3].noite[1],
-        segundaNoite2: dietaPartes[3].noite[2],
-        segundaNoite3: dietaPartes[3].noite[3],
-        segundaNoiteValor: dietaPartes[3].noite[4],
-
-        objetivo: infoUsuario.objetivo,
-        kg: infoUsuario.peso,
-        altura: infoUsuario.altura,
-        intolerancia: infoUsuario.intolerancia,
-    }
-
-    function generateHTML(obj) {
-        const template = Template// Seu template HTML aqui
-      
-        const keysToReplace = Object.keys(obj);
-        let resultHTML = template;
-      
-        keysToReplace.forEach((key) => {
-          const value = obj[key];
-          const regex = new RegExp(`{${key}}`, 'g');
-          resultHTML = resultHTML.replace(regex, value);
-        });
-      
-        return resultHTML;
-      }
-      
-      function downloadHTMLFile(content) {
-        const blob = new Blob([content], { type: 'text/html' });
-        saveAs(blob, 'Nutrafity.html');
-      }
-
-      const options = {
-        margin: [10, 10], // Margins in millimeters
-        filename: 'converted-file.pdf',
-        image: { type: 'jpeg', quality: 0.98 }, // Quality and format of images
-        html2canvas: { scale: 2 }, // Scale factor for better resolution
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }, // PDF format and orientation
-      };
-
-      
-
-      
-    
-      const htmlContent = generateHTML(objInfoUsuario)
-      downloadHTMLFile(htmlContent)
-        //pdf.html(htmlContent, options)
-}
-
-
-
-const Template = `
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -289,12 +120,11 @@ const Template = `
         <div style="display: flex; flex-direction: row; gap: 10px; width: 90%; align-self: center; align-items: center; justify-content: center;">
             <span class="tituloInfo">Altura: <span class="valorInfo">{altura}m</span></span>
             <span class="tituloInfo">Peso: <span class="valorInfo">{kg}kg</span></span>
-            
+            <span class="tituloInfo">Idade: <span class="valorInfo">{idade}</span></span>
         </div>
         
         
-        <div  style="display: flex; flex-direction: column; gap: 10px; width: 90%; align-self: center; align-items: center; justify-content: center;">
-        <span class="tituloInfo">Objetivo: <span class="valorInfo">{objetivo}</span></span>
+        <div  style="display: flex; flex-direction: row; gap: 10px; width: 90%; align-self: center; align-items: center; justify-content: center;">
         <span class="tituloInfo">Intolerância: <span class="valorInfo">{intolerancia}</span></span>
         </div>
     </div>
@@ -349,4 +179,4 @@ const Template = `
 
     <!-- <script type="module" src="./script.js"></script> -->
 </body>
-</html>`
+</html>

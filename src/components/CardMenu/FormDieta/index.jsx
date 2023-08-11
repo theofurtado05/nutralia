@@ -37,6 +37,7 @@ const FormDieta = () => {
         { label: 'Definição de musculos', value: 'Definição de musculos' },
         { label: 'Melhorar a alimentação', value: 'Melhorar a alimentação' },
         { label: 'Aumentar a performance física', value: 'Aumentar a performance física' },
+        { label: 'Hipertrofia', value: 'Hipertrofia'},
     ]
 
     const handleSelecao = (event, newValue) => {
@@ -56,7 +57,7 @@ const FormDieta = () => {
                     intolerancia: intolerancia
                 }
     
-                console.log(usuario)
+                //console.log(usuario)
     
                 //const dieta = await GerarDietaAPI(usuario);
                 

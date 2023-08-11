@@ -78,7 +78,7 @@ const CardRegister = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, senha)
             const user = userCredential.user;
 
-            console.log("ate aqui")
+            //console.log("ate aqui")
             
             set(ref(database, `users/${user.uid}`), {
               nome: "",

@@ -107,7 +107,7 @@ const PerfilProvider = ({ children }) => {
               });
           
               sortedInfos.forEach((value) => {
-                console.log(value);
+                //console.log(value);
                 listaAuxiliar.push(value);
                 listaCategoria.push(value.dataAtualizacao);
                 listaPeso.push(value.kg);
