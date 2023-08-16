@@ -12,6 +12,7 @@ import Perfil from '../pages/Perfil';
 import TermosDeUso from '../pages/TermosDeUso'
 import PoliticasDePrivacidade from '../pages/PoliticasDePrivacidade';
 import Faq from '../pages/Faq';
+import PDF from '../pages/PDF';
 
 
 export default function Router(){
@@ -43,8 +44,9 @@ export default function Router(){
                     <Route path="/Menu" element={<Menu/>}/>
                     <Route path="/Planos" element={<Planos/>}/>
                     <Route path="/Perfil" element={<Perfil/>}/>
-                    <Route path="/receitaDiaria" element={<></>}/>
-                    <Route path="/todasReceitas" element={<></>}/>
+                    <Route path="/pdf" element={<PDF/>}/>
+                    {/* <Route path="/receitaDiaria" element={<></>}/>
+                    <Route path="/todasReceitas" element={<></>}/> */}
 
                     <Route path="/TermosDeUso" element={<TermosDeUso/>}/>
                     <Route path="/Politicas" element={<PoliticasDePrivacidade/>}/>
