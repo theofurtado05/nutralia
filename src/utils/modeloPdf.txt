@@ -1,0 +1,259 @@
+// create a document and pipe to a blob
+var doc = new PDFDocument();
+var stream = doc.pipe(blobStream());
+
+doc
+.image('https://api-nutrafity.vercel.app/imagem/logoTemplateTransparente.png', 0, 0, 
+{ width: 0, height: 0, 1 });
+
+// Define estilos de fonte
+doc.font('Helvetica-Bold').fontSize(32).fillColor('green');
+const darkerGreenColor = '#006400'; // Cor verde mais escura
+
+// Adiciona o título "Plano Alimentar"
+doc.text('PLANO ALIMENTAR', { align: 'center' });
+
+doc
+    .moveTo(doc.x + 80, doc.y - 10)
+    .lineTo(doc.page.width - 152, doc.y - 10)
+    .strokeColor(darkerGreenColor)
+    .stroke();
+
+// Muda o estilo de fonte para informações pessoais
+doc.font('Helvetica-Bold').fontSize(16).fillColor('green');
+
+const personalInfo = {
+  Altura: '1,76m',
+  Peso: '74kg',
+  Objetivo: 'Hipertrofia',
+  Intolerancia: 'Não tem'
+};
+
+// Adiciona as informações pessoais
+doc
+    .fontSize(24)
+    .moveDown(1)
+    .text('Informações pessoais:', {
+        fontWeight: 'bold'
+    })
+    .moveDown(0.2)
+    .fontSize(16)
+    .font('Helvetica').fillColor('#000');
+    
+    Object.keys(personalInfo).forEach(key => {
+        doc.text(`${key}:`, { continued: true, fontWeight: 'bold' });
+        doc.text(` ${personalInfo[key]}`);
+    });
+
+// Finaliza o documento PDF
+
+doc.end();
+stream.on('finish', function() {
+  iframe.src = stream.toBlobURL('application/pdf');
+});
+
+
+console.log('PDF criado com sucesso!');
+
+
+
+
+const objInfoUsuario = {
+            //dieta
+            segunda: {
+                manha: {
+                    manha1: dietaPartes[0].manha[1],
+                    manha2: dietaPartes[0].manha[2],
+                    manha3: dietaPartes[0].manha[3],
+                    valorManha: dietaPartes[0].manha[4],
+                },
+                meioDia: {
+                    meiodia1: dietaPartes[1].meioDia[1],
+                    meiodia2: dietaPartes[1].meioDia[2],
+                    meiodia3: dietaPartes[1].meioDia[3],
+                    valorMeioDia: dietaPartes[1].meioDia[4],
+                },
+                tarde: {
+                    tarde1: dietaPartes[2].tarde[1],
+                    tarde2: dietaPartes[2].tarde[2],
+                    tarde3: dietaPartes[2].tarde[3],
+                    valorTarde: dietaPartes[2].tarde[4],
+                },
+                noite: {
+                    noite1: dietaPartes[3].noite[1],
+                    noite2: dietaPartes[3].noite[2],
+                    noite3: dietaPartes[3].noite[3],
+                    valorNoite: dietaPartes[3].noite[4],
+                }
+            },
+
+            terca: {
+                manha: {
+                    manha1: dietaPartes[0].manha[1],
+                    manha2: dietaPartes[0].manha[2],
+                    manha3: dietaPartes[0].manha[3],
+                    valorManha: dietaPartes[0].manha[4],
+                },
+                meioDia: {
+                    meiodia1: dietaPartes[1].meioDia[1],
+                    meiodia2: dietaPartes[1].meioDia[2],
+                    meiodia3: dietaPartes[1].meioDia[3],
+                    valorMeioDia: dietaPartes[1].meioDia[4],
+                },
+                tarde: {
+                    tarde1: dietaPartes[2].tarde[1],
+                    tarde2: dietaPartes[2].tarde[2],
+                    tarde3: dietaPartes[2].tarde[3],
+                    valorTarde: dietaPartes[2].tarde[4],
+                },
+                noite: {
+                    noite1: dietaPartes[3].noite[1],
+                    noite2: dietaPartes[3].noite[2],
+                    noite3: dietaPartes[3].noite[3],
+                    valorNoite: dietaPartes[3].noite[4],
+                }
+            },
+
+            quarta: {
+                manha: {
+                    manha1: dietaPartes[0].manha[1],
+                    manha2: dietaPartes[0].manha[2],
+                    manha3: dietaPartes[0].manha[3],
+                    valorManha: dietaPartes[0].manha[4],
+                },
+                meioDia: {
+                    meiodia1: dietaPartes[1].meioDia[1],
+                    meiodia2: dietaPartes[1].meioDia[2],
+                    meiodia3: dietaPartes[1].meioDia[3],
+                    valorMeioDia: dietaPartes[1].meioDia[4],
+                },
+                tarde: {
+                    tarde1: dietaPartes[2].tarde[1],
+                    tarde2: dietaPartes[2].tarde[2],
+                    tarde3: dietaPartes[2].tarde[3],
+                    valorTarde: dietaPartes[2].tarde[4],
+                },
+                noite: {
+                    noite1: dietaPartes[3].noite[1],
+                    noite2: dietaPartes[3].noite[2],
+                    noite3: dietaPartes[3].noite[3],
+                    valorNoite: dietaPartes[3].noite[4],
+                }
+            },
+
+            quinta: {
+                manha: {
+                    manha1: dietaPartes[0].manha[1],
+                    manha2: dietaPartes[0].manha[2],
+                    manha3: dietaPartes[0].manha[3],
+                    valorManha: dietaPartes[0].manha[4],
+                },
+                meioDia: {
+                    meiodia1: dietaPartes[1].meioDia[1],
+                    meiodia2: dietaPartes[1].meioDia[2],
+                    meiodia3: dietaPartes[1].meioDia[3],
+                    valorMeioDia: dietaPartes[1].meioDia[4],
+                },
+                tarde: {
+                    tarde1: dietaPartes[2].tarde[1],
+                    tarde2: dietaPartes[2].tarde[2],
+                    tarde3: dietaPartes[2].tarde[3],
+                    valorTarde: dietaPartes[2].tarde[4],
+                },
+                noite: {
+                    noite1: dietaPartes[3].noite[1],
+                    noite2: dietaPartes[3].noite[2],
+                    noite3: dietaPartes[3].noite[3],
+                    valorNoite: dietaPartes[3].noite[4],
+                }
+            },
+
+            sexta: {
+                manha: {
+                    manha1: dietaPartes[0].manha[1],
+                    manha2: dietaPartes[0].manha[2],
+                    manha3: dietaPartes[0].manha[3],
+                    valorManha: dietaPartes[0].manha[4],
+                },
+                meioDia: {
+                    meiodia1: dietaPartes[1].meioDia[1],
+                    meiodia2: dietaPartes[1].meioDia[2],
+                    meiodia3: dietaPartes[1].meioDia[3],
+                    valorMeioDia: dietaPartes[1].meioDia[4],
+                },
+                tarde: {
+                    tarde1: dietaPartes[2].tarde[1],
+                    tarde2: dietaPartes[2].tarde[2],
+                    tarde3: dietaPartes[2].tarde[3],
+                    valorTarde: dietaPartes[2].tarde[4],
+                },
+                noite: {
+                    noite1: dietaPartes[3].noite[1],
+                    noite2: dietaPartes[3].noite[2],
+                    noite3: dietaPartes[3].noite[3],
+                    valorNoite: dietaPartes[3].noite[4],
+                }
+            },
+
+            sabado: {
+                manha: {
+                    manha1: dietaPartes[0].manha[1],
+                    manha2: dietaPartes[0].manha[2],
+                    manha3: dietaPartes[0].manha[3],
+                    valorManha: dietaPartes[0].manha[4],
+                },
+                meioDia: {
+                    meiodia1: dietaPartes[1].meioDia[1],
+                    meiodia2: dietaPartes[1].meioDia[2],
+                    meiodia3: dietaPartes[1].meioDia[3],
+                    valorMeioDia: dietaPartes[1].meioDia[4],
+                },
+                tarde: {
+                    tarde1: dietaPartes[2].tarde[1],
+                    tarde2: dietaPartes[2].tarde[2],
+                    tarde3: dietaPartes[2].tarde[3],
+                    valorTarde: dietaPartes[2].tarde[4],
+                },
+                noite: {
+                    noite1: dietaPartes[3].noite[1],
+                    noite2: dietaPartes[3].noite[2],
+                    noite3: dietaPartes[3].noite[3],
+                    valorNoite: dietaPartes[3].noite[4],
+                }
+            },
+
+            domingo: {
+                manha: {
+                    manha1: dietaPartes[0].manha[1],
+                    manha2: dietaPartes[0].manha[2],
+                    manha3: dietaPartes[0].manha[3],
+                    valorManha: dietaPartes[0].manha[4],
+                },
+                meioDia: {
+                    meiodia1: dietaPartes[1].meioDia[1],
+                    meiodia2: dietaPartes[1].meioDia[2],
+                    meiodia3: dietaPartes[1].meioDia[3],
+                    valorMeioDia: dietaPartes[1].meioDia[4],
+                },
+                tarde: {
+                    tarde1: dietaPartes[2].tarde[1],
+                    tarde2: dietaPartes[2].tarde[2],
+                    tarde3: dietaPartes[2].tarde[3],
+                    valorTarde: dietaPartes[2].tarde[4],
+                },
+                noite: {
+                    noite1: dietaPartes[3].noite[1],
+                    noite2: dietaPartes[3].noite[2],
+                    noite3: dietaPartes[3].noite[3],
+                    valorNoite: dietaPartes[3].noite[4],
+                }
+            },
+            
+            qtdProteinas: '500g/dia',
+            qtdCarboidrato: '300g/dia',
+
+            objetivo: infoUsuario.objetivo,
+            peso: infoUsuario.peso,
+            altura: infoUsuario.altura,
+            intolerancia: infoUsuario.intolerancia,
+        }
