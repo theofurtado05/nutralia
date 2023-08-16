@@ -5,7 +5,7 @@ import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} fro
 import InputMask from 'react-input-mask';
 
 import { GerarDietaAPI } from "../../../services/api";
-import { GerarDietaDocx, GetUserInfo } from "../../../services/metodos";
+import { GerarDietaDocx, GerarDietaPDF, GetUserInfo } from "../../../services/metodos";
 
 import BannerMenu from '../../../assets/BannerMenu.png'
 import { useNavigate } from "react-router-dom";
@@ -60,11 +60,15 @@ const FormDieta = () => {
                 //console.log(usuario)
     
                 //const dieta = await GerarDietaAPI(usuario);
-                
-                await GerarDietaDocx(usuario).then(()=>{
+                await GerarDietaPDF().then(()=>{
+                    console.log('foi')
                     ReduzirTicket()
                     setLoading(false)
                 })
+                // await GerarDietaDocx(usuario).then(()=>{
+                //     ReduzirTicket()
+                //     setLoading(false)
+                // })
                 
     
             } else {

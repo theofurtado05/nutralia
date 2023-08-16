@@ -15,6 +15,8 @@ import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 import html2pdf from 'html2pdf.js';
 import {getFontEmbedCSS, toBlob, toCanvas, toJpeg, toPixelData, toPng, toSvg} from 'html-to-image';
+import PDFDocument from 'pdfkit';
+
 
 
 import DietaModelo from '../utils/DietaModelo.docx'
@@ -239,7 +241,78 @@ export const GerarDietaPDF = async (infoUsuario) => {
         
 
         //Passando para pdf
-        
+        const doc = new PDFDocument();
+        doc.pipe(fs.createWriteStream('plano_alimentar.pdf'));
+
+        // Função para adicionar informações pessoais
+        function addPersonalInfo(doc, info) {
+            doc
+                .font('Helvetica-Bold')
+                .fontSize(18)
+                .text('Informações Pessoais', { align: 'center' })
+                .fontSize(14)
+                .text(`Altura: ${info.altura} cm`, { align: 'center' })
+                .text(`Peso: ${info.peso} kg`, { align: 'center' })
+                .text(`Objetivo: ${info.objetivo}`, { align: 'center' })
+                .text(`Intolerância: ${info.intolerancia}`, { align: 'center' });
+        }
+
+        // Função para adicionar uma página de dieta
+        function addDietaPage(doc, dia) {
+            doc
+                .addPage()
+                .font('Helvetica-Bold')
+                .fontSize(18)
+                .text(dia, { align: 'center' });
+
+            const refeicoes = ['Manhã', 'Meio Dia', 'Tarde', 'Noite'];
+            refeicoes.forEach(refeicao => {
+                doc
+                    .fontSize(16)
+                    .text(refeicao, { underline: true })
+                    .fontSize(12);
+
+                for (let i = 1; i <= 4; i++) {
+                    doc.text(`Item ${i}`);
+                }
+
+                doc.moveDown();
+            });
+        }
+
+        // Adicionar capa
+        doc
+            .font('Helvetica-Bold')
+            .fontSize(24)
+            .text('Plano Alimentar', { align: 'center' });
+
+        const infoPessoais = {
+            altura: 170,
+            peso: 65,
+            objetivo: 'Perder peso',
+            intolerancia: 'Glúten'
+        };
+        addPersonalInfo(doc, infoPessoais);
+
+        doc
+            .fontSize(10)
+            .text('Aviso: Dieta feita sob medida, não compartilhe. Risco de infecção.', { align: 'center', width: 412 });
+
+        // Adicionar páginas de dieta para cada dia
+        const diasDaSemana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
+        diasDaSemana.forEach(dia => {
+            addDietaPage(doc, dia);
+        });
+
+        // Finalizar o PDF
+        doc.end();
+        const stream = doc.pipe(blobStream());
+        stream.on('finish', function() {
+            const blob = stream.toBlob('application/pdf');
+            
+            // Use a biblioteca file-saver para salvar o Blob como um arquivo PDF
+            saveAs(blob, 'plano_alimentar.pdf');
+        });
 }
 
 
