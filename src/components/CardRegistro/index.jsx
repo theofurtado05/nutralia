@@ -85,7 +85,7 @@ const CardRegister = () => {
               email: email,
               celular: celular,
               primeiroAcesso: true,
-              tickets: 1,
+              tickets: 0,
               ticketsUsados: 0,
               compras: 0,
               acompanhamento: {
@@ -111,9 +111,7 @@ const CardRegister = () => {
                 metas: [{}]
               },
 
-              dietas: {
-                receitasSalvasId: []
-              },
+              minhasDietas: [],
               plano: "Gratuito",
               afiliadoId: afiliadoId,
               
