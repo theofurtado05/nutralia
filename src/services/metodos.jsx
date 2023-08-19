@@ -170,9 +170,9 @@ export const GerarMetaObj = async (infoUsuario) => {
     const metaDiariaBruto = await GerarMetaDiaria(infoUsuario)   
 
     const metaDiariaObj = {
-        proteina: parseFloat(metaDiariaBruto.match(/Proteina: (\d+)/)[1]),
-        carboidrato: parseFloat(metaDiariaBruto.match(/Carboidrato: (\d+)/)[1]),
-        lipidio: parseFloat(metaDiariaBruto.match(/Lipídio: (\d+)/)[1]),
+        proteina: parseFloat(metaDiariaBruto.match(/Proteina: (\d+)/)[1]) || parseFloat(metaDiariaBruto.match(/Proteinas: (\d+)/)[1]),
+        carboidrato: parseFloat(metaDiariaBruto.match(/Carboidrato: (\d+)/)[1]) || parseFloat(metaDiariaBruto.match(/Carboidratos: (\d+)/)[1]),
+        lipidio: parseFloat(metaDiariaBruto.match(/Lipídio: (\d+)/)[1]) || parseFloat(metaDiariaBruto.match(/Lipídios: (\d+)/)[1]),
     }
 
     console.log(metaDiariaObj)

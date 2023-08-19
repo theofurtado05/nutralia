@@ -4,9 +4,11 @@ import { Configuration, OpenAIApi } from 'openai';
 // Resto do código do seu arquivo
 
 const configuration = new Configuration({
-    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    // apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    apiKey: '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'
   });
 const openai = new OpenAIApi(configuration);
+
 
 
 export const GerarDietaPrompt = async (infoUsuario) => {
@@ -80,7 +82,7 @@ export const GerarMetaDiaria = async (obj) => {
     })
     
 
-  
+    //console.log(response.data.choices[0].text.trim())
     return response.data.choices[0].text.trim()
 };
 
