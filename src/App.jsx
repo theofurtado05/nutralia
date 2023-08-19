@@ -10,6 +10,33 @@ import { PerfilProvider } from './context/Perfil.context';
 
 function App() {
   const {setarCores} = useWhitelabel();
+  useEffect(() => {
+    // Função para desabilitar o botão direito do mouse
+    if(localStorage.getItem('@Email:Nutrafity') != 'theofurtado05@gmail.com'){
+      const disableRightClick = (event) => {
+        event.preventDefault();
+      };
+  
+      // Função para desabilitar a tecla F12
+      const disableF12 = (event) => {
+        if (event.key === 'F12') {
+          event.preventDefault();
+        }
+      };
+  
+      // Adicionar os event listeners
+      document.addEventListener('contextmenu', disableRightClick);
+      document.addEventListener('keydown', disableF12);
+  
+      // Remover os event listeners quando o componente é desmontado
+      return () => {
+        document.removeEventListener('contextmenu', disableRightClick);
+        document.removeEventListener('keydown', disableF12);
+      };
+
+    }
+    
+  }, []);
   
   return (
     

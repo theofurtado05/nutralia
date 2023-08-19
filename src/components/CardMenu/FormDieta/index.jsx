@@ -1,16 +1,19 @@
 import { TextField } from "@mui/material";
 import Autocomplete from '@mui/material/Autocomplete';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} from './styles'
 import InputMask from 'react-input-mask';
 
 import { GerarDietaAPI } from "../../../services/api";
-import { GerarDietaDocx, GetUserInfo } from "../../../services/metodos";
+import { GerarDietaDocx, GetUserInfo, GerarMetaObj, GerarDietaSemana } from "../../../services/metodos";
 
 import BannerMenu from '../../../assets/BannerMenu.png'
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Loading";
 import { useAssinatura } from "../../../context/Assinatura.context";
+
+import ModeloPDf from "../../ModeloPDF";
+import { PDFViewer } from '@react-pdf/renderer';
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -19,6 +22,13 @@ const FormDieta = () => {
     const [intolerancia, setIntolerancia] = useState('Não tenho intolerância');
     const [errorMsg, setErrorMsg] = useState()
     const [errorStatus, setErrorStatus] = useState(false)
+    const [iniciarDietaSemanal, setIniciarDietaSemanal] = useState()
+    const [dietaGerada, setDietaGerada] = useState()
+
+    const [objMetaDiaria,  setObjMetaDiaria] = useState()
+    const [arrayObjsDietas, setArrayObjsDietas] = useState()
+    const [infoUsuario, setInfoUsuario] = useState()
+    const [statusInfoUsuario, setStatusInfoUsuario] = useState()
     
 
     const [loading, setLoading] = useState(false)
@@ -26,6 +36,8 @@ const FormDieta = () => {
     const navigate = useNavigate()
     
     const {numTickets, ReduzirTicket} = useAssinatura()
+
+    const pdfViewerRef = useRef(null);
 
     const handleChangeAltura = (e) => {
         setAltura(e.target.value);
@@ -45,26 +57,43 @@ const FormDieta = () => {
       };
 
     const gerarDieta = async () => {
+        const usuario = {
+            altura: altura,
+            kg: peso,
+            objetivo: objetivo.value,
+            intolerancia: intolerancia
+        }
+        setInfoUsuario({
+            altura: altura,
+            kg: peso,
+            objetivo: objetivo.value,
+            intolerancia: intolerancia
+        })
+        
+        
         if(numTickets > 0){
+            
             setLoading(true)
             if(altura != '' && peso != '' && objetivo != null){
                 setErrorStatus(false)
-                //... executa o metodo da API
-                const usuario = {
-                    altura: altura,
-                    peso: peso,
-                    objetivo: objetivo.value,
-                    intolerancia: intolerancia
-                }
-    
-                //console.log(usuario)
-    
-                //const dieta = await GerarDietaAPI(usuario);
                 
-                await GerarDietaDocx(usuario).then(()=>{
-                    ReduzirTicket()
-                    setLoading(false)
+
+                const metaDiaria = await GerarMetaObj(usuario)
+                .then((response)=>{
+                    setIniciarDietaSemanal(true)
+                    setObjMetaDiaria(response)
+                    console.log('Usuario: ', usuario)
+                    
+                    console.log('InfoUsuario: ', infoUsuario)
+                    
                 })
+                
+
+ 
+                // await GerarDietaDocx(usuario).then(()=>{
+                //     ReduzirTicket()
+                //     setLoading(false)
+                // })
                 
     
             } else {
@@ -75,9 +104,34 @@ const FormDieta = () => {
             setErrorStatus(true)
             setErrorMsg('Você não possui tickets. Adquira para continuar.')
         }
-        
-    }
+
+}
    
+    useEffect(()=>{
+        const fetchDieta = async () => {
+            const dietaSemanal = await GerarDietaSemana(infoUsuario, objMetaDiaria)
+            .then((response)=>{
+                ReduzirTicket()
+                setLoading(false)
+                setArrayObjsDietas(response)
+                setDietaGerada(true)
+            })
+        }
+        if(infoUsuario && objMetaDiaria){
+            fetchDieta()
+            if (pdfViewerRef.current) {
+                pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
+            }
+        }
+        
+        
+    }, [iniciarDietaSemanal])
+
+    useEffect(()=>{
+        setStatusInfoUsuario(true)
+        // console.log(infoUsuario.altura)
+        
+    }, [infoUsuario])
 
     return(
         <>
@@ -130,6 +184,20 @@ const FormDieta = () => {
                     </StyledButton>
                    
                 </DivFormPai>
+
+                    {dietaGerada && statusInfoUsuario && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && objMetaDiaria && arrayObjsDietas &&  
+                        <div ref={pdfViewerRef} style={{width: '600px'}}>
+                            <PDFViewer style={{
+                                width: '100%',
+                                height: '90vh',
+                                marginTop: '20px'
+                            }}>
+                                
+                                <ModeloPDf arrayObjsDieta={arrayObjsDietas} objInfosPessoais={infoUsuario} objMetaDiaria={objMetaDiaria}/>
+                            </PDFViewer>
+                        </div>
+                    }
+                    
             </DivPai>
 
             {loading && <DivLoading><Loading /></DivLoading>}
