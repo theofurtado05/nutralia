@@ -19,7 +19,7 @@ import {getFontEmbedCSS, toBlob, toCanvas, toJpeg, toPixelData, toPng, toSvg} fr
 
 import DietaModelo from '../utils/DietaModelo.docx'
 
-import {GerarDietaPrompt} from "./openai";
+import {GerarDietaPrompt, TestePrompt, GerarMetaDiaria} from "./openai";
 
 
 
@@ -166,80 +166,33 @@ export const GerarDietaDocx = async (infoUsuario) => {
             })
 }
 
-export const GerarDietaPDF = async (infoUsuario) => {
-    const dietaPartes = [
-        { manha: [] }, 
-        { meioDia: [] },
-        { tarde: [] },
-        { noite: [] },
-        { valorTotal: [] }
-    ]
+export const GerarMetaObj = async (infoUsuario) => {
+    const metaDiariaBruto = await GerarMetaDiaria(infoUsuario)   
 
+    const metaDiariaObj = {
+        proteina: parseFloat(metaDiariaBruto.match(/Proteina: (\d+)/)[1]),
+        carboidrato: parseFloat(metaDiariaBruto.match(/Carboidrato: (\d+)/)[1]),
+        lipidio: parseFloat(metaDiariaBruto.match(/Lipídio: (\d+)/)[1]),
+    }
 
-    const dietaCompleta = await GerarDietaPrompt(infoUsuario)
+    console.log(metaDiariaObj)
+    console.log(metaDiariaBruto)
+    //const dietaCompleta = await TestePrompt()
+    return metaDiariaObj
+       
+}
+
+export const GerarDietaDiaria = async (obj, objMetaDiaria) => {
+    const dietaDiariaBruto = await TestePrompt(obj, objMetaDiaria)
+
+    console.log(dietaDiariaBruto)
     
-        if(dietaCompleta) {
-            const periodos = dietaCompleta.split(`\n\n`)
-            let contador = -1
-
-            periodos.forEach((periodo, index) => {
-                const refeicoes = periodo.split('\n')
-                
-                refeicoes.forEach((refeicao, i) => {
-
-                    if(i == 0){
-                        contador += 1
-                    }
-
-                    if(contador == 0){
-                        dietaPartes[0].manha.push(refeicao)
-                    } else if (contador == 1){
-                        dietaPartes[1].meioDia.push(refeicao)
-                    } else if (contador == 2){
-                        dietaPartes[2].tarde.push(refeicao)
-                    } else if (contador == 3){
-                        dietaPartes[3].noite.push(refeicao)
-                    } else {
-                        dietaPartes[4].valorTotal.push(refeicao)
-                    }
-
-                })
-            })
-        }
-            
-        //hora de passar para o docx
-        const objInfoUsuario = {
-            //dieta
-            manha1: dietaPartes[0].manha[1],
-            manha2: dietaPartes[0].manha[2],
-            manha3: dietaPartes[0].manha[3],
-            valorManha: dietaPartes[0].manha[4],
-
-            meiodia1: dietaPartes[1].meioDia[1],
-            meiodia2: dietaPartes[1].meioDia[2],
-            meiodia3: dietaPartes[1].meioDia[3],
-            valorMeioDia: dietaPartes[1].meioDia[4],
-
-            tarde1: dietaPartes[2].tarde[1],
-            tarde2: dietaPartes[2].tarde[2],
-            tarde3: dietaPartes[2].tarde[3],
-            valorTarde: dietaPartes[2].tarde[4],
-
-            noite1: dietaPartes[3].noite[1],
-            noite2: dietaPartes[3].noite[2],
-            noite3: dietaPartes[3].noite[3],
-            valorNoite: dietaPartes[3].noite[4],
-
-            objetivo: infoUsuario.objetivo,
-            peso: infoUsuario.peso,
-            altura: infoUsuario.altura,
-            intolerancia: infoUsuario.intolerancia,
-        }
-
-        
-
-        //Passando para pdf
-        
 }
 
 
+
+window.onload = () => {
+    const objMetaDiaria = GerarMetaObj({altura: '1,76', kg: '74', objetivo: 'Hipertrofia', intolerancia: 'Sem intolerancia'})
+    
+    GerarDietaDiaria({altura: '1,76', kg: '74', objetivo: 'Hipertrofia', intolerancia: 'Sem intolerancia'}, objMetaDiaria)
+}

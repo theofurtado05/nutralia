@@ -156,6 +156,10 @@ const ModeloPDf = () => {
                 <Text style={styles.texto.bold}>Carboidrato: </Text>
                 500g 
             </Text>
+            <Text style={styles.infoPessoaisInfos}>
+                <Text style={styles.texto.bold}>Lipídios: </Text>
+                500g 
+            </Text>
 
           </View>
             <Text style={styles.texto.aviso}>PLANO ALIMENTAR FEITO SOB MEDIDA. NÃO COMPARTILHE, RISCO DE INFECÇÃO.</Text>
