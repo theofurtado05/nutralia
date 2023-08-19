@@ -119,9 +119,9 @@ const FormDieta = () => {
         }
         if(infoUsuario && objMetaDiaria){
             fetchDieta()
-            if (pdfViewerRef.current) {
-                pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
-            }
+            
+            pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
+            
         }
         
         
