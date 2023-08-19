@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 import Autocomplete from '@mui/material/Autocomplete';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} from './styles'
 import InputMask from 'react-input-mask';
 
@@ -36,6 +36,8 @@ const FormDieta = () => {
     const navigate = useNavigate()
     
     const {numTickets, ReduzirTicket} = useAssinatura()
+
+    const pdfViewerRef = useRef(null);
 
     const handleChangeAltura = (e) => {
         setAltura(e.target.value);
@@ -117,6 +119,9 @@ const FormDieta = () => {
         }
         if(infoUsuario && objMetaDiaria){
             fetchDieta()
+            if (pdfViewerRef.current) {
+                pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
+            }
         }
         
         
@@ -180,13 +185,17 @@ const FormDieta = () => {
                    
                 </DivFormPai>
 
-                    {dietaGerada && statusInfoUsuario && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && objMetaDiaria && arrayObjsDietas && 
-                        <PDFViewer style={{
-                            width: '95%',
-                            height: '90vh'
-                        }}>
-                            <ModeloPDf arrayObjsDieta={arrayObjsDietas} objInfosPessoais={infoUsuario} objMetaDiaria={objMetaDiaria}/>
-                        </PDFViewer>
+                    {dietaGerada && statusInfoUsuario && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && objMetaDiaria && arrayObjsDietas &&  
+                        <div ref={pdfViewerRef} style={{width: '600px'}}>
+                            <PDFViewer style={{
+                                width: '100%',
+                                height: '90vh',
+                                marginTop: '20px'
+                            }}>
+                                
+                                <ModeloPDf arrayObjsDieta={arrayObjsDietas} objInfosPessoais={infoUsuario} objMetaDiaria={objMetaDiaria}/>
+                            </PDFViewer>
+                        </div>
                     }
                     
             </DivPai>
