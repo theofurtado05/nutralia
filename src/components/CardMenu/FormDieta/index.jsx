@@ -186,7 +186,7 @@ const FormDieta = () => {
                 </DivFormPai>
 
                     {dietaGerada && statusInfoUsuario && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && objMetaDiaria && arrayObjsDietas &&  
-                        <div ref={pdfViewerRef} style={{width: '600px'}}>
+                        <div ref={pdfViewerRef} style={{width: '90vw'}}>
                             <PDFViewer style={{
                                 width: '100%',
                                 height: '90vh',
