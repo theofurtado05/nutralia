@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
   });
 
 
-const ModeloPDf = () => {
+const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
+    
     return ( 
         <Document>
         <Page size="A4" style={styles.page}>
@@ -127,19 +128,19 @@ const ModeloPDf = () => {
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Altura: </Text>
-                1,76m 
+                {objInfosPessoais["altura"]} 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Peso: </Text>
-                74kg 
+                {objInfosPessoais.kg} 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Objetivo: </Text>
-                Hipertrofia 
+                {objInfosPessoais.objetivo} 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Intolerância: </Text>
-                Não tem.
+                {objInfosPessoais.intolerancia}
             </Text>
 
           </View>
@@ -150,15 +151,15 @@ const ModeloPDf = () => {
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Proteína: </Text>
-                500g 
+                {objMetaDiaria.proteina} 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Carboidrato: </Text>
-                500g 
+                {objMetaDiaria.carboidrato} 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Lipídios: </Text>
-                500g 
+                {objMetaDiaria.lipidio} 
             </Text>
 
           </View>
@@ -175,10 +176,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[0].manha.manha1}</Text>
+                        <Text>{arrayObjsDieta[0].manha.manha2}</Text>
+                        <Text>{arrayObjsDieta[0].manha.manha3}</Text>
+                        <Text>{arrayObjsDieta[0].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -186,10 +187,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Meio Dia</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[0].meioDia.meioDia1}</Text>
+                        <Text>{arrayObjsDieta[0].meioDia.meioDia2}</Text>
+                        <Text>{arrayObjsDieta[0].meioDia.meioDia3}</Text>
+                        <Text>{arrayObjsDieta[0].meioDia.meioDiaValor}</Text>
                     </View>
                     
             </View>
@@ -197,10 +198,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Tarde</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[0].tarde.tarde1}</Text>
+                        <Text>{arrayObjsDieta[0].tarde.tarde2}</Text>
+                        <Text>{arrayObjsDieta[0].tarde.tarde3}</Text>
+                        <Text>{arrayObjsDieta[0].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
@@ -208,10 +209,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Noite</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[0].noite.noite1}</Text>
+                        <Text>{arrayObjsDieta[0].noite.noite2}</Text>
+                        <Text>{arrayObjsDieta[0].noite.noite3}</Text>
+                        <Text>{arrayObjsDieta[0].noite.noiteValor}</Text>
                     </View>
                     
             </View>
@@ -229,10 +230,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[1].manha.manha1}</Text>
+                        <Text>{arrayObjsDieta[1].manha.manha2}</Text>
+                        <Text>{arrayObjsDieta[1].manha.manha3}</Text>
+                        <Text>{arrayObjsDieta[1].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -240,10 +241,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Meio Dia</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[1].meioDia.meioDia1}</Text>
+                        <Text>{arrayObjsDieta[1].meioDia.meioDia2}</Text>
+                        <Text>{arrayObjsDieta[1].meioDia.meioDia3}</Text>
+                        <Text>{arrayObjsDieta[1].meioDia.meioDiaValor}</Text>
                     </View>
                     
             </View>
@@ -251,10 +252,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Tarde</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[1].tarde.tarde1}</Text>
+                        <Text>{arrayObjsDieta[1].tarde.tarde2}</Text>
+                        <Text>{arrayObjsDieta[1].tarde.tarde3}</Text>
+                        <Text>{arrayObjsDieta[1].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
@@ -262,10 +263,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Noite</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[1].noite.noite1}</Text>
+                        <Text>{arrayObjsDieta[1].noite.noite2}</Text>
+                        <Text>{arrayObjsDieta[1].noite.noite3}</Text>
+                        <Text>{arrayObjsDieta[1].noite.noiteValor}</Text>
                     </View>
                     
             </View>
@@ -283,10 +284,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[2].manha.manha1}</Text>
+                        <Text>{arrayObjsDieta[2].manha.manha2}</Text>
+                        <Text>{arrayObjsDieta[2].manha.manha3}</Text>
+                        <Text>{arrayObjsDieta[2].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -294,10 +295,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Meio Dia</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[2].meioDia.meioDia1}</Text>
+                        <Text>{arrayObjsDieta[2].meioDia.meioDia2}</Text>
+                        <Text>{arrayObjsDieta[2].meioDia.meioDia3}</Text>
+                        <Text>{arrayObjsDieta[2].meioDia.meioDiaValor}</Text>
                     </View>
                     
             </View>
@@ -305,10 +306,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Tarde</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[2].tarde.tarde1}</Text>
+                        <Text>{arrayObjsDieta[2].tarde.tarde2}</Text>
+                        <Text>{arrayObjsDieta[2].tarde.tarde3}</Text>
+                        <Text>{arrayObjsDieta[2].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
@@ -316,10 +317,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Noite</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[2].noite.noite1}</Text>
+                        <Text>{arrayObjsDieta[2].noite.noite2}</Text>
+                        <Text>{arrayObjsDieta[2].noite.noite3}</Text>
+                        <Text>{arrayObjsDieta[2].noite.noiteValor}</Text>
                     </View>
                     
             </View>
@@ -337,10 +338,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[3].manha.manha1}</Text>
+                        <Text>{arrayObjsDieta[3].manha.manha2}</Text>
+                        <Text>{arrayObjsDieta[3].manha.manha3}</Text>
+                        <Text>{arrayObjsDieta[3].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -348,10 +349,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Meio Dia</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[3].meioDia.meioDia1}</Text>
+                        <Text>{arrayObjsDieta[3].meioDia.meioDia2}</Text>
+                        <Text>{arrayObjsDieta[3].meioDia.meioDia3}</Text>
+                        <Text>{arrayObjsDieta[3].meioDia.meioDiaValor}</Text>
                     </View>
                     
             </View>
@@ -359,10 +360,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Tarde</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[3].tarde.tarde1}</Text>
+                        <Text>{arrayObjsDieta[3].tarde.tarde2}</Text>
+                        <Text>{arrayObjsDieta[3].tarde.tarde3}</Text>
+                        <Text>{arrayObjsDieta[3].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
@@ -370,10 +371,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Noite</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[3].noite.noite1}</Text>
+                        <Text>{arrayObjsDieta[3].noite.noite2}</Text>
+                        <Text>{arrayObjsDieta[3].noite.noite3}</Text>
+                        <Text>{arrayObjsDieta[3].noite.noiteValor}</Text>
                     </View>
                     
             </View>
@@ -391,10 +392,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[4].manha.manha1}</Text>
+                        <Text>{arrayObjsDieta[4].manha.manha2}</Text>
+                        <Text>{arrayObjsDieta[4].manha.manha3}</Text>
+                        <Text>{arrayObjsDieta[4].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -402,10 +403,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Meio Dia</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[4].meioDia.meioDia1}</Text>
+                        <Text>{arrayObjsDieta[4].meioDia.meioDia2}</Text>
+                        <Text>{arrayObjsDieta[4].meioDia.meioDia3}</Text>
+                        <Text>{arrayObjsDieta[4].meioDia.meioDiaValor}</Text>
                     </View>
                     
             </View>
@@ -413,10 +414,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Tarde</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[4].tarde.tarde1}</Text>
+                        <Text>{arrayObjsDieta[4].tarde.tarde2}</Text>
+                        <Text>{arrayObjsDieta[4].tarde.tarde3}</Text>
+                        <Text>{arrayObjsDieta[4].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
@@ -424,10 +425,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Noite</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[4].noite.noite1}</Text>
+                        <Text>{arrayObjsDieta[4].noite.noite2}</Text>
+                        <Text>{arrayObjsDieta[4].noite.noite3}</Text>
+                        <Text>{arrayObjsDieta[4].noite.noiteValor}</Text>
                     </View>
                     
             </View>
@@ -446,10 +447,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[5].manha.manha1}</Text>
+                        <Text>{arrayObjsDieta[5].manha.manha2}</Text>
+                        <Text>{arrayObjsDieta[5].manha.manha3}</Text>
+                        <Text>{arrayObjsDieta[5].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -457,10 +458,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Meio Dia</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[5].meioDia.meioDia1}</Text>
+                        <Text>{arrayObjsDieta[5].meioDia.meioDia2}</Text>
+                        <Text>{arrayObjsDieta[5].meioDia.meioDia3}</Text>
+                        <Text>{arrayObjsDieta[5].meioDia.meioDiaValor}</Text>
                     </View>
                     
             </View>
@@ -468,10 +469,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Tarde</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[5].tarde.tarde1}</Text>
+                        <Text>{arrayObjsDieta[5].tarde.tarde2}</Text>
+                        <Text>{arrayObjsDieta[5].tarde.tarde3}</Text>
+                        <Text>{arrayObjsDieta[5].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
@@ -479,10 +480,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Noite</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[5].noite.noite1}</Text>
+                        <Text>{arrayObjsDieta[5].noite.noite2}</Text>
+                        <Text>{arrayObjsDieta[5].noite.noite3}</Text>
+                        <Text>{arrayObjsDieta[5].noite.noiteValor}</Text>
                     </View>
                     
             </View>
@@ -500,10 +501,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[6].manha.manha1}</Text>
+                        <Text>{arrayObjsDieta[6].manha.manha2}</Text>
+                        <Text>{arrayObjsDieta[6].manha.manha3}</Text>
+                        <Text>{arrayObjsDieta[6].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -511,10 +512,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Meio Dia</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[6].meioDia.meioDia1}</Text>
+                        <Text>{arrayObjsDieta[6].meioDia.meioDia2}</Text>
+                        <Text>{arrayObjsDieta[6].meioDia.meioDia3}</Text>
+                        <Text>{arrayObjsDieta[6].meioDia.meioDiaValor}</Text>
                     </View>
                     
             </View>
@@ -522,10 +523,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Tarde</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[6].tarde.tarde1}</Text>
+                        <Text>{arrayObjsDieta[6].tarde.tarde2}</Text>
+                        <Text>{arrayObjsDieta[6].tarde.tarde3}</Text>
+                        <Text>{arrayObjsDieta[6].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
@@ -533,10 +534,10 @@ const ModeloPDf = () => {
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Noite</Text>
                     <View style={styles.sessoes.items}>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Ovo de Codorna com alecrim (R$9,90)</Text>
-                        <Text>- Total: R$29,70</Text>
+                        <Text>{arrayObjsDieta[6].noite.noite1}</Text>
+                        <Text>{arrayObjsDieta[6].noite.noite2}</Text>
+                        <Text>{arrayObjsDieta[6].noite.noite3}</Text>
+                        <Text>{arrayObjsDieta[6].noite.noiteValor}</Text>
                     </View>
                     
             </View>
