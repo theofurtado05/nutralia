@@ -111,7 +111,7 @@ const CardRegister = () => {
                 metas: [{}]
               },
 
-              minhasDietas: [],
+              minhasDietas: "",
               plano: "Gratuito",
               afiliadoId: afiliadoId,
               

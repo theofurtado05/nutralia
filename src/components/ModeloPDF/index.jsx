@@ -5,13 +5,18 @@ import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/render
 // --Secondary-color: #0a730f;
 // --Icon-Background: #8ee892b0;
 // --Card-PrimaryBackground: #1c9e22d7;
-
+// Font.register({
+//     family: 'Oswald',
+//     src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf'
+//   });
 
 const styles = StyleSheet.create({
     page: {
       flexDirection: 'column',
       backgroundColor: '#f5f5f5',
-      position: 'relative'
+      position: 'relative',
+      maxWidth: '100%', 
+      height: 'auto'
       
     },
     texto: {
@@ -117,7 +122,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
     
     return ( 
         <Document>
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={1}>
           <View style={styles.tituloSection}>
             <Text style={styles.titulo}>Plano Alimentar</Text> 
              
@@ -172,7 +177,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
         </Page>
 
         {/*SEGUNDA*/}
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={2}>
             <Text style={styles.texto.tituloDia}>SEGUNDA-FEIRA</Text>
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
@@ -226,7 +231,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
         </Page>
 
         {/*Terca*/}
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={3}>
             <Text style={styles.texto.tituloDia}>TERÇA-FEIRA</Text>
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
@@ -280,7 +285,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
         </Page>
 
         {/*QUARTA*/}
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={4}>
             <Text style={styles.texto.tituloDia}>QUARTA-FEIRA</Text>
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
@@ -334,7 +339,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
         </Page>
 
         {/*QUINTA*/}
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={5}>
             <Text style={styles.texto.tituloDia}>QUINTA-FEIRA</Text>
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
@@ -388,7 +393,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
         </Page>
 
         {/*SEXTA*/}
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={6}>
             <Text style={styles.texto.tituloDia}>SEXTA-FEIRA</Text>
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
@@ -443,7 +448,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
 
 
         {/*SABADO*/}
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={7}>
             <Text style={styles.texto.tituloDia}>SABADO</Text>
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>
@@ -497,7 +502,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
         </Page>
 
         {/*DOMINGO*/}
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={styles.page} pageNumber={8}>
             <Text style={styles.texto.tituloDia}>DOMINGO</Text>
             <View style={styles.sessoes.periodo}>
                 <Text style={styles.texto.tituloPeriodo}>Manha</Text>

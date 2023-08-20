@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import Autocomplete from '@mui/material/Autocomplete';
 import React, { useEffect, useState, useRef } from "react";
 import {DivPai, DivForm, DivFormPai, StyledButton, BannerStyled, DivLoading} from './styles'
@@ -13,7 +13,12 @@ import Loading from "../../Loading";
 import { useAssinatura } from "../../../context/Assinatura.context";
 
 import ModeloPDf from "../../ModeloPDF";
-import { PDFViewer } from '@react-pdf/renderer';
+                            
+import { PDFViewer, Document, Page, PDFDownloadLink} from '@react-pdf/renderer';
+
+import Teste from './Nutrafity.pdf'
+import { usePerfil } from "../../../context/Perfil.context";
+
 
 const FormDieta = () => {
     const [altura, setAltura] = useState();
@@ -38,6 +43,7 @@ const FormDieta = () => {
     const navigate = useNavigate()
     
     const {numTickets, ReduzirTicket} = useAssinatura()
+    const {SalvarDieta} = usePerfil()
 
     const pdfViewerRef = useRef(null);
 
@@ -191,20 +197,35 @@ const FormDieta = () => {
                     </StyledButton>
                    
                 </DivFormPai>
+                    
+                    {dietaGerada && statusInfoUsuario && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && objMetaDiaria && arrayObjsDietas &&
 
-                    {dietaGerada && statusInfoUsuario && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && objMetaDiaria && arrayObjsDietas &&  
-                        <div ref={pdfViewerRef} style={{width: '90vw'}}>
-                            <PDFViewer style={{
-                                width: '100%',
-                                height: '90vh',
-                                marginTop: '20px'
-                            }}>
+                        <div ref={pdfViewerRef} style={{width: '90vw', maxWidth: '600px', paddingTop: '20px'}}>
+
+                            <PDFDownloadLink document={
+                                <ModeloPDf 
+                                    arrayObjsDieta={arrayObjsDietas} 
+                                    objInfosPessoais={infoUsuario} 
+                                    objMetaDiaria={objMetaDiaria}
+                                    />
+
+                            } fileName="PlanoAlimentarNutrafity.pdf">
+
+                            {({ blob, url, loading, error }) =>
+                                loading ? 'Carregando PDF...' : 
                                 
-                                <ModeloPDf arrayObjsDieta={arrayObjsDietas} objInfosPessoais={infoUsuario} objMetaDiaria={objMetaDiaria}/>
-                            </PDFViewer>
+                                <StyledButton variant="contained" style={{
+                                    width: '100%',
+                                    background: 'var(--Secondary-color)',
+                                    fontWeight: 'bold'
+                                }} onClick={()=>{
+                                    SalvarDieta(url)
+                                }}>Baixar Dieta</StyledButton>
+                            }
+                            </PDFDownloadLink>
                         </div>
                     }
-                    
+
             </DivPai>
 
             {loading && <DivLoading><Loading /></DivLoading>}

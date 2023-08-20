@@ -183,6 +183,12 @@ const PerfilProvider = ({ children }) => {
     }
 
 
+
+    const SalvarDieta = (urlDieta) => {
+        const userRef = ref(database, `users/${userId}/minhasDietas`)
+        
+        push(userRef, urlDieta)
+    }
     
 
     
@@ -214,7 +220,8 @@ const PerfilProvider = ({ children }) => {
             atualizarDados,
             volteAmanha, 
             setVolteAmanha,
-            primeiroAcesso
+            primeiroAcesso,
+            SalvarDieta
         }}>
             {children}
         </PerfilContext.Provider>
