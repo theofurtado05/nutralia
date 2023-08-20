@@ -4,8 +4,8 @@ import { Configuration, OpenAIApi } from 'openai';
 // Resto do código do seu arquivo
 
 const configuration = new Configuration({
-    // apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-    apiKey: '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'
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    //apiKey: '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'
   });
 const openai = new OpenAIApi(configuration);
 
