@@ -224,6 +224,25 @@ export const GerarDietaDiaria = async (obj, objMetaDiaria) => {
 
     }
 
+    for (const periodo in dietaDoDia) {
+        if (dietaDoDia.hasOwnProperty(periodo)) {
+            const refeicoes = dietaDoDia[periodo];
+    
+            for (const refeicao in refeicoes) {
+                if (refeicoes.hasOwnProperty(refeicao)) {
+                    const valor = refeicoes[refeicao];
+    
+                    // Verifica se o valor contém \n\n e remove se presente
+                    if (valor && valor.includes("\n\n")) {
+                        refeicoes[refeicao] = valor.replace(/\n\n/g, '');
+                    } else if (valor && valor.includes("\n")){
+                        refeicoes[refeicao] = valor.replace(/\n/g, '')
+                    }
+                }
+            }
+        }
+    }
+    console.log(dietaDoDia)
     return dietaDoDia
 }
 

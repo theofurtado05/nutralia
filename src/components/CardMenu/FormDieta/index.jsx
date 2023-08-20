@@ -115,12 +115,15 @@ const FormDieta = () => {
                 setLoading(false)
                 setArrayObjsDietas(response)
                 setDietaGerada(true)
+                if(pdfViewerRef.current){
+                    pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
+                }
             })
         }
         if(infoUsuario && objMetaDiaria){
             fetchDieta()
             
-            pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
+            
             
         }
         
