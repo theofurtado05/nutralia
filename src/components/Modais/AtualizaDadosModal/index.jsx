@@ -9,18 +9,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useState } from 'react';
 import { StyledButton } from '../../CardPerfil/styles';
 import InputMask from 'react-input-mask';
+import { useMediaQuery } from '@mui/material';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+
 
 const objetivos = [
     { label: 'Emagrecimento', value: 'Emagrecimento' },
@@ -34,6 +25,8 @@ const objetivos = [
 
 
 export default function AtualizaDadosModal() {
+  const isMobile = useMediaQuery('(max-width:770px)');
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setAtualizaDadosModalState(true);
   const handleClose = () => setAtualizaDadosModalState(false);
@@ -47,7 +40,17 @@ export default function AtualizaDadosModal() {
   const [imc, setImc] = useState(infoAtual.IMC)
   const [idade, setIdade] = useState(infoAtual.idade)
 
-  
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: isMobile ? 300 : 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
   const handleSelecao = (event, newValue) => {
     setObjetivo(newValue);

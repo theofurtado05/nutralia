@@ -4,24 +4,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { usePerfil } from '../../../context/Perfil.context';
+import { useMediaQuery } from '@mui/material';
 
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '1px solid var(--Secondary-color)',
-  boxShadow: 24,
-  borderRadius: '8px',
-  p: 4,
-  outline: 'none'
-};
 
 export default function InfoModal({titulo, texto}) {
   const [open, setOpen] = React.useState(false);
+  const isMobile = useMediaQuery('(max-width:770px)');
 
   const {infoModalState, setInfoModalState, 
     setAtualizarDados,
@@ -34,10 +23,23 @@ export default function InfoModal({titulo, texto}) {
   };
 
   const handleOpen2 = () => setVolteAmanha(true)
-  
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: isMobile ? 300 : 400,
+    bgcolor: 'background.paper',
+    border: '1px solid var(--Secondary-color)',
+    boxShadow: 24,
+    borderRadius: '8px',
+    p: 4,
+    outline: 'none'
+  };
 
   return (
-    <div>
+    <div style={{display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center'}}>
       <Modal
         open={handleOpen1 || handleOpen2}
         onClose={handleClose1}
