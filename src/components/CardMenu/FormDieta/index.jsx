@@ -29,6 +29,8 @@ const FormDieta = () => {
     const [arrayObjsDietas, setArrayObjsDietas] = useState()
     const [infoUsuario, setInfoUsuario] = useState()
     const [statusInfoUsuario, setStatusInfoUsuario] = useState()
+
+    const [descerParaPdf, setDescerParaPdf] = useState()
     
 
     const [loading, setLoading] = useState(false)
@@ -115,16 +117,12 @@ const FormDieta = () => {
                 setLoading(false)
                 setArrayObjsDietas(response)
                 setDietaGerada(true)
-                if(pdfViewerRef.current){
-                    pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
-                }
+                setDescerParaPdf(true)
+                
             })
         }
         if(infoUsuario && objMetaDiaria){
             fetchDieta()
-            
-            
-            
         }
         
         
@@ -135,6 +133,12 @@ const FormDieta = () => {
         // console.log(infoUsuario.altura)
         
     }, [infoUsuario])
+
+    useEffect(()=>{
+        if(pdfViewerRef.current){
+            pdfViewerRef.current.scrollIntoView({ behavior: 'smooth' }); // A rolagem suave pode ser ajustada conforme necessário
+        }
+    }, [descerParaPdf])
 
     return(
         <>

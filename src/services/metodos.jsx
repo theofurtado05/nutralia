@@ -201,7 +201,7 @@ export const GerarDietaDiaria = async (obj, objMetaDiaria) => {
             manha1: itensRefeicoes[0] && itensRefeicoes[0].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[0].replace(/;/g ? /;/g : /./g ? /./g : /\n/g, '#').split('#')[0] : ' - 200g de Ovo mexido;',
             manha2: itensRefeicoes[0] && itensRefeicoes[0].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[0].replace(/;/g ? /;/g : /./g ? /./g : /\n/g, '#').split('#')[1] : ' - 100g de Pão integral;' ,
             manha3: itensRefeicoes[0] && itensRefeicoes[0].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[0].replace(/;/g ? /;/g : /./g ? /./g : /\n/g, '#').split('#')[2] : '- 200ml de Suco de laranja;',
-            valorManha: itensRefeicoes[0] && itensRefeicoes[0].split(/;/g ? /;/g : /./g ? /./g : /\n/g,)  ? itensRefeicoes[0].replace(/;/g ? /;/g : /./g ? /./g : /\n/g, '#').split('#')[3] : 'VALOR: R$13,97'
+            manhaValor: itensRefeicoes[0] && itensRefeicoes[0].split(/;/g ? /;/g : /./g ? /./g : /\n/g,)  ? itensRefeicoes[0].replace(/;/g ? /;/g : /./g ? /./g : /\n/g, '#').split('#')[3] : 'VALOR: R$13,97'
         },
         meioDia: {
             meioDia1: itensRefeicoes[1] && itensRefeicoes[1].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[1].replace(/;/g, '#').split('#')[0] : '- 200g de Arroz integral;',
@@ -213,7 +213,7 @@ export const GerarDietaDiaria = async (obj, objMetaDiaria) => {
             tarde1: itensRefeicoes[2] && itensRefeicoes[2].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[2].replace(/;/g, '#').split('#')[0] : '-100g de Biscoito de banana;',
             tarde2: itensRefeicoes[2] && itensRefeicoes[2].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[2].replace(/;/g, '#').split('#')[1] : '- 1 copo de Iogurte desnatado;',
             tarde3: itensRefeicoes[2] && itensRefeicoes[2].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[2].replace(/;/g, '#').split('#')[2] : ' - 3 Colheres de sopa de Aveia;',
-            valorTarde: itensRefeicoes[2] && itensRefeicoes[2].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[2].replace(/;/g, '#').split('#')[3] : 'VALOR: R$17,00'
+            tardeValor: itensRefeicoes[2] && itensRefeicoes[2].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[2].replace(/;/g, '#').split('#')[3] : 'VALOR: R$17,00'
         },
         noite: {
             noite1: itensRefeicoes[3] && itensRefeicoes[3].split(/;/g ? /;/g : /./g ? /./g : /\n/g)  ? itensRefeicoes[3].replace(/;/g, '#').split('#')[0] : '- 200g de Arroz integral;',
@@ -233,10 +233,10 @@ export const GerarDietaDiaria = async (obj, objMetaDiaria) => {
                     const valor = refeicoes[refeicao];
     
                     // Verifica se o valor contém \n\n e remove se presente
-                    if (valor && valor.includes("\n\n")) {
-                        refeicoes[refeicao] = valor.replace(/\n\n/g, '');
-                    } else if (valor && valor.includes("\n")){
-                        refeicoes[refeicao] = valor.replace(/\n/g, '')
+                    if (valor && valor.includes("\n")) {
+                        refeicoes[refeicao] = valor.replace(/\n/g, '');
+                    } else if (valor && valor.includes("\n\n")){
+                        refeicoes[refeicao] = valor.replace(/\n\n/g, '')
                     }
                 }
             }

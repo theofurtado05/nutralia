@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 5,
         right: 5,
+        opacity: 0.6
         
     },
     tituloSection: {
@@ -179,7 +180,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
                         <Text>{arrayObjsDieta[0].manha.manha1}</Text>
                         <Text>{arrayObjsDieta[0].manha.manha2}</Text>
                         <Text>{arrayObjsDieta[0].manha.manha3}</Text>
-                        <Text>{arrayObjsDieta[0].manha.valorManha}</Text>
+                        <Text>{arrayObjsDieta[0].manha.manhaValor}</Text>
                     </View>
                     
             </View>
@@ -201,7 +202,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
                         <Text>{arrayObjsDieta[0].tarde.tarde1}</Text>
                         <Text>{arrayObjsDieta[0].tarde.tarde2}</Text>
                         <Text>{arrayObjsDieta[0].tarde.tarde3}</Text>
-                        <Text>{arrayObjsDieta[0].tarde.valorTarde}</Text>
+                        <Text>{arrayObjsDieta[0].tarde.tardeValor}</Text>
                     </View>
                     
             </View>
