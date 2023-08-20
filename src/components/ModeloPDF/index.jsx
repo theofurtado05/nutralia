@@ -129,11 +129,11 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Altura: </Text>
-                {objInfosPessoais["altura"]} 
+                {objInfosPessoais["altura"]}m 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Peso: </Text>
-                {objInfosPessoais.kg} 
+                {objInfosPessoais.kg}kg 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Objetivo: </Text>
@@ -152,15 +152,15 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Proteína: </Text>
-                {objMetaDiaria.proteina} 
+                {objMetaDiaria.proteina}g 
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Carboidrato: </Text>
-                {objMetaDiaria.carboidrato} 
+                {objMetaDiaria.carboidrato}g
             </Text>
             <Text style={styles.infoPessoaisInfos}>
                 <Text style={styles.texto.bold}>Lipídios: </Text>
-                {objMetaDiaria.lipidio} 
+                {objMetaDiaria.lipidio}g 
             </Text>
 
           </View>
