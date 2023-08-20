@@ -179,7 +179,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
                         <Text>{arrayObjsDieta[0].manha.manha1}</Text>
                         <Text>{arrayObjsDieta[0].manha.manha2}</Text>
                         <Text>{arrayObjsDieta[0].manha.manha3}</Text>
-                        <Text>{arrayObjsDieta[0].manha.manhaValor}</Text>
+                        <Text>{arrayObjsDieta[0].manha.valorManha}</Text>
                     </View>
                     
             </View>
@@ -201,7 +201,7 @@ const ModeloPDf = ({arrayObjsDieta, objInfosPessoais, objMetaDiaria}) => {
                         <Text>{arrayObjsDieta[0].tarde.tarde1}</Text>
                         <Text>{arrayObjsDieta[0].tarde.tarde2}</Text>
                         <Text>{arrayObjsDieta[0].tarde.tarde3}</Text>
-                        <Text>{arrayObjsDieta[0].tarde.tardeValor}</Text>
+                        <Text>{arrayObjsDieta[0].tarde.valorTarde}</Text>
                     </View>
                     
             </View>
