@@ -236,10 +236,10 @@ export const GerarDietaDiaria = async (obj, objMetaDiaria) => {
                     if (valor && valor.includes("\n\n")) {
                         refeicoes[refeicao] = valor.replace(/\n\n/g, '');
 
-                    }else if(valor && valor.includes("\n")){
+                    }else if(valor && valor.includes("\nV")){
                         refeicoes[refeicao] = valor.replace(/\n/g, '')
                     
-                    } else if (valor && valor.includes("\nV")){
+                    } else if (valor && valor.includes("\n")){
                         refeicoes[refeicao] = valor.replace(/\n/g, '')
                     }
                 }
