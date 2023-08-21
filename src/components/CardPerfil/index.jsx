@@ -33,6 +33,7 @@ const CardPerfil = () => {
     const [IMC, setIMC] = useState(0)
     const [objetivo, setObjetivo] = useState('')
     const [textoIMC, setTextoIMC] = useState('')
+    const [tipoIMC, setTipoIMC] = useState()
 
    useEffect(()=>{
     verifLogadoInside()    
@@ -57,11 +58,26 @@ const CardPerfil = () => {
         } else {
             setAtualizarDados(true)
         }
+
+        
     }
-
-    
-
    }, [infoAtual])
+
+   useEffect(()=>{
+    if(IMC < 18.5){
+        setTipoIMC('Abaixo do Peso')
+    } else if (IMC >= 18.5 && IMC <= 24.9){
+        setTipoIMC('Peso normal')
+    } else if (IMC >= 25 && IMC <= 29.9){
+        setTipoIMC('Sobrepeso')
+    } else if (IMC >= 30 && IMC <= 34.9){
+        setTipoIMC('Obesidade grau I')
+    } else if(IMC >= 35 && IMC <= 39.9){
+        setTipoIMC('Obesidade grau II')
+    } else if(IMC >= 40){
+        setTipoIMC('Obesidade grau III')
+    }
+   }, [IMC])
 
     return(
         <Container>
@@ -91,7 +107,7 @@ const CardPerfil = () => {
                 <div className="divInfos">
                     <CardInfo cor="" titulo="Peso" valor={`${peso}`} medida="kg"/>
                     <CardInfo cor="" titulo="Altura" valor={`${altura}`} medida="m"/>
-                    <CardInfo cor=""  titulo="IMC" valor={`${IMC}`} medida="" aviso={"IMC é o índice de massa corporal, que determina a obesidade. É calculado da seguinte forma: peso (kg) x (altura (m) x altura (m))"}/>
+                    <CardInfo cor=""  titulo="IMC" valor={`${IMC}`} medida="" aviso={"IMC é o índice de massa corporal, que determina a obesidade. É calculado da seguinte forma: peso (kg) x (altura (m) x altura (m))"} IMC={tipoIMC}/>
                     <CardInfo cor=""  titulo="Idade" valor={`${idade}`} medida=" anos"/>
                 </div>
 

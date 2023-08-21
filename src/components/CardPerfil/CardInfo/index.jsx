@@ -8,13 +8,13 @@ export const StyledDiv = styled.div`
     width: 200px;
     height: 100px;
     border-radius: 8px;
-    background: var(--Card-PrimaryBackground);
-    box-shadow: 0px 2px 3px 0px var(--Secondary-color);
-    color: white;
+    background: #f5f4f4;
+    box-shadow: 0px 2px 3px 0px grey;
+    color: var(--Primary-color);
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     gap: 0;
     position: relative;
@@ -40,7 +40,7 @@ export const StyledDiv = styled.div`
     
 `;
 
-const CardInfo = ({cor, titulo, valor, medida, aviso}) => {
+const CardInfo = ({cor, titulo, valor, medida, aviso, IMC = false}) => {
     const {setInfoModalState} = usePerfil()
 
    
@@ -54,6 +54,7 @@ const CardInfo = ({cor, titulo, valor, medida, aviso}) => {
                         </span>}
             <h2>{titulo}</h2>
             <span className="info"><span className="valor">{valor}</span>{medida}</span>
+            {IMC && <span>{IMC}</span>}
         </StyledDiv>
 
        
