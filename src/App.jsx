@@ -7,6 +7,8 @@ import theme from './theme'
 import { useEffect } from 'react';
 import { AssinaturaProvider } from './context/Assinatura.context';
 import { PerfilProvider } from './context/Perfil.context';
+// import Tour from 'reactour'
+// import { steps } from './steps.js'
 
 function App() {
   const {setarCores} = useWhitelabel();
@@ -44,9 +46,11 @@ function App() {
           <WhitelabelProvider>
             <AssinaturaProvider>
               <PerfilProvider>
-                <>
-                  <Router/>
-                </>
+                
+                  <>
+                    <Router/>
+                  </>
+                
               </PerfilProvider>
             </AssinaturaProvider>
           </WhitelabelProvider>

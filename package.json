@@ -36,6 +36,7 @@
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
     "react-text-mask": "^5.5.0",
+    "reactour": "^1.19.0",
     "styled-components": "^6.0.0-rc.3",
     "web-vitals": "^2.1.4"
   },
