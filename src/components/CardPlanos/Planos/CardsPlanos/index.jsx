@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 
-const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional}) => {
+const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual}) => {
     
     const handleClick = () => {
         localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
@@ -13,13 +13,29 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
         <>
         <div class="card">
             <div class="content">
+                    {adicionalAnual && <div class="bestPrice">MELHOR VALOR</div>}
                     <div class="title">{tituloPlano}</div>
                     <div class="price">R${valorPlano}<span id="mes">/{frequencia}</span></div>
+                    <hr></hr>
                     <div class="description">
-                       - {numDietas} Dietas por mês;
-                        <br/>- Dietas Acumulativas
-                        <br/>- Acompanhamento de evolução 
-                        {adicional && <><br/> - {adicional}</>}
+                        <span>
+                        - {numDietas} Dietas por mês {adicionalAnual}
+                        </span> 
+                        
+                        <span>
+                            - Acompanhamento de evolução 
+                        </span>
+                        
+                        <span>
+                            - Visualização com gráficos  
+                        </span>
+                        
+                        <span>
+                            - Suporte por E-mail e Whatsapp
+                        </span>
+                        
+                        
+                        {adicional && <><span>- {adicional}</span> </>}
                     </div>
             </div>
             
@@ -30,12 +46,23 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
         </div>
         <style>
             {`
+            .bestPrice{
+                background: black;
+                width: 100%;
+                padding: 2px 10px;
+                align-self: center;
+                color: white;
+                font-weight: regular;
+                box-shadow: 0 1px 1px 0 grey;
+                border-radius: 6px;
+                margin-bottom: 5px;
+            }
             .card {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-around;
-                width: 260px;
+                width: 300px;
                 padding: 20px 1px;
                 margin: 10px 0;
                 text-align: center;
@@ -45,10 +72,13 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                 border-radius: 10px;
                 background-color: #6B6ECC;
                 background: linear-gradient(45deg, var(--Primary-color) 0%, var(--Secondary-color) 100%);
+                gap: 20px;
             }
 
             .content {
-            padding: 20px;
+               display: flex;
+               flex-direction: column;
+               gap: 5px;
             }
 
             .content .price {
@@ -59,9 +89,17 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
             }
 
             .content .description {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 1);
+            display: flex;
+            flex-direction: column;
             margin-top: 10px;
             font-size: 14px;
+            text-align: left;
+            gap: 8px;
+            }
+
+            .content .description span{
+                font-size: 16px;
             }
 
             #mes{
@@ -72,7 +110,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
             font-weight: 800;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.64);
-            margin-top: 10px;
+            
             font-size: 25px;
             letter-spacing: 1px;
             }

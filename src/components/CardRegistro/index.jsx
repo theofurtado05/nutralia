@@ -156,7 +156,7 @@ const CardRegister = () => {
       
 
     const goToLogin = () => {
-        navigate('../')
+        navigate('../login')
     }
 
     return(

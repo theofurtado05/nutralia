@@ -31,8 +31,8 @@ export const DivForm = styled.div`
     justify-content: center;
     
 
-    gap: 10px;
-    width: 600px;
+    gap: 40px;
+
     padding-bottom: 5px;
 
     @media screen and (max-width: 770px){
