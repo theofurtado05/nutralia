@@ -25,7 +25,7 @@ const CardPerfil = () => {
         setAtualizarDados,
         volteAmanha, 
         setVolteAmanha,
-        primeiroAcesso} = usePerfil()
+        primeiroAcesso, avisoModalState, setAvisoModalState} = usePerfil()
 
     const [peso, setPeso] = useState(0)
     const [altura, setAltura] = useState(0)
@@ -37,6 +37,7 @@ const CardPerfil = () => {
 
    useEffect(()=>{
     verifLogadoInside()    
+    console.log(infoUser)
    }, [])
 
 
@@ -79,6 +80,10 @@ const CardPerfil = () => {
     }
    }, [IMC])
 
+   const clickBlock = () => {
+        setAvisoModalState(true)
+   }
+
     return(
         <Container>
             <Header/>
@@ -89,16 +94,16 @@ const CardPerfil = () => {
                     <h1 className="tituloPagina">Meu Perfil</h1>
                
                     <StyledButton onClick={()=>{
-                        //se tem que atualizar
-                        if(atualizarDados){
-                            setAtualizaDadosModalState(true)
+                        if(infoUser.plano == "Gratuito" || infoUser.plano == "gratuito"){
+                            setAvisoModalState(true)
                         } else {
-                            setVolteAmanha(true)
+                            if(atualizarDados){
+                                setAtualizaDadosModalState(true)
+                            } else {
+                                setVolteAmanha(true)
+                            }
                         }
-                        
-                        
-                        // se nao
-                        
+                           
                     }}>Atualizar dados</StyledButton>
                
                     
@@ -142,6 +147,8 @@ const CardPerfil = () => {
             <AtualizaDadosModal/> : 
             volteAmanha && 
             <InfoModal titulo="Volte amanha!" texto={`Seus dados já foram atualizados hoje! Volte amanha para continuar o progresso :)`}/>}
+
+            {avisoModalState && <InfoModal titulo="Adquira um plano!" texto={`Para ter acesso ao acompanhamento de evolução, adquira um de nossos planos <3`}/>}
         </Container>
     )
 }

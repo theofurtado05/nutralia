@@ -14,12 +14,13 @@ export default function InfoModal({titulo, texto}) {
 
   const {infoModalState, setInfoModalState, 
     setAtualizarDados,
-    atualizarDados, volteAmanha, setVolteAmanha} = usePerfil()
+    atualizarDados, volteAmanha, setVolteAmanha, setAvisoModalState} = usePerfil()
 
   const handleOpen1 = () => setInfoModalState(true);
   const handleClose1 = () => {
     setInfoModalState(false)
     setVolteAmanha(false)
+    setAvisoModalState(false)
   };
 
   const handleOpen2 = () => setVolteAmanha(true)

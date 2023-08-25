@@ -18,6 +18,8 @@ const PerfilProvider = ({ children }) => {
     const [infoAtual, setInfoAtual] = useState()
     const [imc, setImc] = useState()
 
+    const [avisoModalState, setAvisoModalState] = useState()
+
     const [graficoArray, setGraficoArray] = useState()
     const [listaPesoState, setListaPesoState] = useState()
     const [listaAlturaState, setListaAlturaState] = useState()
@@ -221,7 +223,9 @@ const PerfilProvider = ({ children }) => {
             volteAmanha, 
             setVolteAmanha,
             primeiroAcesso,
-            SalvarDieta
+            SalvarDieta,
+            avisoModalState,
+            setAvisoModalState
         }}>
             {children}
         </PerfilContext.Provider>
