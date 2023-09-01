@@ -9,7 +9,7 @@ const configuration = new Configuration({
   });
 const openai = new OpenAIApi(configuration);
 
-
+//...
 
 export const GerarDietaPrompt = async (infoUsuario) => {
     const response = await openai.createCompletion({
