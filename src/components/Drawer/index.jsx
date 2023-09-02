@@ -101,7 +101,7 @@ export default function Drawer() {
               <AccountBoxIcon/> Perfil 
             </a>
             <a href="/menu">
-              <RestaurantMenuIcon/> Gerar Receita 
+              <RestaurantMenuIcon/> Gerar Dieta/Treino 
             </a>
             {/* <a href="/menu">
               <MenuBookIcon/> Receita Semanal 
@@ -117,7 +117,7 @@ export default function Drawer() {
               Precisa de mais dietas?</p>
             
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '-10px'}}>
-                <a href="/planos">Evoluir plano</a>
+                <a href="/planos">Comprar dietas</a>
             </div>
         </div>
 

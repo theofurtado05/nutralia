@@ -4,8 +4,8 @@ import { Configuration, OpenAIApi } from 'openai';
 // Resto do código do seu arquivo
 
 const configuration = new Configuration({
-    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-    //apiKey: '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'
+    // apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    apiKey: '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'
   });
 const openai = new OpenAIApi(configuration);
 
@@ -97,3 +97,28 @@ export const GerarMetaDiaria = async (obj) => {
     return response.data.choices[0].text.trim()
 };
 
+
+export const GerarDieta990 = async (infoUsuario) => {
+  const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `Faça uma dieta para os dias segunda, terça, quarta, quinta e sexta com varias opções de refeição por periodo (nao repetir),(nao incluir besteira no café da manha) informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou do sexo ${infoUsuario.genero}, ${infoUsuario.kg}kg, ${infoUsuario.altura}m, objetivo: ${infoUsuario.objetivo}. Observações: NÃO INCLUA ${infoUsuario.naoGosto}. e Inclua: ${infoUsuario.gosto}. Formato: Horarios e quantidade (em gramas).`,
+      temperature: 1,
+      max_tokens: 3400,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    })
+    
+
+  return response.data.choices[0].text.trim();
+
+};
+
+//Faça uma dieta para todos os dias da semana com varias opções de refeição (nao repetir),(nao incluir besteira no café da manha) informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou do sexo ${infoUsuario.genero}, ${infoUsuario.kg}kg, ${infoUsuario.altura}m, objetivo: ${infoUsuario.objetivo}. Observações: NÃO INCLUA ${infoUsuario.naoGosto}. e Inclua: ${infoUsuario.gosto}. Formato: CALORIAS, os horarios e as quantidades (em gramas).
+
+//Faça ma dieta para segunda, terça, quarta, quinta e sexta com varias opções de refeição (nao repetir), informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou homem, 80kg, 1.65m, objetivo: Emagrecer com Jejum intermitente. Observações: NÃO INCLUA (). e INCLUA: . Formato: .
+    
+    
+
+//`Cliente: "Preciso de uma dieta de 7 dias para meu objetivo de ${infoUsuario.objetivo}, tenho ${infoUsuario.altura}m de altura e ${infoUsuario.kg}kg e sou do sexo ${infoUsuario.genero}. Intolerancia - ${infoUsuario.intolerancia}. ${infoUsuario.gosta && infoUsuario.gosta != [] && `Nessa dieta não pode faltar(IMPORTANTE) os seguintes alimentos: ${infoUsuario.gosta}.`}${infoUsuario.naoGosta && infoUsuario.naoGosta != [] && `Não coloque os seguintes alimentos: ${infoUsuario.naoGosta}, detesto esses alimentos(ISSO É MUITO IMPORTANTE).`} Tambem quero que monte uma serie de treinos para meu objetivo de ${infoUsuario.objetivo}."
+//Profissional: `

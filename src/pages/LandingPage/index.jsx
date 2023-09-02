@@ -56,8 +56,8 @@ const LandingPage = () => {
             <HeaderLp/>
 
             <FirstSection id="0">
-                <h1>Dieta personalizada para resultados incríveis!</h1>
-                <h3>Alcance seus objetivos de forma eficiente e deliciosa com dietas feitas sob medida, suporte contínuo e gráficos de progresso intuitivos.</h3>
+                <h1>Dieta personalizada por apenas R$9,90</h1>
+                <h3>Lembra da sua promessa na virada do ano? Agora está bem mais perto e MUITO mais barata de ser realizada.</h3>
 
                 <div className="btActions" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '20px'}}>
                 
@@ -75,7 +75,7 @@ const LandingPage = () => {
                     <img src={MockupMacbook} />
 
                     <span>
-                        Junte-se aos nossos 400 membros.
+                        Junte-se aos nossos 4800 membros.
                     </span>
                 </div>
 
@@ -218,11 +218,15 @@ const LandingPage = () => {
                 </span>
 
                 <div className="divPlanos">
-                    <CardPlano tituloPlano={"Anual"} valorPlano={"19,98"}
+                    {/* <CardPlano tituloPlano={"Anual"} valorPlano={"19,98"}
                     numDietas={'5'} link={`./registro/${afid}`} frequencia={'mês'} adicionalAnual={'(60 por ano)'}/>
                     
                     <CardPlano tituloPlano={"Mensal"} valorPlano={"29,90"}
-                    numDietas={5} link={`./registro/${afid}`} frequencia={'mês'}/>
+                    numDietas={5} link={`./registro/${afid}`} frequencia={'mês'}/> */}
+
+                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'1 dieta'} valorPlano={'9,90'} numDietas={'1'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
+                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'3 dietas'} valorPlano={'19,90'} numDietas={'3'} link={`./registro/${afid}`}   adicionalAnual={true} avulso={true}/>
+                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'5 dietas'} valorPlano={'34,90'} numDietas={'5'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
 
 
                    

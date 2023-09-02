@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 
-const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual}) => {
+const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual, avulso = false}) => {
     
     const handleClick = () => {
         localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
@@ -13,11 +13,13 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
         <>
         <div class="card">
             <div class="content">
-                    {adicionalAnual && <div class="bestPrice">MELHOR VALOR</div>}
+                    {adicionalAnual == true && <div class="bestPrice">MELHOR VALOR</div>}
                     <div class="title">{tituloPlano}</div>
                     <div class="price">R${valorPlano}<span id="mes">/{frequencia}</span></div>
                     <hr></hr>
                     <div class="description">
+                        {!avulso ? 
+                        <>
                         <span>
                         - {numDietas} Dietas por mês {adicionalAnual}
                         </span> 
@@ -36,6 +38,36 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                         
                         
                         {adicional && <><span>- {adicional}</span> </>}
+                        
+                        </> : 
+                        <>
+                            <span>
+                                    - Dieta personalizada
+                            </span> 
+                            
+                            <span>
+                                - Treino personalizado 
+                            </span>
+                            
+                            <span>
+                                - Suco detox  
+                            </span>
+
+                            <span>
+                                - Acompanhamento de evolução 
+                            </span>
+
+                            <span>
+                                - Envio imediato  
+                            </span>
+                            
+                            <span>
+                                - Suporte por E-mail e Whatsapp
+                            </span>
+
+                        
+                        </>}
+                        
                     </div>
             </div>
             

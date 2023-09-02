@@ -18,17 +18,22 @@ export const DivFormPai = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
-
+    margin-top: 30px;
+    padding-bottom: 60px;
     h1{
         font-family: 'Montserrat', sans-serif;
+    }
+    h2{
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        width: 100%;
     }
 `;
 
 export const DivForm = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     width: 600px;
     padding-bottom: 5px;
 

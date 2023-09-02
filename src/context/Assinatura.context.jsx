@@ -16,6 +16,7 @@ const AssinaturaProvider = ({ children }) => {
     const [numTickets, setNumTickets] = useState()
     const [numTicketsUsados, setTicketsUsados] = useState()
     const [planoAtual, setPlanoAtual] = useState()
+    const [dietasRestantes, setDietasRestantes] = useState()
 
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
@@ -48,6 +49,17 @@ const AssinaturaProvider = ({ children }) => {
         }
         
     }
+
+    const GetDietasRestantesPromo = async () => {
+        const promoRef = ref(database, `promocoes/`)
+        onValue(promoRef, (snapshot) => {
+            const data = snapshot.val()
+            console.log(data)
+            setDietasRestantes(data.dietasRestantes)
+        })
+    }
+
+    
  
 
 
@@ -56,7 +68,9 @@ const AssinaturaProvider = ({ children }) => {
             numTickets,
             GetNumTickets,
             ReduzirTicket,
-            planoAtual        
+            planoAtual,
+            GetDietasRestantesPromo,
+            dietasRestantes        
         }}>
             {children}
         </AssinaturaContext.Provider>
