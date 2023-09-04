@@ -1,12 +1,14 @@
 
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual, avulso = false}) => {
-    
+    const navigate = useNavigate()
     const handleClick = () => {
         localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
-        window.open(link, 'blank')
+        // window.open(link, 'blank')
+        navigate('/pixpage')
     }
 
     return(
