@@ -101,7 +101,7 @@ export default function Drawer() {
               <AccountBoxIcon/> Perfil 
             </a>
             <a href="/menu">
-              <RestaurantMenuIcon/> Gerar Dieta/Treino 
+              <RestaurantMenuIcon/> Gerar Dieta 
             </a>
             {/* <a href="/menu">
               <MenuBookIcon/> Receita Semanal 

@@ -16,23 +16,10 @@ const Planos = () => {
                 <DivFormPai>
                     <h1>Planos</h1>
                     <DivForm>
-                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'1 dieta'} valorPlano={'9,90'} numDietas={'1'} link={`../pixpage`}   adicionalAnual={false} avulso={true}/>
-                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'3 dietas'} valorPlano={'19,90'} numDietas={'3'} link={`../pixpage`}   adicionalAnual={true} avulso={true}/>
-                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'5 dietas'} valorPlano={'34,90'} numDietas={'5'} link={'../pixpage'}   adicionalAnual={false} avulso={true}/>
-
-                        {/* <CardPlano tituloPlano={'Anual'} frequencia={'mês'} valorPlano={'19,98'} numDietas={'5'} link={`https://pay.kiwify.com.br/niFzj6R?afid=${afiliadoId}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&utm_source=Mensal`}   adicionalAnual={'(60 por ano)'}/>
                         
-                        <CardPlano tituloPlano={'Mensal'}  frequencia={'mês'} valorPlano={'29,90'} numDietas={'5'} link={`https://pay.kiwify.com.br/ghzechi?afid=${afiliadoId}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&utm_source=Mensal`} /> */}
-
-
-
-                        
-
-                        {/* <CardPlano tituloPlano={"Anual"} valorPlano={"19,98"}
-                    numDietas={'5'} link={`./registro/${afid}`} frequencia={'mês'} adicionalAnual={'(60 por ano)'}/>
-                    
-                    <CardPlano tituloPlano={"Mensal"} valorPlano={"29,90"}
-                    numDietas={5} link={`./registro/${afid}`} frequencia={'mês'}/> */}
+                        <CardPlano tituloPlano={'Dieta'} frequencia={'1 dieta'} valorPlano={'9,90'} numDietas={'1'} link={`../pixpage`}   adicionalAnual={false} avulso={true} linkPagamento={`https://pay.kiwify.com.br/PHko4N7?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
+                        <CardPlano tituloPlano={'Dieta'} frequencia={'3 dietas'} valorPlano={'19,90'} numDietas={'3'} link={`../pixpage`}   adicionalAnual={true} avulso={true} linkPagamento={`https://pay.kiwify.com.br/niYZqRH?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
+                        <CardPlano tituloPlano={'Dieta'} frequencia={'5 dietas'} valorPlano={'34,90'} numDietas={'5'} link={'../pixpage'}   adicionalAnual={false} avulso={true} linkPagamento={`https://pay.kiwify.com.br/7miepJ7?utm_content=${localStorage.getItem('@UserId:Nutrafity')}`}/>
 
                     </DivForm>
                 </DivFormPai>

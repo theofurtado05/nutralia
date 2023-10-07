@@ -224,9 +224,9 @@ const LandingPage = () => {
                     <CardPlano tituloPlano={"Mensal"} valorPlano={"29,90"}
                     numDietas={5} link={`./registro/${afid}`} frequencia={'mês'}/> */}
 
-                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'1 dieta'} valorPlano={'9,90'} numDietas={'1'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
-                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'3 dietas'} valorPlano={'19,90'} numDietas={'3'} link={`./registro/${afid}`}   adicionalAnual={true} avulso={true}/>
-                        <CardPlano tituloPlano={'Dieta e Treino'} frequencia={'5 dietas'} valorPlano={'34,90'} numDietas={'5'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
+                        <CardPlano tituloPlano={'Dieta'} frequencia={'1 dieta'} valorPlano={'9,90'} numDietas={'1'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
+                        <CardPlano tituloPlano={'Dieta'} frequencia={'3 dietas'} valorPlano={'19,90'} numDietas={'3'} link={`./registro/${afid}`}   adicionalAnual={true} avulso={true}/>
+                        <CardPlano tituloPlano={'Dieta'} frequencia={'5 dietas'} valorPlano={'34,90'} numDietas={'5'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
 
 
                    
