@@ -9,8 +9,7 @@ const PixPage = () => {
             
 
             <div>
-          <iframe src={localStorage.getItem('@LinkPagamento:Nutrafity')} style={{width: '100%', height: '100vh'}}/>
-
+              <iframe src={localStorage.getItem('@LinkPagamento:Nutrafity')} style={{width: '100%', height: '100vh'}}/>
             </div>
         </>
     )
