@@ -105,7 +105,7 @@ export default function Drawer() {
             </a>
             {/* <a href="/menu">
               <MenuBookIcon/> Receita Semanal 
-            </a> */}
+            </a> ...*/}
 
         </div>
 
