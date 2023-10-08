@@ -57,6 +57,8 @@ const FormDieta = () => {
     const [loading, setLoading] = useState(false)
     const [value, setValue] = React.useState(null);
 
+    
+
     const navigate = useNavigate()
     
     const {numTickets, ReduzirTicket, GetDietasRestantesPromo, dietasRestantes} = useAssinatura()
@@ -220,7 +222,7 @@ const FormDieta = () => {
                 
                 <DivFormPai>
                     <CardAviso numDietasRestantes={dietasRestantes}/>
-                    <div style={{display: 'flex', width: '100%', justifyContent: 'space-between', marginTop: 10, alignItems: 'center'}}>
+                    <div style={{display: 'flex', width: '100%', maxWidth: '90vw',justifyContent: 'space-between', marginTop: 10, alignItems: 'center'}}>
                         <h2>Gerar Dieta</h2>
                         <StyledButton variant="contained" style={{
                             width: '120%',
@@ -228,9 +230,10 @@ const FormDieta = () => {
                             fontWeight: 'bold',
                             display: 'flex',
                             gap: 10,
+                            lineHeight: 1
                         }} onClick={()=>{
                             navigate('/planos')
-                        }}><ShoppingCartIcon/>COMPRAR TICKET PROMOCIONAL</StyledButton>
+                        }}><ShoppingCartIcon/>COMPRAR TICKET</StyledButton>
                     </div>
                     
 
@@ -336,7 +339,7 @@ const FormDieta = () => {
                     {errorStatus && <span style={{color: 'red', fontWeight: 'bold'}}>{errorMsg}</span>}
 
                     <StyledButton variant="contained" 
-                    style={{fontWeight: 'bold', marginTop: '20px'}} 
+                    style={{fontWeight: 'bold', marginTop: '20px', maxWidth: '90vw'}} 
                     onClick={gerarDieta}
                     >
                         Gerar Dieta
