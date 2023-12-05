@@ -9,6 +9,8 @@ import { usePerfil } from "../../../context/Perfil.context";
 const Planos = () => {
    const {afiliadoId} = usePerfil()
 
+   //........ ultimo caso
+
     return(
         <>
             <DivPai>
