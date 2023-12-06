@@ -67,6 +67,10 @@ const FormDieta = () => {
     const pdfViewerRef = useRef(null);
     const dietaContent = useRef(null);
 
+    useEffect(()=>{
+        GetDietasRestantesPromo()
+    }, [])
+
     const handleChangeAltura = (e) => {
         setAltura(e.target.value);
       };
@@ -113,9 +117,7 @@ const FormDieta = () => {
         document.body.removeChild(input);
       };
 
-    useEffect(()=>{
-        GetDietasRestantesPromo()
-    }, [])
+    
 
     const gerarDieta = async () => {
         if(!objetivo || !objetivo.value){
