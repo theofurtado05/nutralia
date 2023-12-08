@@ -158,6 +158,7 @@ const FormDieta = () => {
                         setLoading(false)
                         console.log(response)
                         setDietaGerada(response)
+                        ReduzirTicket()
                     })
                    
                 
@@ -190,7 +191,7 @@ const FormDieta = () => {
     //     const fetchDieta = async () => {
     //         const dietaSemanal = await GerarDietaSemana(infoUsuario, objMetaDiaria)
     //         .then((response)=>{
-    //             ReduzirTicket()
+    
     //             setLoading(false)
     //             setArrayObjsDietas(response)
     //             setDietaGerada(true)
