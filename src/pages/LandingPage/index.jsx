@@ -56,7 +56,7 @@ const LandingPage = () => {
             <HeaderLp/>
 
             <FirstSection id="0">
-                <h1>Dieta personalizada por apenas R$9,90</h1>
+                <h1>Dieta personalizada por apenas R$14,90</h1>
                 <h3>Lembra da sua promessa na virada do ano? Agora está bem mais perto e MUITO mais barata de ser realizada.</h3>
 
                 <div className="btActions" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '20px'}}>
@@ -224,7 +224,7 @@ const LandingPage = () => {
                     <CardPlano tituloPlano={"Mensal"} valorPlano={"29,90"}
                     numDietas={5} link={`./registro/${afid}`} frequencia={'mês'}/> */}
 
-                        <CardPlano tituloPlano={'Dieta'} frequencia={'1 dieta'} valorPlano={'9,90'} numDietas={'1'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
+                        <CardPlano tituloPlano={'Dieta'} frequencia={'1 dieta'} valorPlano={'14,90'} numDietas={'1'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
                         <CardPlano tituloPlano={'Dieta'} frequencia={'3 dietas'} valorPlano={'19,90'} numDietas={'3'} link={`./registro/${afid}`}   adicionalAnual={true} avulso={true}/>
                         <CardPlano tituloPlano={'Dieta'} frequencia={'5 dietas'} valorPlano={'34,90'} numDietas={'5'} link={`./registro/${afid}`}   adicionalAnual={false} avulso={true}/>
 
