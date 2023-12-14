@@ -164,6 +164,8 @@ export const GerarDietaDocx = async (infoUsuario) => {
                 }); //Output the document using Data-URI
                 saveAs(out, 'Nutrafity.docx');
             })
+
+            return dietaCompleta
 }
 
 export const GerarMetaObj = async (infoUsuario) => {

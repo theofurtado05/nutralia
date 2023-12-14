@@ -164,7 +164,7 @@ const FormDieta = () => {
                     await GerarDietaDocx(usuario).then((response) => {
                         setErrorStatus(false)
                         setLoading(false)
-                        console.log(response)
+                        console.log(response, " => response")
                         setDietaGerada(response)
                         ReduzirTicket()
                     })
