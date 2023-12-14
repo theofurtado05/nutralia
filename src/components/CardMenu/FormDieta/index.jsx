@@ -397,7 +397,7 @@ const FormDieta = () => {
                                     fontWeight: 'bold'
                                 }} onClick={()=>{
                                     //SalvarDieta(url)
-                                }}>Baixar Dieta</StyledButton>
+                                }}>Baixar Dieta em PDF</StyledButton>
                             }
                             </PDFDownloadLink>
                         </div>
