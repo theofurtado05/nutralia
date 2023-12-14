@@ -115,7 +115,7 @@ export const GerarDietaDocx = async (infoUsuario) => {
             valorNoite: dietaPartes[3].noite[4],
 
             objetivo: infoUsuario.objetivo,
-            peso: infoUsuario.peso,
+            peso: infoUsuario.kg,
             altura: infoUsuario.altura,
             intolerancia: infoUsuario.intolerancia,
         }

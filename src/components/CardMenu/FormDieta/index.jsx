@@ -153,17 +153,21 @@ const FormDieta = () => {
                 
                 
                     setLoading(true)
-                    await GerarDieta990(usuario).then((response)=>{
+                    // await GerarDieta990(usuario).then((response)=>{
+                        // setErrorStatus(false)
+                        // setLoading(false)
+                        // console.log(response)
+                        // setDietaGerada(response)
+                        // ReduzirTicket()
+                    // })
+
+                    await GerarDietaDocx(usuario).then((response) => {
                         setErrorStatus(false)
                         setLoading(false)
                         console.log(response)
                         setDietaGerada(response)
                         ReduzirTicket()
                     })
-                   
-                
-                
-
 
                 // const metaDiaria = await GerarMetaObj(usuario)
                 // .then((response)=>{
