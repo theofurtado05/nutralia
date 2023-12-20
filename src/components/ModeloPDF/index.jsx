@@ -94,14 +94,14 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start'
     },
     titulo: {
-        color: '#FFF',
+        color: '#0a730f',
         fontWeight: 700,
         fontSize: '26px',
         textAlign: 'center',
-        backgroundColor: '#1C9E22',
         width: 300,
         borderRadius: 50,
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        
     },
     infoPessoaisSection: {
         padding: '30px 0px 10px 40px',
