@@ -122,7 +122,7 @@ export const GerarDieta990 = async (infoUsuario) => {
       'https://api.openai.com/v1/chat/completions',
       {
         model: "gpt-4-0613",
-        max_tokens: 6000,
+        max_tokens: 6500,
         messages: [
           {
             "role": "assistant",
