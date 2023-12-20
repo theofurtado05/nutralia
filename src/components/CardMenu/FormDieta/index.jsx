@@ -163,9 +163,9 @@ const FormDieta = () => {
                     await GerarDieta990(usuario).then((response)=>{
                         setErrorStatus(false)
                         setLoading(false)
-                        console.log(response)
-                        setDietaGerada(response)
-                        localStorage.setItem("@UltimaDieta:Nutrafity", response)
+                        console.log(response.replace(/\*/g, ''))
+                        setDietaGerada(response.replace(/\*/g, ''))
+                        localStorage.setItem("@UltimaDieta:Nutrafity", response.replace(/\*/g, ''))
                         localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
                         ReduzirTicket()
                     })

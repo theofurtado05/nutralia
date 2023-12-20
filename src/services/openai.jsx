@@ -126,11 +126,11 @@ export const GerarDieta990 = async (infoUsuario) => {
         messages: [
           {
             "role": "assistant",
-            "content": "Mantenha um tom profissional de nutricionista e seja objetivo na resposta."
+            "content": "Mantenha um tom profissional de nutricionista e seja objetivo na resposta. NÃO MANDE REPETIR AS REFEIÇOES DE DIAS ANTERIORES POR FAVOR!! E TAMBEM NAO MANDE COMENTARIOS ADICIONAIS POR FAVOR!!"
           },
           {
             "role": "user",
-            "content": `Faça uma dieta para todos os dias segunda, terça, quarta, quinta e sexta com 2 opções de refeição por periodo, sendo eles café da manha, almoço, lanche e jantar (não deve se repetir o cardapio de nenhum dia),(nao incluir besteira no café da manha) informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou do sexo ${infoUsuario.genero}, ${infoUsuario.kg}kg, ${infoUsuario.altura}m, objetivo: ${infoUsuario.objetivo} e tenho ${infoUsuario.idade} anos de idade. Observações: NÃO INCLUA ${infoUsuario.naoGosto}. e Inclua: ${infoUsuario.gosto}. Formato: Horarios e quantidade (em gramas). Por favor, não inclua mensagens DEPOIS DA ULTIMA OPÇÃO DE JANTA DA SEXTA. Por favor tambem, não adicione asterisco em nenhum lugar do texto, isso atrapalha. NÃO ADICIONE COMENTARIOS EXTRAS, ISSO ATRAPALHA.`
+            "content": `Faça uma dieta para todos os dias segunda, terça, quarta, quinta e sexta com 2 opções de refeição por periodo, sendo eles café da manha, almoço, lanche e jantar (não deve se repetir o cardapio de nenhum dia),(nao incluir besteira no café da manha) informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou do sexo ${infoUsuario.genero}, ${infoUsuario.kg}kg, ${infoUsuario.altura}m, objetivo: ${infoUsuario.objetivo} e tenho ${infoUsuario.idade} anos de idade. Observações: NÃO INCLUA ${infoUsuario.naoGosto}. e Inclua: ${infoUsuario.gosto}. Formato: Horarios e quantidade (em gramas). Por favor, não inclua mensagens DEPOIS DA ULTIMA OPÇÃO DE JANTA DA SEXTA. Por favor tambem, não adicione asterisco em nenhum lugar do texto, isso atrapalha. NÃO ADICIONE COMENTARIOS EXTRAS, ISSO ATRAPALHA. NÃO MANDE REPETIR AS REFEIÇOES DE DIAS ANTERIORES POR FAVOR!!`
           },
         ]
       },
