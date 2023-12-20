@@ -6,10 +6,10 @@ const Loading = () => {
 
     return(
         <>
-            <div class="loader">Gerando
+            <div class="loader">Gerando<br/>
                 <span></span>
             </div>
-
+            
         <style>
             {`
             .loader {

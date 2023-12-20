@@ -423,7 +423,13 @@ const FormDieta = () => {
 
             </DivPai>
 
-            {loading && <DivLoading><Loading /></DivLoading>}
+            {loading && <DivLoading><Loading />
+                <h5 style={{fontSize: '14px', marginTop: 250, color: '#fff', textAlign: 'center', background: 'var(--Primary-color)'}}>
+                    Tempo estimado: 58 segundos
+                    <br/>
+                    Não saia da página
+                </h5>
+            </DivLoading>}
         </>
     )
 }
