@@ -103,6 +103,9 @@ export default function Drawer() {
             <a href="/menu">
               <RestaurantMenuIcon/> Gerar Dieta 
             </a>
+            <a href="/ultima-dieta">
+              <MenuBookIcon/> Ultima Dieta
+            </a>
             {/* <a href="/menu">
               <MenuBookIcon/> Receita Semanal 
             </a> ...*/}
@@ -255,7 +258,7 @@ export default function Drawer() {
               justify-content: center;
               gap: 5px;
               width: 100%;
-              padding-bottom: 50px;
+              padding-bottom: 20px;
             }
             .divMenu a{
               text-align: left;

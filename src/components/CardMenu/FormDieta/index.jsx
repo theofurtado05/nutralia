@@ -32,6 +32,7 @@ import { GerarDieta990 } from "../../../services/openai";
 const filter = createFilterOptions();
 
 const FormDieta = () => {
+    const [idade, setIdade] = useState()
     const [altura, setAltura] = useState();
     const [peso, setPeso] = useState();
     const [objetivo, setObjetivo] = useState(null);
@@ -85,6 +86,10 @@ const FormDieta = () => {
         
       }
 
+      const handleIdade = (event, newValue) => {
+        setIdade(newValue)
+      }
+
       const handleObservacao = (event, newValue) => {
         setObservasao(newValue)
       }
@@ -126,6 +131,7 @@ const FormDieta = () => {
             return
         }
         const usuario = {
+            idade: idade,
             altura: altura,
             kg: peso,
             objetivo: objetivo.value,
@@ -138,6 +144,7 @@ const FormDieta = () => {
         console.log(usuario)
         
         setInfoUsuario({
+            idade: idade,
             altura: altura,
             kg: peso,
             objetivo: objetivo.value,
@@ -153,31 +160,35 @@ const FormDieta = () => {
                 
                 
                     setLoading(true)
-                    // await GerarDieta990(usuario).then((response)=>{
-                        // setErrorStatus(false)
-                        // setLoading(false)
-                        // console.log(response)
-                        // setDietaGerada(response)
-                        // ReduzirTicket()
-                    // })
-
-                    await GerarDietaDocx(usuario).then((response) => {
+                    await GerarDieta990(usuario).then((response)=>{
                         setErrorStatus(false)
                         setLoading(false)
-                        console.log(response, " => response")
+                        console.log(response)
                         setDietaGerada(response)
+                        localStorage.setItem("@UltimaDieta:Nutrafity", response)
+                        localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
                         ReduzirTicket()
                     })
 
-                // const metaDiaria = await GerarMetaObj(usuario)
-                // .then((response)=>{
-                //     setIniciarDietaSemanal(true)
-                //     setObjMetaDiaria(response)
-                //     console.log('Usuario: ', usuario)
+                    // await GerarDietaDocx(usuario).then((response) => {
+                    //     setErrorStatus(false)
+                    //     setLoading(false)
+                    //     console.log(response, " => response")
+                    //     setDietaGerada(response)
+                        // localStorage.setItem("@UltimaDieta:Nutrafity", response)
+                        // localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
+                    //     ReduzirTicket()
+                    // })
+
+                const metaDiaria = await GerarMetaObj(usuario)
+                .then((response)=>{
+                    setIniciarDietaSemanal(true)
+                    setObjMetaDiaria(response)
+                    console.log('Usuario: ', usuario)
                     
-                //     console.log('InfoUsuario: ', infoUsuario)
+                    console.log('InfoUsuario: ', infoUsuario)
                     
-                // })
+                })
                 
     
             } else {
@@ -198,8 +209,10 @@ const FormDieta = () => {
     
     //             setLoading(false)
     //             setArrayObjsDietas(response)
-    //             setDietaGerada(true)
+    //             setDietaGerada(JSON.stringify(response))
+
     //             setDescerParaPdf(true)
+    //             console.log("response => ", JSON.stringify(response))
                 
     //         })
     //     }
@@ -245,6 +258,11 @@ const FormDieta = () => {
                     
 
                     <DivForm>
+                    <TextField
+                            label="Idade"
+                            value={idade}
+                            onChange={(e)=>setIdade(e.target.value)}
+                            />
                     <InputMask
                         mask="9.99"
                         value={altura}
@@ -380,13 +398,13 @@ const FormDieta = () => {
                                 Copiar Dieta
                             </StyledButton>
 
-                            <PDFDownloadLink style={{width: '100%'}} document={
+                            <PDFDownloadLink style={{width: '100%', textDecoration: 'none'}} document={
                                 <ModeloPDf 
                                     dieta={dietaGerada}
                                     objInfosPessoais={infoUsuario}
                                     />
 
-                            } fileName="PlanoAlimentarNutrafity.pdf">
+                            } fileName="DietaNutrafity.pdf">
 
                             {({ blob, url, loading, error }) =>
                                 loading ? 'Carregando PDF...' : 

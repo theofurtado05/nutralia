@@ -14,6 +14,7 @@ import PoliticasDePrivacidade from '../pages/PoliticasDePrivacidade';
 import Faq from '../pages/Faq';
 import PDF from '../pages/PDF';
 import PixPage from '../pages/PixPage';
+import { UltimaDieta } from '../pages/UltimaDieta';
 
 
 export default function Router(){
@@ -43,6 +44,7 @@ export default function Router(){
                     <Route path="/Registro" element={<RegisterPage/>}/>
                     <Route path="/EsqueciMinhaSenha" element={<ForgotPassword/>}/>
                     <Route path="/Menu" element={<Menu/>}/>
+                    <Route path="/ultima-dieta" element={<UltimaDieta/>}/>
                     <Route path="/Planos" element={<Planos/>}/>
                     <Route path="/Perfil" element={<Perfil/>}/>
                     <Route path="/PixPage" element={<PixPage/>}/>

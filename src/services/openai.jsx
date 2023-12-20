@@ -96,9 +96,11 @@ export const GerarMetaDiaria = async (obj) => {
 };
 
 
-export const GerarDieta990 = async (infoUsuario) => {
+//v1/chat/completions
+
+export const GerarDieta992 = async (infoUsuario) => {
   const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "gpt-4-0613",
       prompt: `Faça uma dieta para os dias segunda, terça, quarta, quinta e sexta com varias opções de refeição por periodo (nao repetir),(nao incluir besteira no café da manha) informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou do sexo ${infoUsuario.genero}, ${infoUsuario.kg}kg, ${infoUsuario.altura}m, objetivo: ${infoUsuario.objetivo}. Observações: NÃO INCLUA ${infoUsuario.naoGosto}. e Inclua: ${infoUsuario.gosto}. Formato: Horarios e quantidade (em gramas).`,
       temperature: 1,
       max_tokens: 3400,
@@ -111,6 +113,57 @@ export const GerarDieta990 = async (infoUsuario) => {
   return response.data.choices[0].text.trim();
 
 };
+
+const api_key = process.env.REACT_APP_OPENAI_API_KEY
+
+export const GerarDieta990 = async (infoUsuario) => {
+  try {
+    const response = await axios.post(
+      'https://api.openai.com/v1/chat/completions',
+      {
+        model: "gpt-4-0613",
+        max_tokens: 6000,
+        messages: [
+          {
+            "role": "assistant",
+            "content": "Mantenha um tom profissional de nutricionista e seja objetivo na resposta."
+          },
+          {
+            "role": "user",
+            "content": `Faça uma dieta para todos os dias segunda, terça, quarta, quinta e sexta com 2 opções de refeição por periodo, sendo eles café da manha, almoço, lanche e jantar (não deve se repetir o cardapio de nenhum dia),(nao incluir besteira no café da manha) informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou do sexo ${infoUsuario.genero}, ${infoUsuario.kg}kg, ${infoUsuario.altura}m, objetivo: ${infoUsuario.objetivo} e tenho ${infoUsuario.idade} anos de idade. Observações: NÃO INCLUA ${infoUsuario.naoGosto}. e Inclua: ${infoUsuario.gosto}. Formato: Horarios e quantidade (em gramas). Por favor, não inclua mensagens DEPOIS DA ULTIMA OPÇÃO DE JANTA DA SEXTA. Por favor tambem, não adicione asterisco em nenhum lugar do texto, isso atrapalha. NÃO ADICIONE COMENTARIOS EXTRAS, ISSO ATRAPALHA.`
+          },
+        ]
+      },
+      {
+        headers: {
+          Authorization: `Bearer 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`
+        }
+      }
+    );
+      console.log(response.data.choices[0].message.content)
+    return response.data.choices[0].message.content
+  } catch (error) {
+    console.error('Erro ao chamar a API do OpenAI:', error);
+    throw error; // ou trate o erro conforme necessário para sua aplicação
+  }
+};
+
+// curl https://api.openai.com/v1/chat/completions \
+//   -H "Content-Type: application/json" \
+//   -H "Authorization: Bearer $OPENAI_API_KEY" \
+//   -d '{
+    // "model": "gpt-4-0613",
+    // "messages": [
+    //   {
+    //     "role": "system",
+    //     "content": "You are a helpful assistant."
+    //   },
+    //   {
+    //     "role": "user",
+    //     "content": "Hello!"
+    //   }
+    // ]
+//   }'
 
 //Faça uma dieta para todos os dias da semana com varias opções de refeição (nao repetir),(nao incluir besteira no café da manha) informe os alimentos em GRAMAS. COLOQUE ALIMENTOS DO DIA A DIA (troque suco por frutas) Sou do sexo ${infoUsuario.genero}, ${infoUsuario.kg}kg, ${infoUsuario.altura}m, objetivo: ${infoUsuario.objetivo}. Observações: NÃO INCLUA ${infoUsuario.naoGosto}. e Inclua: ${infoUsuario.gosto}. Formato: CALORIAS, os horarios e as quantidades (em gramas).
 

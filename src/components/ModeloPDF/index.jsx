@@ -13,13 +13,14 @@ import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/render
 
 const styles = StyleSheet.create({
     page: {
-      flexDirection: 'column',
-      backgroundColor: '#f5f5f5',
-      position: 'relative',
-      maxWidth: '100%', 
-      height: 'auto'
-      
-    },
+        flexDirection: 'column',
+        backgroundColor: '#f5f5f5',
+        position: 'relative',
+        maxWidth: '100%',
+        height: 'auto',
+        flexWrap: 'wrap', // Adiciona a propriedade flexWrap
+        marginBottom: 20,  // Adiciona uma margem inferior de 20px
+      },
     texto: {
         bold: {
             fontWeight: 'bold'
@@ -123,6 +124,41 @@ const styles = StyleSheet.create({
 
 
 const ModeloPDf = ({dieta, objInfosPessoais}) => {
+
+    const renderizarTexto = (texto) => {
+        const partes = texto.split(/(?=\b(?:Domingo|Segunda|Terça|Quarta|Quinta|Sexta|Sábado):)/);
+        
+        return partes.map((parte, index) => (
+          <Text key={index} style={{ marginBottom: 10 }}>
+            {parte}
+          </Text>
+        ));
+      };
+
+      const chunk = (arr, size) => {
+        const result = [];
+        for (let i = 0; i < arr.length; i += size) {
+          result.push(arr.slice(i, i + size));
+        }
+        return result;
+      };
+    
+      const renderizarDias = (texto) => {
+        const dias = texto.split(/(?=\b(?:Domingo|Segunda|Terça|Quarta|Quinta|Sexta|Sábado)\b)/);
+
+      
+        return dias.map((dia, index) => (
+          <Page key={index + 1} size={[595.28, 900.00]} style={styles.page} pageNumber={index + 1}>
+            <Image
+              style={styles.logoCanto}
+              src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
+            />
+            <Text style={{ marginBottom: 10, padding: 20 }}>
+              {dia}
+            </Text>
+          </Page>
+        ));
+      };
     
     return ( 
         <Document>
@@ -165,14 +201,21 @@ const ModeloPDf = ({dieta, objInfosPessoais}) => {
         </Page>
 
         
-        <Page size="A4" style={styles.page} pageNumber={2}>
-            <Text style={{padding: 20}}>{dieta}</Text>
+        {/* <Page size="A4" style={styles.page} pageNumber={2}>
+            <View style={{
+                    margin: 10,
+                    padding: 10,
+                    flexGrow: 1
+                }}>
+        
+                <Text style={{padding: 20}}>{dieta}</Text>
+            </View>
             <Image 
-            style={styles.logoCanto}
-            src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
+                style={styles.logoCanto}
+                src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
             />  
-
-        </Page>
+        </Page> */}
+        {renderizarDias(dieta)}
       </Document>
     )
 }
