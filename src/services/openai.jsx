@@ -136,7 +136,7 @@ export const GerarDieta990 = async (infoUsuario) => {
       },
       {
         headers: {
-          Authorization: `Bearer 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`
+          Authorization: `Bearer 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`
         }
       }
     );
