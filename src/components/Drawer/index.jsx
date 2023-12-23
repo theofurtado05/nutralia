@@ -9,6 +9,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
@@ -59,8 +61,11 @@ export default function Drawer() {
   };
 
   const faleConosco = () => {
-    window.open('https://api.whatsapp.com/send?phone=5524981207959&text=Ol%C3%A1,%20preciso%20de%20ajuda%20no%20Nutrafity', '_blank')
+    const email = 'nutrafity@gmail.com';
+    const assunto = 'Solicito suporte';
+    window.open(`mailto:${email}?subject=${encodeURIComponent(assunto)}`, '_blank');
   }
+  
 
   
   
@@ -92,7 +97,7 @@ export default function Drawer() {
       }}
     >
        <img src={LogoDefault} style={{
-        width: '150px',
+        width: '100px',
         alignSelf: 'center',
        }} />
       
@@ -105,6 +110,12 @@ export default function Drawer() {
             </a>
             <a href="/ultima-dieta">
               <MenuBookIcon/> Ultima Dieta
+            </a>
+
+            <a onClick={() => {
+              alert("Em manutenção...")
+            }}>
+              <FitnessCenterIcon/> Gerar Treino
             </a>
             {/* <a href="/menu">
               <MenuBookIcon/> Receita Semanal 
