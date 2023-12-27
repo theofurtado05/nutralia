@@ -108,15 +108,15 @@ export default function Drawer() {
             <a href="/menu">
               <RestaurantMenuIcon/> Gerar Dieta 
             </a>
-            <a href="/ultima-dieta">
+            {/* <a href="/ultima-dieta">
               <MenuBookIcon/> Ultima Dieta
-            </a>
+            </a> */}
 
-            <a onClick={() => {
+            {/* <a onClick={() => {
               alert("Em manutenção...")
             }}>
               <FitnessCenterIcon/> Gerar Treino
-            </a>
+            </a> */}
             {/* <a href="/menu">
               <MenuBookIcon/> Receita Semanal 
             </a> ...*/}
