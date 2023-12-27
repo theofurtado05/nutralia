@@ -36,6 +36,9 @@ const LandingPage = () => {
 
     useEffect(()=>{
         VerifLogin()
+        if(afid){
+            sessionStorage.setItem('afid', afid)
+        }
     }, [])
 
     const navigate = useNavigate()

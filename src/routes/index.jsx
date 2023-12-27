@@ -40,6 +40,7 @@ export default function Router(){
                     <Route path="/" element={<LandingPage/>}/>
                     <Route path="/:afid" element={<LandingPage/>}/>
                     <Route path="/Login" element={<LoginPage/>}/>
+                    <Route path="/Login/:afid" element={<LoginPage/>}/>
                     <Route path="/Registro/:afid" element={<RegisterPage/>}/>
                     <Route path="/Registro" element={<RegisterPage/>}/>
                     <Route path="/EsqueciMinhaSenha" element={<ForgotPassword/>}/>
