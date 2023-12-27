@@ -273,6 +273,18 @@ const FormDieta = () => {
 
                         console.log(response.data)
                     })
+                } else {
+                    await gerarDietaBasica(usuario.objetivo).then((response) => {
+                        setErrorStatus(false)
+                        setLoading(false)
+                        setDietaGerada(response)
+                        // setDietaGeradaNova(response)
+                        localStorage.setItem("@UltimaDieta:Nutrafity", JSON.stringify(response))
+                        localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
+                        ReduzirTicket()
+
+                        console.log(response)
+                    })
                 }
                 
             } else {
