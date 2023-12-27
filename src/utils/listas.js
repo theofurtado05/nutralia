@@ -86,11 +86,11 @@ export const alimentos = [
 
 export const objetivos = [
     { label: 'Emagrecer', value: 'Emagrecer' },
-    { label: 'Ganho de massa muscular', value: 'Ganho de massa muscular' },
-    { label: 'Definição Muscular', value: 'Definição Muscular' },
-    { label: 'Jejum intermitente', value: 'Jejum intermitente'},
-    { label: 'Melhorar a alimentação', value: 'Melhorar a alimentação' },
-    { label: 'Aumentar a performance física', value: 'Aumentar a performance física' },
+    { label: "Ganho de Massa Muscular", value: "Ganho de Massa Muscular"},
+    { label: "Definição Muscular", value: "Definicao Muscular" },
+    { label: "Jejum Intermitente", value: "Jejum Intermitente"},
+    { label: "Melhorar a alimentação", value: "Melhorar a alimentacao" },
+    { label: "Aumentar a Performance fisica", value: "Aumentar a Performance fisica" },
     { label: 'Hipertrofia', value: 'Hipertrofia'},
 ]
 

@@ -19,7 +19,7 @@ export const DivFormPai = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 10px;
     h1{
         font-family: 'Montserrat', sans-serif;
     }

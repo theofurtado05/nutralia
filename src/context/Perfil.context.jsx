@@ -41,6 +41,9 @@ const PerfilProvider = ({ children }) => {
     //para verificar a data e validar que pode atualizar hoje
     const [atualizarDados, setAtualizarDados] = useState(true)
     const [volteAmanha, setVolteAmanha] = useState()
+
+
+    const [dietaGeradaNova, setDietaGeradaNova] = useState({})
   
     //banco de dados - NAO MEXER
     const app = initializeApp(firebaseConfig);
@@ -225,7 +228,9 @@ const PerfilProvider = ({ children }) => {
             primeiroAcesso,
             SalvarDieta,
             avisoModalState,
-            setAvisoModalState
+            setAvisoModalState,
+            setDietaGeradaNova,
+            dietaGeradaNova
         }}>
             {children}
         </PerfilContext.Provider>

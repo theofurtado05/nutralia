@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual, avulso = false, linkPagamento}) => {
+const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual, avulso = false, linkPagamento, treino = false, numTreinos = 0}) => {
     const navigate = useNavigate()
     const handleClick = () => {
         localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
@@ -14,6 +14,18 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
         
         // navigate('/pixpage')
     }
+
+
+      {/*
+        Numero de dietas
+        Tipo da dieta
+        Numero de treino
+        suco detox
+        acompanhamento de evolucao
+        envio imediato
+        suporte por email
+    */}    
+
 
     return(
         <>
@@ -27,7 +39,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                         {!avulso ? 
                         <>
                         <span>
-                        - {numDietas} Dietas por mês {adicionalAnual}
+                        - {numDietas} Dietas
                         </span> 
                         
                         <span>
@@ -48,12 +60,14 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                         </> : 
                         <>
                             <span>
-                                    - Dieta personalizada
+                                - Dieta personalizada
                             </span> 
+                            {treino && 
+                                <span>
+                                    - {numTreinos} Treino personalizado 
+                                </span>
+                            }
                             
-                            <span>
-                                - Treino personalizado 
-                            </span>
                             
                             <span>
                                 - Suco detox  
@@ -68,7 +82,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                             </span>
                             
                             <span>
-                                - Suporte por E-mail e Whatsapp
+                                - Suporte por E-mail
                             </span>
 
                         
@@ -78,7 +92,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
             </div>
             
                 <button onClick={handleClick} className="btPlanos">
-                    Assinar agora
+                    Comprar agora
                 </button>
           
         </div>
@@ -117,6 +131,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                display: flex;
                flex-direction: column;
                gap: 5px;
+               padding: 0 10px;
             }
 
             .content .price {

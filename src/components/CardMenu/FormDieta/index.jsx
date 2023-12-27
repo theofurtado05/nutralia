@@ -28,6 +28,7 @@ import { PDFViewer, Document, Page, PDFDownloadLink} from '@react-pdf/renderer';
 import Teste from './Nutrafity.pdf'
 import { usePerfil } from "../../../context/Perfil.context";
 import { GerarDieta990 } from "../../../services/openai";
+import { GerarDietaVercel, GerarTreinoVercel } from "../../../services/geradores";
 
 const filter = createFilterOptions();
 
@@ -51,6 +52,7 @@ const FormDieta = () => {
     const [naoGosta, setNaoGosta] = useState([])
     const [gosta, setGosta] = useState([])
     const [dietaGerada, setDietaGerada] = useState()
+    const [treino, setTreino] = useState(false)
 
     const [descerParaPdf, setDescerParaPdf] = useState()
     
@@ -62,8 +64,8 @@ const FormDieta = () => {
 
     const navigate = useNavigate()
     
-    const {numTickets, ReduzirTicket, GetDietasRestantesPromo, dietasRestantes} = useAssinatura()
-    const {SalvarDieta} = usePerfil()
+    const {numTickets, ReduzirTicket, GetDietasRestantesPromo, dietasRestantes, planoAtual} = useAssinatura()
+    const {SalvarDieta, setDietaGeradaNova, dietaGeradaNova} = usePerfil()
 
     const pdfViewerRef = useRef(null);
     const dietaContent = useRef(null);
@@ -124,6 +126,55 @@ const FormDieta = () => {
 
     
 
+    const gerarDietaBasica = async (objetivo) => {
+        const response = await GerarDietaVercel(objetivo)
+        return [response.data]
+    }
+
+    const gerarDietaBasicaETreino = async (objetivo) => {
+        const response = await GerarDietaVercel(objetivo)
+        const responseTreino = await GerarTreinoVercel(objetivo)
+        
+        
+        const listaAux = {
+            dieta: response.data,
+            treino: responseTreino.data
+        }
+            
+        return listaAux
+        
+    }
+
+    const gerarDietaSemanal = async (objetivo) => {
+        const listaAux = []
+        for(let i = 0; i < 7; i++){
+            const response = await GerarDietaVercel(objetivo)
+            listaAux.push(response.data)
+        }
+        return listaAux
+    }
+
+    const gerarDietaSemanalETreino = async (objetivo) => {
+        const listaAux = []
+        for(let i = 0; i < 7; i++){
+            const response = await GerarDietaVercel(objetivo)
+            listaAux.push(response.data)
+        }
+
+        const responseTreino = await GerarTreinoVercel(objetivo)
+        // setTreino({
+        //     ...responseTreino.data.opcoesA,
+        //     ...responseTreino.data.opcoesB
+        // })
+        const objAux = {
+            dieta: listaAux,
+            treino: responseTreino.data
+        }
+
+        console.log(objAux)
+        return objAux
+    }
+
     const gerarDieta = async () => {
         if(!objetivo || !objetivo.value){
             setErrorMsg("Escolha o objetivo.")
@@ -160,37 +211,70 @@ const FormDieta = () => {
                 
                 
                     setLoading(true)
-                    await GerarDieta990(usuario).then((response)=>{
-                        setErrorStatus(false)
-                        setLoading(false)
-                        console.log(response.replace(/\*/g, ''))
-                        setDietaGerada(response.replace(/\*/g, ''))
-                        localStorage.setItem("@UltimaDieta:Nutrafity", response.replace(/\*/g, ''))
-                        localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
-                        ReduzirTicket()
-                    })
-
-                    // await GerarDietaDocx(usuario).then((response) => {
-                    //     setErrorStatus(false)
-                    //     setLoading(false)
-                    //     console.log(response, " => response")
-                    //     setDietaGerada(response)
-                        // localStorage.setItem("@UltimaDieta:Nutrafity", response)
+                    // await GerarDieta990(usuario).then((response)=>{
+                        // setErrorStatus(false)
+                        // setLoading(false)
+                        // console.log(response.replace(/\*/g, ''))
+                        // setDietaGerada(response.replace(/\*/g, ''))
+                        // localStorage.setItem("@UltimaDieta:Nutrafity", response.replace(/\*/g, ''))
                         // localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
-                    //     ReduzirTicket()
+                        // ReduzirTicket()
                     // })
 
-                const metaDiaria = await GerarMetaObj(usuario)
-                .then((response)=>{
-                    setIniciarDietaSemanal(true)
-                    setObjMetaDiaria(response)
-                    console.log('Usuario: ', usuario)
-                    
-                    console.log('InfoUsuario: ', infoUsuario)
-                    
-                })
+                if(planoAtual == "Dieta Basica"){
+                    await gerarDietaBasica(usuario.objetivo).then((response) => {
+                        setErrorStatus(false)
+                        setLoading(false)
+                        setDietaGerada(response)
+                        // setDietaGeradaNova(response)
+                        localStorage.setItem("@UltimaDieta:Nutrafity", JSON.stringify(response))
+                        localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
+                        ReduzirTicket()
+
+                        console.log(response)
+                    })
+                } else if (planoAtual == "Dieta Basica com Treino"){
+                    await gerarDietaBasicaETreino(usuario.objetivo).then((response) => {
+                        setErrorStatus(false)
+                        setLoading(false)
+                        setDietaGerada([response.dieta])
+                        setTreino(response.treino)
+                        console.log(response.treino)
+                        // setDietaGeradaNova(response.data)
+                        localStorage.setItem("@UltimaDieta:Nutrafity", JSON.stringify(response))
+                        localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
+                        ReduzirTicket()
+
+                        
+                    })
+                } else if (planoAtual == "Dieta Semanal"){
+                    await gerarDietaSemanal(usuario.objetivo).then((response) => {
+                        setErrorStatus(false)
+                        setLoading(false)
+                        setDietaGerada(response)
+                        setDietaGeradaNova(response.data)
+                        localStorage.setItem("@UltimaDieta:Nutrafity", JSON.stringify(response))
+                        localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
+                        ReduzirTicket()
+
+                        console.log(response.data, ' => response.data')
+                    })
+                } else if (planoAtual == "Dieta Semanal com Treino"){
+                    await gerarDietaSemanalETreino(usuario.objetivo).then((response) => {
+                        setErrorStatus(false)
+                        setLoading(false)
+                        setDietaGerada(response.dieta)
+                        setTreino(response.treino)
+                        console.log(response)
+                        
+                        localStorage.setItem("@UltimaDieta:Nutrafity", JSON.stringify(response))
+                        localStorage.setItem("@InfoUsuario:Nutrafity", JSON.stringify(usuario))
+                        ReduzirTicket()
+
+                        console.log(response.data)
+                    })
+                }
                 
-    
             } else {
                 setErrorStatus(true)
                 setErrorMsg('Preencha todos os campos.')
@@ -202,32 +286,16 @@ const FormDieta = () => {
 
 }
    
-    // useEffect(()=>{
-    //     const fetchDieta = async () => {
-    //         const dietaSemanal = await GerarDietaSemana(infoUsuario, objMetaDiaria)
-    //         .then((response)=>{
-    
-    //             setLoading(false)
-    //             setArrayObjsDietas(response)
-    //             setDietaGerada(JSON.stringify(response))
-
-    //             setDescerParaPdf(true)
-    //             console.log("response => ", JSON.stringify(response))
-                
-    //         })
-    //     }
-    //     if(infoUsuario && objMetaDiaria){
-    //         fetchDieta()
-    //     }
-        
-        
-    // }, [iniciarDietaSemanal])
 
     useEffect(()=>{
         setStatusInfoUsuario(true)
         // console.log(infoUsuario.altura)
         
     }, [infoUsuario])
+
+    useEffect(() => {
+        console.log(objetivo)
+    }, [objetivo])
 
     useEffect(()=>{
         if(dietaContent.current){
@@ -307,7 +375,7 @@ const FormDieta = () => {
                             <FormControlLabel value="Outro" control={<Radio />} label="Outro" />
                         </RadioGroup>
 
-                        <Autocomplete
+                        {/* <Autocomplete
                             multiple
                             id="tags-outlined"
                             options={alimentos.map((option) => option.label)}
@@ -331,9 +399,9 @@ const FormDieta = () => {
                             />
                             )}
                             
-                        />
+                        /> */}
 
-                        <Autocomplete
+                        {/* <Autocomplete
                             multiple
                             id="tags-outlined"
                             options={alimentos.map((option) => option.label)}
@@ -356,7 +424,7 @@ const FormDieta = () => {
                             />
                             )}
                             
-                        />
+                        /> */}
 
                         
                     </DivForm>
@@ -370,7 +438,7 @@ const FormDieta = () => {
                         Gerar Dieta
                     </StyledButton>
 
-                    {dietaGerada && 
+                    {/* {dietaGerada && 
                         <TextField ref={dietaContent}
                         style={{width: '100%', height: '500px', marginTop: 20, marginBottom: 50, color: '#000', opacity: 1}}
                         multiline
@@ -379,7 +447,7 @@ const FormDieta = () => {
                         disabled
                         value={dietaGerada && dietaGerada}
                     />
-                    }
+                    } */}
 
                     
 
@@ -389,18 +457,19 @@ const FormDieta = () => {
                     
                     {dietaGerada && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && 
 
-                        <div style={{width: '90vw', maxWidth: '600px', paddingTop: '20px', display: 'flex', paddingBottom: 40, gap: 10}}>
-                            <StyledButton variant="contained" style={{width: '100%'}} onClick={()=>{
+                        <div style={{width: '90vw', maxWidth: '600px', paddingTop: '0px', display: 'flex', paddingBottom: 40, gap: 10}} ref={dietaContent}>
+                            {/* <StyledButton variant="contained" style={{width: '100%'}} onClick={()=>{
                                 copiarDieta(dietaGerada)
                                     alert('Dieta copiada na area de transferência.')
                                 
                             }}>
                                 Copiar Dieta
-                            </StyledButton>
+                            </StyledButton> */}
 
                             <PDFDownloadLink style={{width: '100%', textDecoration: 'none'}} document={
                                 <ModeloPDf 
                                     dieta={dietaGerada}
+                                    treino={treino}
                                     objInfosPessoais={infoUsuario}
                                     />
 

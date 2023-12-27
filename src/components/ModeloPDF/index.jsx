@@ -12,6 +12,10 @@ import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/render
 //....
 
 const styles = StyleSheet.create({
+    refeicaoText: {
+      padding: '5px 20px',
+      fontSize: 16
+    },
     page: {
         flexDirection: 'column',
         backgroundColor: '#f5f5f5',
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
         height: 300,
         alignSelf: 'center',
         margin: 20,
-        opacity: 0.4,
+        opacity: 0.3,
         position: 'absolute',
         top: 350,
     },
@@ -123,42 +127,7 @@ const styles = StyleSheet.create({
   });
 
 
-const ModeloPDf = ({dieta, objInfosPessoais}) => {
-
-    const renderizarTexto = (texto) => {
-        const partes = texto.split(/(?=\b(?:Domingo|Segunda|Terça|Quarta|Quinta|Sexta|Sábado):)/);
-        
-        return partes.map((parte, index) => (
-          <Text key={index} style={{ marginBottom: 10 }}>
-            {parte}
-          </Text>
-        ));
-      };
-
-      const chunk = (arr, size) => {
-        const result = [];
-        for (let i = 0; i < arr.length; i += size) {
-          result.push(arr.slice(i, i + size));
-        }
-        return result;
-      };
-    
-      const renderizarDias = (texto) => {
-        const dias = texto.split(/(?=\b(?:Domingo|Segunda|Terça|Quarta|Quinta|Sexta|Sábado)\b)/);
-
-      
-        return dias.map((dia, index) => (
-          <Page key={index + 1} size={[595.28, 900.00]} style={styles.page} pageNumber={index + 1}>
-            <Image
-              style={styles.logoCanto}
-              src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
-            />
-            <Text style={{ marginBottom: 10, padding: 20 }}>
-              {dia}
-            </Text>
-          </Page>
-        ));
-      };
+const ModeloPDf = ({dieta, objInfosPessoais, treino}) => {
     
     return ( 
         <Document>
@@ -200,6 +169,119 @@ const ModeloPDf = ({dieta, objInfosPessoais}) => {
             />  
         </Page>
 
+        {dieta.map((dia, index) => {
+
+          return (
+              <Page size="A4" style={styles.page} pageNumber={index + 1}>
+                <View style={{
+                  margin: 10,
+                  padding: 10,
+                  flexGrow: 1
+                }}>
+                  <Text style={{color: "#0a730f", fontWeight: 'bold', fontSize: 24}}>
+                    Dia {index + 1}
+                  </Text>
+
+                  <View style={{padding: '10px 0'}}>
+                    <Text style={{fontSize: 20}}>
+                      Cafe da manhã
+                    </Text>
+                    {dia.cafeDaManha.map((refeicao, index) => {
+                      return (
+                        <Text style={styles.refeicaoText}>
+                          Opção {index + 1}: {refeicao}
+                        </Text>
+                        )
+                      })}
+                  </View>
+
+                  <View style={{padding: '10px 0'}}>
+                    <Text style={{fontSize: 20}}>
+                      Almoço
+                    </Text>
+                    {dia.almoco.map((refeicao, index) => {
+                      return (
+                        <Text style={styles.refeicaoText}>
+                          Opção {index + 1}: {refeicao}
+                        </Text>
+                        )
+                      })}
+                  </View>
+
+                  
+
+                  <View style={{padding: '10px 0'}}>
+                    <Text style={{fontSize: 20}}>
+                      Lanche da Tarde
+                    </Text>
+                    {dia.lancheDaTarde.map((refeicao, index) => {
+                      return (
+                        <Text style={styles.refeicaoText}>
+                          Opção {index + 1}: {refeicao}
+                        </Text>
+                        )
+                      })}
+                  </View>
+
+                  <View style={{padding: '10px 0'}}>
+                    <Text style={{fontSize: 20}}>
+                      Janta
+                    </Text>
+                    {dia.janta.map((refeicao, index) => {
+                      return (
+                        <Text style={styles.refeicaoText}>
+                          Opção {index + 1}: {refeicao}
+                        </Text>
+                        )
+                      })}
+                  </View>
+
+                </View>
+                <Image 
+                  style={styles.logoPrincipal}
+                  src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
+                />  
+              </Page>
+          )
+          
+        })}
+
+        {treino && 
+          <Page size="A4" style={styles.page}>
+              <View style={{
+                margin: 10,
+                padding: 10,
+                flexGrow: 1
+              }}>
+                <Text style={{color: "#0a730f", fontWeight: 'bold', fontSize: 24}}>
+                    Treino A
+                </Text>
+                {treino.opcoesA.map((a) => {
+                  return (
+                    <Text style={styles.refeicaoText}>
+                      - {a}
+                    </Text>
+                  )
+                })}
+
+                <Text style={{color: "#0a730f", fontWeight: 'bold', fontSize: 24, paddingTop: 10}}>
+                    Treino B
+                </Text>
+                {treino.opcoesB.map((b) => {
+                  return (
+                    <Text style={styles.refeicaoText}>
+                      - {b}
+                    </Text>
+                  )
+                })}
+            </View>
+            
+                <Image 
+                  style={styles.logoPrincipal}
+                  src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
+                />  
+          </Page>
+        }
         
         {/* <Page size="A4" style={styles.page} pageNumber={2}>
             <View style={{
@@ -215,7 +297,7 @@ const ModeloPDf = ({dieta, objInfosPessoais}) => {
                 src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
             />  
         </Page> */}
-        {renderizarDias(dieta)}
+        
       </Document>
     )
 }
