@@ -26,7 +26,7 @@ const Planos = () => {
                             frequencia={'1 dieta'} 
                             valorPlano={'19,90'} 
                             numDietas={'1'} 
-                            link={`../pixpage`}   
+                            link={`https://pay.kiwify.com.br/s9j8osb?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_medium=Dieta%20Basica`}   
                             adicionalAnual={false} 
                             avulso={true} 
                             linkPagamento={`https://pay.kiwify.com.br/s9j8osb?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_medium=Dieta%20Basica`}
@@ -34,17 +34,17 @@ const Planos = () => {
 
 
 
-
+                    
 
                         <CardPlano 
                             tituloPlano={'Dieta Semanal'}  
                             frequencia={'1 dieta'} 
                             valorPlano={'29,90'} 
                             numDietas={'1'} 
-                            link={`../pixpage`}   
+                            link={`https://pay.kiwify.com.br/nj7DZXJ?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_medium=Dieta%20Semanal`}   
                             adicionalAnual={true} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kiwify.com.br/niYZqRH?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_medium=Dieta%20Semanal`}
+                            linkPagamento={`https://pay.kiwify.com.br/nj7DZXJ?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_medium=Dieta%20Semanal`}
                         />
 
 
@@ -53,12 +53,12 @@ const Planos = () => {
                             frequencia={'1 dieta'} 
                             valorPlano={'39,90'} 
                             numDietas={'1'} 
-                            link={'../pixpage'}   
+                            link={`https://pay.kiwify.com.br/HiRYcbq?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}   
                             adicionalAnual={false} 
                             avulso={true} 
                             treino={true}
                             numTreinos={1}
-                            linkPagamento={`https://pay.kiwify.com.br/7miepJ7?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}
+                            linkPagamento={`https://pay.kiwify.com.br/HiRYcbq?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}
                         /> 
 
                     </DivForm>
