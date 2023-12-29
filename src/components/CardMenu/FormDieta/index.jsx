@@ -487,9 +487,9 @@ const FormDieta = () => {
                    
                 </DivFormPai>
                     
-                    {dietaGerada && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && 
+                    {(dietaGerada && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo)&& 
 
-                        <div style={{width: '100vw', maxWidth: '600px', paddingTop: '0px', display: 'flex', paddingBottom: 40, gap: 10, display: 'flex', alignItems: 'center', justifyContent: 'center'}} ref={dietaContent}>
+                        <div style={{width: '99vw', maxWidth: '600px', paddingTop: '0px', display: 'flex', paddingBottom: 40, gap: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} ref={dietaContent}>
                             {/* <StyledButton variant="contained" style={{width: '100%'}} onClick={()=>{
                                 copiarDieta(dietaGerada)
                                     alert('Dieta copiada na area de transferência.')
@@ -498,10 +498,9 @@ const FormDieta = () => {
                                 Copiar Dieta
                             </StyledButton> */}
 
-                            <StyledButton variant="contained" style={{width: '100%', maxWidth: '90vw', fontWeight: 'bold', background: '#1a9d00'}} onClick={()=>{navigate('/verDieta')}}>
-                                VER MINHA DIETA
-                            </StyledButton>
-                            {/* <PDFDownloadLink style={{width: '100%', textDecoration: 'none'}} document={
+                            
+                            <PDFDownloadLink style={{width: '100%', textDecoration: 'none', maxWidth: '90vw'}} document={
+                                
                                 <ModeloPDf 
                                     dieta={dietaGerada}
                                     treino={treino}
@@ -521,7 +520,11 @@ const FormDieta = () => {
                                     //SalvarDieta(url)
                                 }}>Baixar Dieta em PDF</StyledButton>
                             }
-                            </PDFDownloadLink> */}
+                            </PDFDownloadLink>
+
+                            <StyledButton variant="contained" style={{width: '100%', maxWidth: '90vw', fontWeight: 'bold', background: '#1a9d00'}} onClick={()=>{navigate('/verDieta')}}>
+                                VER MINHA DIETA
+                            </StyledButton>
                         </div>
                     }
 

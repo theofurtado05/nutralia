@@ -17,8 +17,8 @@ const PDF = () => {
         <Header/>
         <div style={{width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <PDFViewer style={{
-                width: '95%',
-                height: '90vh'
+                width: '100%',
+                height: '100%'
             }}>
                 <ModeloPDf/>
             </PDFViewer>

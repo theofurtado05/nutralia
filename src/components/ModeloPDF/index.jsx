@@ -131,7 +131,7 @@ const ModeloPDf = ({dieta, objInfosPessoais, treino}) => {
     
     return ( 
         <Document>
-        <Page size={[595.28, 900.00]} style={styles.page} pageNumber={1}>
+        <Page size={[595.28, 841.89]} style={styles.page} pageNumber={1}>
           <View style={styles.tituloSection}>
             <Text style={styles.titulo}>Plano Alimentar</Text> 
           </View>
