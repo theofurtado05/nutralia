@@ -108,9 +108,14 @@ export default function Drawer() {
             <a href="/menu">
               <RestaurantMenuIcon/> Gerar Dieta 
             </a>
-            {/* <a href="/ultima-dieta">
-              <MenuBookIcon/> Ultima Dieta
-            </a> */}
+            {localStorage.getItem('dietaGerada') && localStorage.getItem('dietaGerada') != 'undefined' && 
+                localStorage.getItem('treino') && localStorage.getItem('treino') != 'undefined' && 
+                localStorage.getItem('infoUsuario') && localStorage.getItem('infoUsuario') != 'undefined' &&
+
+              <a href="/verDieta">
+                <MenuBookIcon/> Ultima Dieta
+              </a>
+            }
 
             {/* <a onClick={() => {
               alert("Em manutenção...")

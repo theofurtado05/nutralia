@@ -15,6 +15,7 @@ import Faq from '../pages/Faq';
 import PDF from '../pages/PDF';
 import PixPage from '../pages/PixPage';
 import { UltimaDieta } from '../pages/UltimaDieta';
+import { VerDieta } from '../pages/VerDieta';
 
 
 export default function Router(){
@@ -49,6 +50,7 @@ export default function Router(){
                     <Route path="/Planos" element={<Planos/>}/>
                     <Route path="/Perfil" element={<Perfil/>}/>
                     <Route path="/PixPage" element={<PixPage/>}/>
+                    <Route path="/verDieta" element={<VerDieta/>}/>
                     {/* <Route path="/pdf" element={<PDF/>}/> */}
                     {/* <Route path="/receitaDiaria" element={<></>}/>
                     <Route path="/todasReceitas" element={<></>}/> */}
