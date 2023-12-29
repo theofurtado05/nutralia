@@ -318,7 +318,7 @@ const FormDieta = () => {
     }, [dietaGerada])
 
     useEffect(()=>{
-        if(dietaGerada && infoUsuario && treino){
+        if(dietaGerada && infoUsuario){
             localStorage.setItem('dietaGerada', JSON.stringify(dietaGerada));
             localStorage.setItem('infoUsuario', JSON.stringify(infoUsuario));
             localStorage.setItem('treino', JSON.stringify(treino));
@@ -480,7 +480,7 @@ const FormDieta = () => {
                     
                     {dietaGerada && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && 
 
-                        <div style={{width: '100%', maxWidth: '90vw', paddingTop: '0px', display: 'flex', paddingBottom: 40, gap: 10}} ref={dietaContent}>
+                        <div style={{width: '100%', maxWidth: '600px', paddingTop: '0px', display: 'flex', paddingBottom: 40, gap: 10}} ref={dietaContent}>
                             {/* <StyledButton variant="contained" style={{width: '100%'}} onClick={()=>{
                                 copiarDieta(dietaGerada)
                                     alert('Dieta copiada na area de transferência.')
@@ -489,7 +489,7 @@ const FormDieta = () => {
                                 Copiar Dieta
                             </StyledButton> */}
 
-                            <StyledButton variant="contained" style={{width: '100%', fontWeight: 'bold', background: '#1a9d00'}} onClick={()=>{navigate('/verDieta')}}>
+                            <StyledButton variant="contained" style={{width: '100%', maxWidth: '90vw', fontWeight: 'bold', background: '#1a9d00'}} onClick={()=>{navigate('/verDieta')}}>
                                 VER MINHA DIETA
                             </StyledButton>
                             {/* <PDFDownloadLink style={{width: '100%', textDecoration: 'none'}} document={
