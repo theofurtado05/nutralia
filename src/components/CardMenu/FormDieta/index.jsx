@@ -318,11 +318,20 @@ const FormDieta = () => {
     }, [dietaGerada])
 
     useEffect(()=>{
-        if(dietaGerada && infoUsuario){
+        if(dietaGerada){
             localStorage.setItem('dietaGerada', JSON.stringify(dietaGerada));
-            localStorage.setItem('infoUsuario', JSON.stringify(infoUsuario));
-            localStorage.setItem('treino', JSON.stringify(treino));
         }
+        if(infoUsuario){
+            localStorage.setItem('infoUsuario', JSON.stringify(infoUsuario));
+        }
+            
+        if(treino){
+            localStorage.setItem('treino', JSON.stringify(treino));
+        } else {
+            localStorage.removeItem('treino')
+        }
+            
+        
         
     }, [dietaGerada, infoUsuario, treino])
 
@@ -480,7 +489,7 @@ const FormDieta = () => {
                     
                     {dietaGerada && infoUsuario.altura && infoUsuario.kg && infoUsuario.objetivo && infoUsuario.objetivo && 
 
-                        <div style={{width: '100%', maxWidth: '600px', paddingTop: '0px', display: 'flex', paddingBottom: 40, gap: 10}} ref={dietaContent}>
+                        <div style={{width: '100vw', maxWidth: '600px', paddingTop: '0px', display: 'flex', paddingBottom: 40, gap: 10, display: 'flex', alignItems: 'center', justifyContent: 'center'}} ref={dietaContent}>
                             {/* <StyledButton variant="contained" style={{width: '100%'}} onClick={()=>{
                                 copiarDieta(dietaGerada)
                                     alert('Dieta copiada na area de transferência.')
