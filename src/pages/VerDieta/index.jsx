@@ -11,7 +11,10 @@ export const VerDieta = () => {
             
 
             <div style={{width: '100%', maxWidth: '95vw', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 10, flexDirection: 'column'}}>
-            <PDFViewer showToolbar={true} style={{
+                {
+                    localStorage.getItem('dietaGerada') ? 
+                    <>
+                        <PDFViewer showToolbar={true} style={{
                 width: '90%',
                 height: '70vh',
                 alignSelf: 'center',
@@ -53,6 +56,16 @@ export const VerDieta = () => {
                                 }}>Baixar Dieta em PDF</StyledButton>
                             }
                             </PDFDownloadLink>
+
+
+                    </>
+                    :
+                    <>
+                        <h2>Você não possui dietas salvas.</h2>
+                    </>
+
+                }
+            
 
         </div>
         </>

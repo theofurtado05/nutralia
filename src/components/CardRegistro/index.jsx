@@ -42,8 +42,14 @@ const CardRegister = () => {
 
     const auth = getAuth(app);
 
+    const zerarLocalStorage = () => {
+      localStorage.removeItem('@User:Nutrafity')
+      localStorage.removeItem('@Email:Nutrafity')
+      localStorage.removeItem('@UserId:Nutrafity')
+    }
+
     useEffect(()=>{
-        verifLogadoAuth()
+        zerarLocalStorage()
     }, [])
 
     useEffect(()=>{
