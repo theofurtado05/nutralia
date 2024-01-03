@@ -10,9 +10,11 @@ const Menu = () => {
         VerifLogin()
         
     })
-
+    const fetchData = async () => {
+        await UpdateNavigator(VerificaNavegador())
+    }
     useEffect(() => {
-        UpdateNavigator(VerificaNavegador())
+        fetchData()
     }, [])
     return(
         <>
