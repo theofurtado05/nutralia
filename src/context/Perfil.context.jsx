@@ -199,7 +199,7 @@ const PerfilProvider = ({ children }) => {
 
     const UpdateNavigator = async (navigator) => {
         const userRef = ref(database, `users/${userId}/navigator`)
-        update(userRef, navigator)
+        await update(userRef, navigator)
     }
     
  
