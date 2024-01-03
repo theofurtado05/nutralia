@@ -198,8 +198,13 @@ const PerfilProvider = ({ children }) => {
 
 
     const UpdateNavigator = async (navigator) => {
-        const userRef = ref(database, `users/${userId}/navigator`)
-        await update(userRef, navigator)
+        try {
+            const userRef = ref(database, `users/${userId}/navigator`)
+            await update(userRef, navigator)
+        } catch (err) { 
+            throw err
+        }
+        
     }
     
  
