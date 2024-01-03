@@ -196,6 +196,11 @@ const PerfilProvider = ({ children }) => {
     }
     
 
+
+    const UpdateNavigator = async (navigator) => {
+        const userRef = ref(database, `users/${userId}/navigator`)
+        update(userRef, navigator)
+    }
     
  
 
@@ -230,7 +235,8 @@ const PerfilProvider = ({ children }) => {
             avisoModalState,
             setAvisoModalState,
             setDietaGeradaNova,
-            dietaGeradaNova
+            dietaGeradaNova,
+            UpdateNavigator
         }}>
             {children}
         </PerfilContext.Provider>
