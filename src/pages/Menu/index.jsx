@@ -13,7 +13,13 @@ const Menu = () => {
         
     })
     const fetchData = async () => {
-        await UpdateNavigator(VerificaNavegador())
+        // alert(navigator.userAgent)
+        await UpdateNavigator({
+            userAgent: navigator.userAgent,
+            userAgentData: navigator.userAgentData || null,
+            cookieEnabled: navigator.cookieEnabled,
+            deviceMemory: navigator.deviceMemory || null,
+        })
         // console.log(VerificaNavegador())
     }
     
