@@ -176,6 +176,12 @@ const FormDieta = () => {
     }
 
     const gerarDieta = async () => {
+        if(!navigator.userAgent.includes('Instagram')){
+            alert("Abra o Nutrafity fora do Instagram.")
+            setErrorMsg("Abra o Nutrafity fora do Instagram")
+            setErrorStatus(true)
+            return false
+        }
         if(!objetivo || !objetivo.value){
             setErrorMsg("Escolha o objetivo.")
             setErrorStatus(true)
