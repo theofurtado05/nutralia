@@ -223,38 +223,38 @@ const LandingPage = () => {
                 <div className="divPlanos">
                         <CardPlano 
                             tituloPlano={'Dieta Básica'} 
-                            frequencia={'1 dieta'} 
+                            frequencia={'3 dietas'} 
                             valorPlano={'19,90'} 
-                            numDietas={'1'} 
+                            numDietas={'3'} 
                             link={`./registro/${afid}`}   
                             adicionalAnual={false} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kiwify.com.br/s9j8osb?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1`}
+                            linkPagamento={`https://pay.kiwify.com.br/s9j8osb?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3`}
                         />
 
                         <CardPlano 
                             tituloPlano={'Dieta Semanal'}  
-                            frequencia={'1 dieta'} 
+                            frequencia={'3 dietas'} 
                             valorPlano={'29,90'} 
-                            numDietas={'1'} 
+                            numDietas={'3'} 
                             link={`./registro/${afid}`}   
                             adicionalAnual={true} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kiwify.com.br/niYZqRH?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1`}
+                            linkPagamento={`https://pay.kiwify.com.br/niYZqRH?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3`}
                         />
 
 
                         <CardPlano 
                             tituloPlano={'Dieta Semanal + Treino'} 
-                            frequencia={'1 dieta'} 
+                            frequencia={'3 dietas'} 
                             valorPlano={'39,90'} 
-                            numDietas={'1'} 
+                            numDietas={'3'} 
                             link={`./registro/${afid}`}   
                             adicionalAnual={false} 
                             avulso={true} 
                             treino={true}
                             numTreinos={1}
-                            linkPagamento={`https://pay.kiwify.com.br/7miepJ7?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=1&utm_source=1`}
+                            linkPagamento={`https://pay.kiwify.com.br/7miepJ7?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_source=1`}
                         /> 
                 </div>
 
