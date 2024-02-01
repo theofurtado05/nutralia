@@ -7,7 +7,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
     const navigate = useNavigate()
     const handleClick = () => {
         localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
-        window.open(link, 'blank')
+        window.open(link, !link.includes('utrafity.com') && !link.includes('localhost') && 'blank')
         if(linkPagamento){
             localStorage.setItem('@LinkPagamento:Nutrafity', linkPagamento)
         }
