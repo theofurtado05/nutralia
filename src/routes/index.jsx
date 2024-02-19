@@ -16,6 +16,7 @@ import PDF from '../pages/PDF';
 import PixPage from '../pages/PixPage';
 import { UltimaDieta } from '../pages/UltimaDieta';
 import { VerDieta } from '../pages/VerDieta';
+import { BtWpp } from '../pages/BtWpp';
 
 
 export default function Router(){
@@ -54,6 +55,7 @@ export default function Router(){
                     {/* <Route path="/pdf" element={<PDF/>}/> */}
                     {/* <Route path="/receitaDiaria" element={<></>}/>
                     <Route path="/todasReceitas" element={<></>}/> */}
+                    <Route path="/btWpp" element={<BtWpp/>}/>
 
                     <Route path="/TermosDeUso" element={<TermosDeUso/>}/>
                     <Route path="/Politicas" element={<PoliticasDePrivacidade/>}/>
