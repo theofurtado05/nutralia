@@ -17,6 +17,7 @@ import PixPage from '../pages/PixPage';
 import { UltimaDieta } from '../pages/UltimaDieta';
 import { VerDieta } from '../pages/VerDieta';
 import { BtWpp } from '../pages/BtWpp';
+import LPPlanos from '../pages/LPPlanos';
 
 
 export default function Router(){
@@ -56,6 +57,7 @@ export default function Router(){
                     {/* <Route path="/receitaDiaria" element={<></>}/>
                     <Route path="/todasReceitas" element={<></>}/> */}
                     <Route path="/btWpp" element={<BtWpp/>}/>
+                    <Route path="/LPPlanos" element={<LPPlanos/>}/>
 
                     <Route path="/TermosDeUso" element={<TermosDeUso/>}/>
                     <Route path="/Politicas" element={<PoliticasDePrivacidade/>}/>
