@@ -73,10 +73,10 @@ const LPPlanos = () => {
                             frequencia={'3 dietas'} 
                             valorPlano={'19,90'} 
                             numDietas={'3'} 
-                            link={`./registro/${afid}`}   
+                            link={`https://pay.kiwify.com.br/2Bzu4qp?afid=${afid}`}   
                             adicionalAnual={false} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kiwify.com.br/s9j8osb?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3`}
+                            linkPagamento={`https://pay.kiwify.com.br/2Bzu4qp?afid=${afid}`}
                         />
 
                         <CardPlano 
@@ -84,10 +84,10 @@ const LPPlanos = () => {
                             frequencia={'3 dietas'} 
                             valorPlano={'29,90'} 
                             numDietas={'3'} 
-                            link={`./registro/${afid}`}   
-                            adicionalAnual={true} 
+                            link={`https://pay.kiwify.com.br/VEDZVLr?afid=${afid}`}   
+                            adicionalAnual={false} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kiwify.com.br/niYZqRH?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3`}
+                            linkPagamento={`https://pay.kiwify.com.br/VEDZVLr?afid=${afid}`}
                         />
 
 
@@ -96,12 +96,12 @@ const LPPlanos = () => {
                             frequencia={'3 dietas'} 
                             valorPlano={'39,90'} 
                             numDietas={'3'} 
-                            link={`./registro/${afid}`}   
-                            adicionalAnual={false} 
+                            link={`https://pay.kiwify.com.br/n9ZzuVo?afid=${afid}`}   
+                            adicionalAnual={true} 
                             avulso={true} 
                             treino={true}
                             numTreinos={1}
-                            linkPagamento={`https://pay.kiwify.com.br/7miepJ7?afid=${sessionStorage.getItem('afid')}&utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_source=1`}
+                            linkPagamento={`https://pay.kiwify.com.br/n9ZzuVo?afid=${afid}`}
                         /> 
                 </div>
 
