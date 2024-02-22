@@ -73,21 +73,23 @@ const LPPlanos = () => {
                             frequencia={'3 dietas'} 
                             valorPlano={'19,90'} 
                             numDietas={'3'} 
-                            link={`https://pay.kiwify.com.br/2Bzu4qp?afid=${afid}`}   
+                            link={`https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9`}   
                             adicionalAnual={false} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kiwify.com.br/2Bzu4qp?afid=${afid}`}
+                            linkPagamento={`https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9`}
                         />
+
+
 
                         <CardPlano 
                             tituloPlano={'Dieta Semanal'}  
                             frequencia={'3 dietas'} 
                             valorPlano={'29,90'} 
                             numDietas={'3'} 
-                            link={`https://pay.kiwify.com.br/VEDZVLr?afid=${afid}`}   
+                            link={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec`}   
                             adicionalAnual={false} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kiwify.com.br/VEDZVLr?afid=${afid}`}
+                            linkPagamento={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec`}
                         />
 
 
@@ -96,12 +98,12 @@ const LPPlanos = () => {
                             frequencia={'3 dietas'} 
                             valorPlano={'39,90'} 
                             numDietas={'3'} 
-                            link={`https://pay.kiwify.com.br/n9ZzuVo?afid=${afid}`}   
+                            link={`https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c`}   
                             adicionalAnual={true} 
                             avulso={true} 
                             treino={true}
                             numTreinos={1}
-                            linkPagamento={`https://pay.kiwify.com.br/n9ZzuVo?afid=${afid}`}
+                            linkPagamento={`https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c`}
                         /> 
                 </div>
 
