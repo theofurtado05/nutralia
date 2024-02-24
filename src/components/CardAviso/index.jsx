@@ -9,7 +9,7 @@ const CardAviso = ({numDietasRestantes}) => {
             </div>
                 <div class="warning__title">Dietas promocionais restantes: 
                 <strong>
-                    {numDietasRestantes} tickets de R$19,90 
+                    {numDietasRestantes} tickets de R$5,99 
                 </strong></div>
             <div class="warning__close"></div>
         </div>
