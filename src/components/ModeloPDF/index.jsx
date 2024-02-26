@@ -165,7 +165,7 @@ const ModeloPDf = ({dieta, objInfosPessoais, treino}) => {
             <Text style={styles.texto.aviso}>PLANO ALIMENTAR FEITO SOB MEDIDA. NÃO COMPARTILHE, RISCO DE INFECÇÃO.</Text>
             <Image 
             style={styles.logoPrincipal}
-            src="https://firebasestorage.googleapis.com/v0/b/nutrafity.appspot.com/o/imagens%2FlogoTemplate.png?alt=media&token=db62a7ab-1cac-4813-8ea7-b808110b851a"
+            src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
             />  
         </Page>
 
@@ -239,7 +239,7 @@ const ModeloPDf = ({dieta, objInfosPessoais, treino}) => {
                 </View>
                 <Image 
                   style={styles.logoPrincipal}
-                  src="https://firebasestorage.googleapis.com/v0/b/nutrafity.appspot.com/o/imagens%2FlogoTemplate.png?alt=media&token=db62a7ab-1cac-4813-8ea7-b808110b851a"
+                  src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
                 />  
               </Page>
           )
@@ -278,7 +278,7 @@ const ModeloPDf = ({dieta, objInfosPessoais, treino}) => {
             
                 <Image 
                   style={styles.logoPrincipal}
-                  src="https://firebasestorage.googleapis.com/v0/b/nutrafity.appspot.com/o/imagens%2FlogoTemplate.png?alt=media&token=db62a7ab-1cac-4813-8ea7-b808110b851a"
+                  src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
                 />  
           </Page>
         }
