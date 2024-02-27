@@ -18,6 +18,8 @@ const AssinaturaProvider = ({ children }) => {
     const [planoAtual, setPlanoAtual] = useState()
     const [dietasRestantes, setDietasRestantes] = useState()
 
+    const [paymentObject, setPaymentObject] = useState(null)
+
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const database = getDatabase(app)
@@ -70,7 +72,8 @@ const AssinaturaProvider = ({ children }) => {
             ReduzirTicket,
             planoAtual,
             GetDietasRestantesPromo,
-            dietasRestantes        
+            dietasRestantes,
+            paymentObject, setPaymentObject    
         }}>
             {children}
         </AssinaturaContext.Provider>

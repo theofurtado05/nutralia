@@ -1,41 +1,61 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
+import { useAssinatura } from "../../../../context/Assinatura.context";
 
 
-const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual, avulso = false, linkPagamento, treino = false, numTreinos = 0}) => {
+const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicional, adicionalAnual, avulso = false, linkPagamento, treino = false, numTreinos = 0, value=0, qntd=0, type=0}) => {
     const navigate = useNavigate()
-    const handleClick = () => {
-        localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
-        window.open(link, !link.includes('utrafity.com') && !link.includes('localhost') && 'blank')
-        if(linkPagamento){
-            localStorage.setItem('@LinkPagamento:Nutrafity', linkPagamento)
-        }
+
+    // const handleClick = () => {
+    //     localStorage.setItem('@PlanoEscolhido:Nutrafity', tituloPlano)
+    //     window.open(link, !link.includes('utrafity.com') && !link.includes('localhost') && 'blank')
+    //     if(linkPagamento){
+    //         localStorage.setItem('@LinkPagamento:Nutrafity', linkPagamento)
+    //     }
         
-        // navigate('/pixpage')
+    //     // navigate('/pixpage')
+
+    // }
+
+    const {paymentObject, setPaymentObject} = useAssinatura()
+
+    const handleClick = async () => {
+        console.log("Clicado")
+        return await axios.post('https://api.nutrafity.com/payment/createPaymentOnMercadoPago', {
+            value: value,
+            qntd: qntd,
+            userEmail: localStorage.getItem('@Email:Nutrafity'),
+            type: type,
+            uid: localStorage.getItem('@UserId:Nutrafity')
+        }).then((response) => {
+            // console.log(response.data.response.point_of_interaction.transaction_data)
+            setPaymentObject(response.data.response)
+            navigate('/pixpage')
+        }).catch((err) => {
+            console.log("Erro: ", err)
+        })
     }
 
-
-      {/*
-        Numero de dietas
-        Tipo da dieta
-        Numero de treino
-        suco detox
-        acompanhamento de evolucao
-        envio imediato
-        suporte por email
-    */}    
+    // {
+    //     "value": 5.99,
+    //     "qntd": 1,
+    //     "userEmail": "theofurtado05@gmail.com",
+    //     "uid": "qz51JKif41e8fMTzcqYRxbwi0rk2",
+    //     "type": "Dieta Semanal"
+    // }
 
 
     return(
         <>
-        <div class="card">
-            <div class="content">
-                    {adicionalAnual == true && <div class="bestPrice">MELHOR VALOR</div>}
-                    <div class="title">{tituloPlano}</div>
-                    <div class="price">R${valorPlano}<span id="mes">/{frequencia}</span></div>
+        <div className="card">
+            <div className="content">
+                    {adicionalAnual == true && <div className="bestPrice">MELHOR VALOR</div>}
+                    <div className="title">{tituloPlano}</div>
+                    <div className="price">R${valorPlano}<span id="mes">/{frequencia}</span></div>
                     <hr></hr>
-                    <div class="description">
+                    <div className="description">
                         {!avulso ? 
                         <>
                         <span>

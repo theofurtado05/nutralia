@@ -71,9 +71,9 @@ const LPPlanos = () => {
                         <CardPlano 
                             tituloPlano={'Dieta Básica'} 
                             frequencia={'3 dietas'} 
-                            valorPlano={'19,90'} 
+                            valorPlano={'5,99'} 
                             numDietas={'3'} 
-                            link={`https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9`}   
+                            link={`./registro/${afid}`}   
                             adicionalAnual={false} 
                             avulso={true} 
                             linkPagamento={`https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9`}
@@ -84,9 +84,9 @@ const LPPlanos = () => {
                         <CardPlano 
                             tituloPlano={'Dieta Semanal'}  
                             frequencia={'3 dietas'} 
-                            valorPlano={'29,90'} 
+                            valorPlano={'7,99'} 
                             numDietas={'3'} 
-                            link={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec`}   
+                            link={`./registro/${afid}`}   
                             adicionalAnual={false} 
                             avulso={true} 
                             linkPagamento={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec`}
@@ -96,9 +96,9 @@ const LPPlanos = () => {
                         <CardPlano 
                             tituloPlano={'Dieta Semanal + Treino'} 
                             frequencia={'3 dietas'} 
-                            valorPlano={'39,90'} 
+                            valorPlano={'9,99'} 
                             numDietas={'3'} 
-                            link={`https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c`}   
+                            link={`./registro/${afid}`}   
                             adicionalAnual={true} 
                             avulso={true} 
                             treino={true}
