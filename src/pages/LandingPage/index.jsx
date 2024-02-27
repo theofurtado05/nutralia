@@ -59,7 +59,7 @@ const LandingPage = () => {
             <HeaderLp/>
 
             <FirstSection id="0">
-                <h1>Dieta personalizada por apenas R$19,90</h1>
+                <h1>Dieta personalizada por apenas R$5,99</h1>
                 <h3>Lembra da sua promessa na virada do ano? Agora está bem mais perto e MUITO mais barata de ser realizada.</h3>
 
                 <div className="btActions" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: '20px'}}>
