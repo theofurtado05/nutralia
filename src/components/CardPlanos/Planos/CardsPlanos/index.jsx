@@ -22,20 +22,25 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
     const {paymentObject, setPaymentObject} = useAssinatura()
 
     const handleClick = async () => {
-        console.log("Clicado")
-        return await axios.post('https://api.nutrafity.com/payment/createPaymentOnMercadoPago', {
-            value: value,
-            qntd: qntd,
-            userEmail: localStorage.getItem('@Email:Nutrafity'),
-            type: type,
-            uid: localStorage.getItem('@UserId:Nutrafity')
-        }).then((response) => {
-            // console.log(response.data.response.point_of_interaction.transaction_data)
-            setPaymentObject(response.data.response)
-            navigate('/pixpage')
-        }).catch((err) => {
-            console.log("Erro: ", err)
-        })
+        console.log(window.location.pathname.includes('planos'))
+        if(window.location.pathname.includes("planos")){
+            return await axios.post('https://api.nutrafity.com/payment/createPaymentOnMercadoPago', {
+                value: value,
+                qntd: qntd,
+                userEmail: localStorage.getItem('@Email:Nutrafity'),
+                type: type,
+                uid: localStorage.getItem('@UserId:Nutrafity')
+            }).then((response) => {
+                // console.log(response.data.response.point_of_interaction.transaction_data)
+                setPaymentObject(response.data.response)
+                navigate('/pixpage')
+            }).catch((err) => {
+                console.log("Erro: ", err)
+            })
+        } else {
+            navigate('/registro')
+        }
+        
     }
 
     // {
@@ -120,7 +125,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
             {`
             .bestPrice{
                 background: black;
-                width: 100%;
+                width: 90%;
                 padding: 2px 10px;
                 align-self: center;
                 color: white;

@@ -238,7 +238,7 @@ const LandingPage = () => {
                             valorPlano={'7,99'} 
                             numDietas={'3'} 
                             link={`./registro/${afid}`}   
-                            adicionalAnual={true} 
+                            adicionalAnual={false} 
                             avulso={true} 
                             linkPagamento={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3`}
                         />
@@ -250,7 +250,7 @@ const LandingPage = () => {
                             valorPlano={'9,99'} 
                             numDietas={'3'} 
                             link={`./registro/${afid}`}   
-                            adicionalAnual={false} 
+                            adicionalAnual={true} 
                             avulso={true} 
                             treino={true}
                             numTreinos={1}

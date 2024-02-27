@@ -43,7 +43,7 @@ const Planos = () => {
                             valorPlano={'7,99'} 
                             numDietas={'3'} 
                             link={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Semanal`}   
-                            adicionalAnual={true} 
+                            adicionalAnual={false} 
                             avulso={true} 
                             linkPagamento={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Semanal`}
                             value={7.99} qntd={3} type={'Dieta Semanal'}
@@ -56,7 +56,7 @@ const Planos = () => {
                             valorPlano={'9,99'} 
                             numDietas={'3'} 
                             link={`https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}   
-                            adicionalAnual={false} 
+                            adicionalAnual={true} 
                             avulso={true} 
                             treino={true}
                             numTreinos={1}
