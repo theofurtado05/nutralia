@@ -41,8 +41,10 @@ const PixPage = () => {
 
     const handleCard = () => {
         window.open(
-            paymentObject.transaction_amount == 5.99 ? 'https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9' : paymentObject.transaction_amount == 7.99 ? 'https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec' : 
-            'https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c', 
+            paymentObject.transaction_amount == 5.99 ? 
+            `https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3` : 
+            paymentObject.transaction_amount == 7.99 ? `https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3` : 
+            `https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3`, 
             'blank')
     }
     
