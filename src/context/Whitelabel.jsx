@@ -5,6 +5,11 @@ WhitelabelContext.displayName = 'WhitelabelContext'
 
 const WhitelabelProvider = ({ children }) => {
     const [coresRoot, setCoresRoot] = useState([])
+    const [openModalMsg, setOpenModalMsg] = useState(false)
+    const [objModalMsg, setObjModalMsg] = useState({
+        title: '',
+        msg: ''
+    })
 
     const setarCores = () => {
         setCoresRoot(`
@@ -25,7 +30,10 @@ const WhitelabelProvider = ({ children }) => {
     return (
         <WhitelabelContext.Provider value={{     
                 coresRoot,
-                setarCores
+                setarCores,
+                openModalMsg, 
+                setOpenModalMsg,
+                objModalMsg, setObjModalMsg
         }}>
             {children}
         </WhitelabelContext.Provider>

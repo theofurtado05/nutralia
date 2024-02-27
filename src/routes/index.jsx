@@ -20,6 +20,7 @@ import { BtWpp } from '../pages/BtWpp';
 import LPPlanos from '../pages/LPPlanos';
 
 
+
 export default function Router(){
     const {coresRoot} = useWhitelabel();
 
@@ -62,6 +63,7 @@ export default function Router(){
                     <Route path="/TermosDeUso" element={<TermosDeUso/>}/>
                     <Route path="/Politicas" element={<PoliticasDePrivacidade/>}/>
                     <Route path="/Faq" element={<Faq/>}/>
+                    
                 </Routes>
             </BrowserRouter>
             

@@ -5,10 +5,14 @@ import { useAssinatura } from "../../context/Assinatura.context";
 
 import { Button, TextField } from "@mui/material";
 import {useNavigate} from 'react-router-dom'
+import { useWhitelabel } from "../../context/Whitelabel";
+import DialogMsg from "../../components/DialogMsg";
+
 
 const PixPage = () => {
     const {paymentObject, setPaymentObject} = useAssinatura()
     const navigate = useNavigate()
+    const {objModalMsg, setObjModalMsg, setOpenModalMsg} = useWhitelabel()
 
     const [codigoPix, setCodigoPix] = useState()
     
@@ -45,7 +49,11 @@ const PixPage = () => {
     const handleStatus = async (id) => {
         return await axios.get(`https://api.nutrafity.com/payment/${id}`).then((response) => {
             console.log(response.data.response.status)
-            alert(`Status do pagamento: ${response.data.response.status == 'pending' ? ' Pendente' : response.data.response.status == 'approved' ? 'Aprovado' : 'Rejeitado'}`)
+            setOpenModalMsg(true)
+            setObjModalMsg({
+                title: 'Status do Pagamento',
+                msg: `Status do pagamento: ${response.data.response.status == 'pending' ? ' Pendente' : response.data.response.status == 'approved' ? 'Aprovado' : 'Rejeitado'}`
+            })
 
         }).catch((err) => {
             console.log("Erro: ", err)
@@ -87,6 +95,9 @@ const PixPage = () => {
                                     Verificar Status de Pagamento
                                 </Button>}
 
+                                <DialogMsg/>
+                                
+                                
 
                                 <div style={{display: 'flex', flexDirection: 'column', width: '100%', gap: 15, border: '1px solid #d1d1d1', borderRadius: 4}}>
                                     <h3 style={{padding: 5}}>Como pagar?</h3>
