@@ -96,11 +96,12 @@ export default function Drawer() {
 
       }}
     >
+      <div style={{width: '100%'}}>
        <img src={LogoDefault} style={{
-        width: '100px',
-        alignSelf: 'center',
+        width: '20%',
+        alignSelf: 'left',
        }} />
-      
+      </div>
         <div className='divMenu'>
             <a href="/perfil">
               <AccountBoxIcon/> Perfil 
@@ -265,7 +266,7 @@ export default function Drawer() {
 
 
             .divMenu{
-              padding-top: 20px;
+              padding-top: 5px;
               display: flex;
               flex-direction: column;
               justify-content: center;
