@@ -14,10 +14,10 @@ const WhitelabelProvider = ({ children }) => {
     const setarCores = () => {
         setCoresRoot(`
         :root {
-            --Primary-color: #1C9E22;
-            --Secondary-color: #0a730f;
-            --Icon-Background: #8ee892b0;
-            --Card-PrimaryBackground: #1c9e22d7;
+            --Primary-color: #FFA100;
+            --Secondary-color: #bc7802;
+            --Icon-Background: #ebb963;
+            --Card-PrimaryBackground: #efa524;
         }
     `)
     }

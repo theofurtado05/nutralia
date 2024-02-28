@@ -225,7 +225,7 @@ export default function Drawer() {
 
             .infos{
               width: 90%;
-              background: #8ecc9b;
+              background: #f9ca7a;
               border-radius: 8px;
               padding: 10px;
 
