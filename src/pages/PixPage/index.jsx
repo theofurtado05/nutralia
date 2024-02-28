@@ -117,7 +117,7 @@ const PixPage = () => {
                                     </div>
                                 </div>
 
-                                <Button variant="contained" style={{width: '100%', marginTop: 10}} color="error" onClick={handleCard}>
+                                <Button variant="contained" style={{width: '100%', marginTop: 10}} color="success" onClick={handleCard}>
                                     Pagar com Cartão
                                 </Button>
                             </div>

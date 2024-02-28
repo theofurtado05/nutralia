@@ -18,6 +18,7 @@ const WhitelabelProvider = ({ children }) => {
             --Secondary-color: #bc7802;
             --Icon-Background: #ebb963;
             --Card-PrimaryBackground: #efa524;
+            --Background-btPurchase: #249109;
         }
     `)
     }

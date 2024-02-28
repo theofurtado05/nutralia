@@ -199,20 +199,20 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                 user-select: none;
                 border: none;
                 outline: none;
-                color: var(--Primary-color);
+                color: white;
                 text-transform: uppercase;
                 font-weight: 700;
-                font-size: .75rem;
+                font-size: 1rem;
                 padding: 0.75rem 1.5rem;
                 background-color: rgb(33 150 243);
                 border-radius: 0.5rem;
                 width: 90%;
                 text-shadow: 0px 4px 18px var(--Secondary-color);
-                background: white;
+                background: var(--Background-btPurchase);
             }
             .btPlanos:hover{
                 cursor: pointer;
-                background: #eeeded;
+                background: #196706;
             }
 
 

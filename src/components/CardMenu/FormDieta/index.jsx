@@ -396,8 +396,8 @@ const FormDieta = () => {
                             )}
                             />
 
-                        <TextField label="Intolerância"  value={intolerancia} onChange={(e) => setIntolerancia(e.target.value)}/>
-                        <FormHelperText id="my-helper-text" style={{marginTop: '-5px'}}>Isso é extremamente importante.</FormHelperText>
+                        <TextField label="Adicional"  value={intolerancia} onChange={(e) => setIntolerancia(e.target.value)}/>
+                        <FormHelperText id="my-helper-text" style={{marginTop: '-5px'}}>Exemplo: Não pode faltar chocolate.</FormHelperText>
 
                         <RadioGroup
                             aria-labelledby="demo-radio-buttons-group-label"
@@ -408,9 +408,8 @@ const FormDieta = () => {
                             onChange={handleGenero}
                             
                         >
-                            <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
-                            <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
-                            <FormControlLabel value="Outro" control={<Radio />} label="Outro" />
+                            <FormControlLabel value="Feminino" control={<Radio />} label="Mulher" />
+                            <FormControlLabel value="Masculino" control={<Radio />} label="Homem" />
                         </RadioGroup>
 
                         {/* <Autocomplete
