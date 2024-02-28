@@ -97,10 +97,13 @@ export default function Drawer() {
       }}
     >
       <div style={{width: '100%'}}>
-       <img src={LogoDefault} style={{
+       {/* <img src={LogoDefault} style={{
         width: '20%',
         alignSelf: 'left',
-       }} />
+       }} /> */}
+       <span style={{fontSize: '50px'}}>
+          🍗
+       </span>
       </div>
         <div className='divMenu'>
             <a href="/perfil">

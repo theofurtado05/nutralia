@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
             fontWeight: 'bold'
         },  
         tituloDia: {
-            color: '#0a730f',
+            color: '#bc7802',
             fontSize: '26px',
             padding: '40px 0 10px 40px',
             textDecoration: 'underline'
 
         },
         tituloPeriodo: {
-            color: '#0a730f',
+            color: '#bc7802',
             fontSize: '20px',
         },
         itemLista: {
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         opacity: 0.3,
         position: 'absolute',
         top: 350,
+        fontSize: 60
     },
     logoCanto: {
         width: 120,
@@ -163,10 +164,13 @@ const ModeloPDf = ({dieta, objInfosPessoais, treino}) => {
 
           </View>
             <Text style={styles.texto.aviso}>PLANO ALIMENTAR FEITO SOB MEDIDA. NÃO COMPARTILHE, RISCO DE INFECÇÃO.</Text>
-            <Image 
+            {/* <Image 
             style={styles.logoPrincipal}
             src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
-            />  
+            />   */}
+            <Text style={styles.logoPrincipal}>
+              🍗
+            </Text>
         </Page>
 
         {dieta.map((dia, index) => {
@@ -237,10 +241,13 @@ const ModeloPDf = ({dieta, objInfosPessoais, treino}) => {
                   </View>
 
                 </View>
-                <Image 
+                {/* <Image 
                   style={styles.logoPrincipal}
                   src="https://api-nutrafity.vercel.app/imagem/logoTemplate.png"
-                />  
+                />   */}
+                <Text style={styles.logoPrincipal}>
+                  🍗
+                </Text>
               </Page>
           )
           

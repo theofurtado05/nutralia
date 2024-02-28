@@ -58,7 +58,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
             <div className="content">
                     {adicionalAnual == true && <div className="bestPrice">MELHOR VALOR</div>}
                     <div className="title">{tituloPlano}</div>
-                    <div className="price">R${valorPlano}<span id="mes">/{frequencia}</span></div>
+                    <div className="price">R${valorPlano}</div>
                     <hr></hr>
                     <div className="description">
                         {!avulso ? 
@@ -85,6 +85,9 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                         </> : 
                         <>
                             <span>
+                                - Compre 1 Leve 3 Dietas
+                            </span>
+                            <span>
                                 - Dieta personalizada
                             </span> 
                             {treino && 
@@ -95,7 +98,7 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                             
                             
                             <span>
-                                - Suco detox  
+                                - Suco detox  (em breve)
                             </span>
 
                             <span>
@@ -108,6 +111,9 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
                             
                             <span>
                                 - Suporte por E-mail
+                            </span>
+                            <span>
+                                - Pagamento único
                             </span>
 
                         

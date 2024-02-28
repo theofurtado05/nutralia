@@ -38,7 +38,7 @@ const FormDieta = () => {
     const [peso, setPeso] = useState();
     const [objetivo, setObjetivo] = useState(null);
     const [genero, setGenero] = useState(null)
-    const [intolerancia, setIntolerancia] = useState('Não tenho intolerância');
+    const [intolerancia, setIntolerancia] = useState('');
     const [observacao, setObservasao] = useState()
     const [errorMsg, setErrorMsg] = useState()
     const [errorStatus, setErrorStatus] = useState(false)
@@ -469,7 +469,7 @@ const FormDieta = () => {
                     {errorStatus && <span style={{color: 'red', fontWeight: 'bold'}}>{errorMsg}</span>}
 
                     <StyledButton variant="contained" 
-                    style={{fontWeight: 'bold', marginTop: '20px', maxWidth: '90vw', opacity: dietaGerada && '0.85'}} 
+                    style={{fontWeight: 'bold', marginTop: '20px', maxWidth: '90vw', opacity: dietaGerada && '0.85', color: 'white'}} 
                     onClick={gerarDieta}
                     >
                         Gerar Dieta
@@ -512,7 +512,7 @@ const FormDieta = () => {
                                     objInfosPessoais={infoUsuario}
                                     />
 
-                            } fileName="DietaNutrafity.pdf">
+                            } fileName="dietaautomatica.pdf">
 
                             {({ blob, url, loading, error }) =>
                                 loading ? 'Carregando PDF...' : 
@@ -520,14 +520,15 @@ const FormDieta = () => {
                                 <StyledButton variant="contained" style={{
                                     width: '100%',
                                     background: 'var(--Secondary-color)',
-                                    fontWeight: 'bold'
+                                    fontWeight: 'bold',
+                                    color: 'white'
                                 }} onClick={()=>{
                                     //SalvarDieta(url)
                                 }}>Baixar Dieta em PDF</StyledButton>
                             }
                             </PDFDownloadLink>
 
-                            <StyledButton variant="contained" style={{width: '100%', maxWidth: '90vw', fontWeight: 'bold', background: '#1a9d00'}} onClick={()=>{navigate('/verDieta')}}>
+                            <StyledButton variant="contained" style={{width: '100%', maxWidth: '90vw', fontWeight: 'bold', background: 'var(--Primary-color)', color: 'white'}} onClick={()=>{navigate('/verDieta')}}>
                                 VER MINHA DIETA
                             </StyledButton>
                         </div>
