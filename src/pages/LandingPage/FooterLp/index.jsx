@@ -23,7 +23,7 @@ const FooterLp = () => {
                         <img src={LogoHorizontal}/>
 
                         <span>
-                            © 2023 Nutrafity. <br/>
+                            © 2023 Dieta Automática. <br/>
                             Todos os direitos reservados.
                         </span>
 
@@ -58,7 +58,7 @@ const FooterLp = () => {
                         <img src={LogoHorizontal}/>
 
                         <span>
-                            © 2023 Nutrafity. <br/>
+                            © 2023 Dieta Automática. <br/>
                             Todos os direitos reservados.
                         </span>
 

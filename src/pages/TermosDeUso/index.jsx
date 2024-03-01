@@ -47,11 +47,11 @@ const TermosDeUso = () => {
                 <p>
                <strong>1. Aceitação dos Termos</strong><br/>
 
-Ao acessar e utilizar o site Nutrafity ("o Site") e seus serviços relacionados, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concordar com estes termos, por favor, não utilize o Site.<br/><br/>
+Ao acessar e utilizar o site Dieta Automática ("o Site") e seus serviços relacionados, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concordar com estes termos, por favor, não utilize o Site.<br/><br/>
 
 <strong>2. Uso do Serviço</strong><br/>
 
-O Nutrafity oferece um serviço de geração de planos alimentares personalizados e acompanhamento de progresso. Ao utilizar nossos serviços, você concorda em fornecer informações precisas e atualizadas. Você é responsável por manter a confidencialidade de sua conta e senha.<br/><br/>
+O Dieta Automática oferece um serviço de geração de planos alimentares personalizados e acompanhamento de progresso. Ao utilizar nossos serviços, você concorda em fornecer informações precisas e atualizadas. Você é responsável por manter a confidencialidade de sua conta e senha.<br/><br/>
 
 <strong>3. Direitos Autorais e Propriedade Intelectual</strong><br/>
 
@@ -63,11 +63,11 @@ Você concorda em utilizar o Site de maneira consistente com as leis aplicáveis
 
 <strong>5. Isenção de Responsabilidade</strong><br/>
 
-O Nutrafity não se responsabiliza por qualquer dano ou prejuízo resultante do uso do Site ou de suas informações. O uso das informações do Site é de sua própria responsabilidade e risco.<br/><br/>
+O Dieta Automática não se responsabiliza por qualquer dano ou prejuízo resultante do uso do Site ou de suas informações. O uso das informações do Site é de sua própria responsabilidade e risco.<br/><br/>
 
 <strong>6. Alterações nos Termos</strong><br/>
 
-O Nutrafity reserva-se o direito de alterar ou modificar estes Termos de Uso a qualquer momento. É sua responsabilidade revisar periodicamente estes termos para se manter informado sobre quaisquer alterações.<br/><br/>
+O Dieta Automática reserva-se o direito de alterar ou modificar estes Termos de Uso a qualquer momento. É sua responsabilidade revisar periodicamente estes termos para se manter informado sobre quaisquer alterações.<br/><br/>
 
 <strong>7. Jurisdição e Lei Aplicável</strong><br/>
 

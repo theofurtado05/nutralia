@@ -61,7 +61,7 @@ export default function Drawer() {
   };
 
   const faleConosco = () => {
-    const email = 'nutrafity@gmail.com';
+    const email = 'dietaautomatica@gmail.com';
     const assunto = 'Solicito suporte';
     window.open(`mailto:${email}?subject=${encodeURIComponent(assunto)}`, '_blank');
   }

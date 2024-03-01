@@ -177,8 +177,8 @@ const FormDieta = () => {
 
     const gerarDieta = async () => {
         if(navigator.userAgent.includes('Instagram')){
-            alert("Abra o Nutrafity fora do Instagram.")
-            setErrorMsg("Abra o Nutrafity fora do Instagram")
+            alert("Abra o Dieta Automática fora do Instagram.")
+            setErrorMsg("Abra o Dieta Automática fora do Instagram")
             setErrorStatus(true)
             return false
         }

@@ -14,7 +14,7 @@ export default function FaqCard() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>O que é a Nutrafity?</Typography>
+          <Typography>O que é o Dieta Automática?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -30,11 +30,11 @@ export default function FaqCard() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Como funciona o Nutrafity?</Typography>
+          <Typography>Como funciona o Dieta Automática?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            O Nutrafity é um site que utiliza algoritmos avançados de inteligencia artificial para criar planos alimentares personalizados de acordo com suas metas, preferências e restrições. Além disso, oferecemos acompanhamento de evolução, gráficos de progresso e receitas diárias para garantir sua jornada fitness de sucesso.
+            O Dieta Automática é um site que utiliza algoritmos avançados de inteligencia artificial para criar planos alimentares personalizados de acordo com suas metas, preferências e restrições. Além disso, oferecemos acompanhamento de evolução, gráficos de progresso e receitas diárias para garantir sua jornada fitness de sucesso.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -79,7 +79,7 @@ export default function FaqCard() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Absolutamente! As receitas do Nutrafity são selecionadas para se adequar ao seu plano alimentar e são acompanhadas por instruções detalhadas. Preparamos opções deliciosas e simples para tornar sua jornada saudável mais saborosa.
+          Absolutamente! As receitas do Dieta Automática são selecionadas para se adequar ao seu plano alimentar e são acompanhadas por instruções detalhadas. Preparamos opções deliciosas e simples para tornar sua jornada saudável mais saborosa.
           </Typography>
         </AccordionDetails>
       </Accordion>
