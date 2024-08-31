@@ -49,7 +49,7 @@ const PixPage = () => {
     }
     
     const handleStatus = async (id) => {
-        return await axios.get(`https://api.nutrafity.com/payment/${id}`).then((response) => {
+        return await axios.get(`https://api-nutrafity.vercel.app/payment/${id}`).then((response) => {
             console.log(response.data.response.status)
             setOpenModalMsg(true)
             setObjModalMsg({

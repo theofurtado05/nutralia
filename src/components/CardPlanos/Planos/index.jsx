@@ -18,50 +18,44 @@ const Planos = () => {
                 <DivFormPai>
                     <h1>Planos</h1>
                     <DivForm>
-                      
-
 
                         <CardPlano 
                             tituloPlano={'Dieta Básica'} 
                             frequencia={'3 dietas'} 
-                            valorPlano={'5,99'} 
+                            valorPlano={'19,90'} 
                             numDietas={'3'} 
-                            link={`https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Basica`}   
+                            link={`https://pay.kirvano.com/9a022e58-1e1b-4e24-9938-0b2d6a1fea09?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Basica`}   
                             adicionalAnual={false} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kirvano.com/0c32923e-b1d7-488c-b9a9-182cf35f93f9?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Basica`}
+                            linkPagamento={`https://pay.kirvano.com/9a022e58-1e1b-4e24-9938-0b2d6a1fea09?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Basica`}
                             value={5.99} qntd={3} type={'Dieta Basica'}
                         />
-
-
-
-                    
 
                         <CardPlano 
                             tituloPlano={'Dieta Semanal'}  
                             frequencia={'3 dietas'} 
-                            valorPlano={'7,99'} 
+                            valorPlano={'29,90'} 
                             numDietas={'3'} 
-                            link={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Semanal`}   
+                            link={`https://pay.kirvano.com/11faa6fb-ed94-42d7-884d-6c593ffbd47a?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Semanal`}   
                             adicionalAnual={false} 
                             avulso={true} 
-                            linkPagamento={`https://pay.kirvano.com/76d4e557-bb44-4ee5-ae16-ffd80e6150ec?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Semanal`}
+                            linkPagamento={`https://pay.kirvano.com/11faa6fb-ed94-42d7-884d-6c593ffbd47a?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_medium=Dieta%20Semanal`}
                             value={7.99} qntd={3} type={'Dieta Semanal'}
                         />
 
 
                         <CardPlano 
-                            tituloPlano={'Dieta Semanal + Treino'} 
+                            tituloPlano={'Dieta Semanal + Treino + Acesso Vitalicio'} 
                             frequencia={'3 dietas'} 
-                            valorPlano={'9,99'} 
+                            valorPlano={'49,90'} 
                             numDietas={'3'} 
-                            link={`https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}   
+                            link={`https://pay.kirvano.com/2458d184-02ed-4fda-8d31-14c584b92305?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}   
                             adicionalAnual={true} 
                             avulso={true} 
                             treino={true}
                             numTreinos={1}
-                            linkPagamento={`https://pay.kirvano.com/ae517256-9823-43d5-95e5-91ac4560a97c?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}
-                            value={9.99} qntd={3} type={'Dieta Semanal com Treino'}
+                            linkPagamento={`https://pay.kirvano.com/2458d184-02ed-4fda-8d31-14c584b92305?utm_content=${localStorage.getItem('@UserId:Nutrafity')}&src=3&utm_source=1&utm_medium=Dieta%20Semanal%20com%20Treino`}
+                            value={9.99} qntd={3} type={'Dieta Semanal com Treino e Acesso Vitalicio'}
                         /> 
 
                     </DivForm>

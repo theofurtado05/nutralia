@@ -23,33 +23,31 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
 
     const handleClick = async () => {
         console.log(window.location.pathname.includes('planos'))
-        if(window.location.pathname.includes("planos")){
-            return await axios.post('https://api.nutrafity.com/payment/createPaymentOnMercadoPago', {
-                value: value,
-                qntd: qntd,
-                userEmail: localStorage.getItem('@Email:Nutrafity'),
-                type: type,
-                uid: localStorage.getItem('@UserId:Nutrafity')
-            }).then((response) => {
-                // console.log(response.data.response.point_of_interaction.transaction_data)
-                setPaymentObject(response.data.response)
-                navigate('/pixpage')
-            }).catch((err) => {
-                console.log("Erro: ", err)
-            })
+        if(window.location.pathname.includes('planos')){
+            window.open(link, 'blank')
         } else {
             navigate('/registro')
         }
         
+        // if(window.location.pathname.includes("planos")){
+        //     return await axios.post('https://api.nutrafity.com/payment/createPaymentOnMercadoPago', {
+        //         value: value,
+        //         qntd: qntd,
+        //         userEmail: localStorage.getItem('@Email:Nutrafity'),
+        //         type: type,
+        //         uid: localStorage.getItem('@UserId:Nutrafity')
+        //     }).then((response) => {
+        //         // console.log(response.data.response.point_of_interaction.transaction_data)
+        //         setPaymentObject(response.data.response)
+        //         navigate('/pixpage')
+        //     }).catch((err) => {
+        //         console.log("Erro: ", err)
+        //     })
+        // } else {
+        //     navigate('/registro')
+        // }
     }
 
-    // {
-    //     "value": 5.99,
-    //     "qntd": 1,
-    //     "userEmail": "theofurtado05@gmail.com",
-    //     "uid": "qz51JKif41e8fMTzcqYRxbwi0rk2",
-    //     "type": "Dieta Semanal"
-    // }
 
 
     return(
@@ -194,8 +192,9 @@ const CardPlano = ({tituloPlano, valorPlano, numDietas, link, frequencia, adicio
             font-weight: 800;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.64);
-            
-            font-size: 25px;
+            text-align: center;
+
+            font-size: 20px;
             letter-spacing: 1px;
             }
 

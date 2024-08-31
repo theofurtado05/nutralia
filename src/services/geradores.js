@@ -9,7 +9,7 @@ const objetivos = [
 
 
 export const GerarDietaVercel = async (objetivo) => {
-    const url = `https://api.nutrafity.com/gerarDieta?objetivo=${objetivo}`
+    const url = `https://api-nutrafity.vercel.app/gerarDieta?objetivo=${objetivo}`
 
     
 
@@ -28,7 +28,7 @@ export const GerarDietaVercel = async (objetivo) => {
 }
 
 export const GerarTreinoVercel = async (objetivo) => {
-    const url = `https://api.nutrafity.com/gerarTreino?objetivo=${objetivo}`
+    const url = `https://api-nutrafity.vercel.app/gerarTreino?objetivo=${objetivo}`
     
     try {
         const response = await axios.get(url, {
